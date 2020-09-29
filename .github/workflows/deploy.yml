@@ -7,6 +7,8 @@ on:
     paths-ignore:   # 下列文件的变更不触发部署，可以自行添加
       - README.md
       - LICENSE
+      - .htaccess
+      - .user.ini
 
 jobs:
   deploy:
@@ -33,7 +35,3 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.DEPLOY_KEY }}
         # 重启的脚本，根据自身情况做相应改动，一般要做的是migrate数据库以及重启服务器
-        script: |
-          cd /www/wwwroot/bill.fkun.tech/
-          python manage.py migrate
-          supervisorctl restart web

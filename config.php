@@ -2,17 +2,17 @@
 //数据库配置信息，根据情况修改，否则无法安装
 $db_servername = "localhost";
 //Mysql服务器地址 将 localhost 修改为你的数据库地址
-$db_username = "finance";
+$db_username = "Finance";
 //数据库用户名 将 username 修改为你的数据库用户名
-$db_password = "19980322Feng!";
+$db_password = "finance";
 //数据库密码 将 password 修改为你的数据库密码
 $db_dbname = "Billsys";
 //数据库名 将 jizhang 修改为你的数据库名
 $prename = "Finance_";
 //表前缀
-$zyemail = "admin@fkun.tech";
+$zyemail = "";
 //配置找回密码邮箱，推荐163邮箱
-$zyemailpass = "19980322Feng.";
+$zyemailpass = "";
 //邮箱密码
 $conn = new mysqli($db_servername,$db_username,$db_password);
 if ($conn->connect_error) {
