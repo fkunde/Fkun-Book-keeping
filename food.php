@@ -44,7 +44,99 @@ if ($_GET["Submit"]) {
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
+        <td bgcolor="#EBEBEB">推荐食谱</td>
+    </tr>
+    <table width="100%" border="0" align="left" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
+    <tr>
+        <th align="left" bgcolor="#EBEBEB">   </th>
+
+        <th align="left" bgcolor="#EBEBEB">MON</th>
+		
+		<th align="left" bgcolor="#EBEBEB">TUE</th>
+		
+		<th align="left" bgcolor="#EBEBEB">WED</th>
+		
+        <th align="left" bgcolor="#EBEBEB">THU</th>
+		
+		<th align="left" bgcolor="#EBEBEB">FRI</th>
+		
+        <th align="left" bgcolor="#EBEBEB">SAT</th>
+        
+        <th align="left" bgcolor="#EBEBEB">SUN</th>
+  
+    </tr>
+    <tr>
+        <th align="left" bgcolor="#EBEBEB">Frühstück</th>
+
+        <th align="left" bgcolor="#EBEBEB">   </th>
+		
+		<th align="left" bgcolor="#EBEBEB">   </th>
+		
+		<th align="left" bgcolor="#EBEBEB">   </th>
+		
+        <th align="left" bgcolor="#EBEBEB">   </th>
+		
+		<th align="left" bgcolor="#EBEBEB">   </th>
+		
+        <th align="left" bgcolor="#EBEBEB">   </th>
+        
+        <th align="left" bgcolor="#EBEBEB">   </th>
+  
+    </tr>
+    <tr>
+        <th align="left" bgcolor="#EBEBEB">Mittagessen</th>    
+
+        <th align="left" bgcolor="#EBEBEB">   </th>
+		
+		<th align="left" bgcolor="#EBEBEB">   </th>
+		
+		<th align="left" bgcolor="#EBEBEB">   </th>
+		
+        <th align="left" bgcolor="#EBEBEB">   </th>
+		
+		<th align="left" bgcolor="#EBEBEB">   </th>
+		
+        <th align="left" bgcolor="#EBEBEB">   </th>
+        
+        <th align="left" bgcolor="#EBEBEB">   </th>
+  
+    </tr>
+    <tr>
+        <th align="left" bgcolor="#EBEBEB">Abendessen</th>
+
+        <th align="left" bgcolor="#EBEBEB">   </th>
+		 
+		<th align="left" bgcolor="#EBEBEB">   </th>
+		 
+		<th align="left" bgcolor="#EBEBEB">   </th>
+		 
+        <th align="left" bgcolor="#EBEBEB">   </th>
+		 
+		<th align="left" bgcolor="#EBEBEB">   </th>
+		 
+        <th align="left" bgcolor="#EBEBEB">   </th>
+         
+        <th align="left" bgcolor="#EBEBEB">   </th>
+  
+    </tr>
+</table>
+</table>
+<table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
+    <tr>
+        <td bgcolor="#EBEBEB">购物清单</td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF">
+          
+        </td>
+    </tr>
+    <tr>
         <td bgcolor="#EBEBEB">录入食材</td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF">
+          
+        </td>
     </tr>
     <tr>
         <td bgcolor="#FFFFFF">
