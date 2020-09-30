@@ -24,7 +24,7 @@ include_once("header.php");
 <tr><td align='left' bgcolor='#FFFFFF'><font>推荐每月</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>推荐周常</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>本周实际</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>食物百分比</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>饮食系数</font></td></tr>
 </table>	
 </div>
 
