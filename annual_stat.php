@@ -144,17 +144,16 @@ include_once("header.php");
                 } else {
                 }
             }
-            $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by ac1";
             $g2 = array();
             $query = mysqli_query($conn, $sql);
-            while ($acclass = mysqli_fetch_array($query)) {
-                $total = $acclass['total'];
-                $g2[$acclass['acclassid']] = $total;
+            while ($ac1 = mysqli_fetch_array($query)) {
+                $total = $ac1['total'];
             }
 
             foreach ($zhichu as $n => $m) {
-                if (isset($g2[$n])) {
-                    $gsa1 = $g2[$n];
+                if (isset($total)) {
+                    $gsa1 = $total;
                 } else {
                 }
             }
@@ -289,17 +288,16 @@ include_once("header.php");
                 } else {
                 }
             }
-            $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by ac1";
             $g2 = array();
             $query = mysqli_query($conn, $sql);
-            while ($acclass = mysqli_fetch_array($query)) {
-                $total = $acclass['total'];
-                $g2[$acclass['acclassid']] = $total;
+            while ($ac1 = mysqli_fetch_array($query)) {
+                $total = $ac1['total'];
             }
 
             foreach ($zhichu as $n => $m) {
-                if (isset($g2[$n])) {
-                    $gsa2 = $g2[$n];
+                if (isset($total)) {
+                    $gsa2 = $total;
                 } else {
                 }
             }
@@ -429,17 +427,16 @@ include_once("header.php");
                 } else {
                 }
             }
-            $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by ac1";
             $g2 = array();
             $query = mysqli_query($conn, $sql);
-            while ($acclass = mysqli_fetch_array($query)) {
-                $total = $acclass['total'];
-                $g2[$acclass['acclassid']] = $total;
+            while ($ac1 = mysqli_fetch_array($query)) {
+                $total = $ac1['total'];
             }
 
             foreach ($zhichu as $n => $m) {
-                if (isset($g2[$n])) {
-                    $gsa3 = $g2[$n];
+                if (isset($total)) {
+                    $gsa3 = $total;
                 } else {
                 }
             }
@@ -569,17 +566,16 @@ include_once("header.php");
                 } else {
                 }
             }
-            $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by ac1";
             $g2 = array();
             $query = mysqli_query($conn, $sql);
-            while ($acclass = mysqli_fetch_array($query)) {
-                $total = $acclass['total'];
-                $g2[$acclass['acclassid']] = $total;
+            while ($ac1 = mysqli_fetch_array($query)) {
+                $total = $ac1['total'];
             }
 
             foreach ($zhichu as $n => $m) {
-                if (isset($g2[$n])) {
-                    $gsa4 = $g2[$n];
+                if (isset($total)) {
+                    $gsa4 = $total;
                 } else {
                 }
             }
@@ -709,17 +705,16 @@ include_once("header.php");
                 } else {
                 }
             }
-            $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by ac1";
             $g2 = array();
             $query = mysqli_query($conn, $sql);
-            while ($acclass = mysqli_fetch_array($query)) {
-                $total = $acclass['total'];
-                $g2[$acclass['acclassid']] = $total;
+            while ($ac1 = mysqli_fetch_array($query)) {
+                $total = $ac1['total'];
             }
 
             foreach ($zhichu as $n => $m) {
-                if (isset($g2[$n])) {
-                    $gsa5 = $g2[$n];
+                if (isset($total)) {
+                    $gsa5 = $total;
                 } else {
                 }
             }
@@ -845,17 +840,16 @@ include_once("header.php");
                 } else {
                 }
             }
-            $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by ac1";
             $g2 = array();
             $query = mysqli_query($conn, $sql);
-            while ($acclass = mysqli_fetch_array($query)) {
-                $total = $acclass['total'];
-                $g2[$acclass['acclassid']] = $total;
+            while ($ac1 = mysqli_fetch_array($query)) {
+                $total = $ac1['total'];
             }
 
             foreach ($zhichu as $n => $m) {
-                if (isset($g2[$n])) {
-                    $gsa6 = $g2[$n];
+                if (isset($total)) {
+                    $gsa6 = $total;
                 } else {
                 }
             }
@@ -983,17 +977,16 @@ include_once("header.php");
                 } else {
                 }
             }
-            $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by ac1";
             $g2 = array();
             $query = mysqli_query($conn, $sql);
-            while ($acclass = mysqli_fetch_array($query)) {
-                $total = $acclass['total'];
-                $g2[$acclass['acclassid']] = $total;
+            while ($ac1 = mysqli_fetch_array($query)) {
+                $total = $ac1['total'];
             }
 
             foreach ($zhichu as $n => $m) {
-                if (isset($g2[$n])) {
-                    $gsa7 = $g + $g2[$n];
+                if (isset($total)) {
+                    $gsa7 = $total;
                 } else {
                 }
             }
@@ -1121,17 +1114,16 @@ include_once("header.php");
                 } else {
                 }
             }
-            $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by ac1";
             $g2 = array();
             $query = mysqli_query($conn, $sql);
-            while ($acclass = mysqli_fetch_array($query)) {
-                $total = $acclass['total'];
-                $g2[$acclass['acclassid']] = $total;
+            while ($ac1 = mysqli_fetch_array($query)) {
+                $total = $ac1['total'];
             }
 
             foreach ($zhichu as $n => $m) {
-                if (isset($g2[$n])) {
-                    $gsa8 = $g2[$n];
+                if (isset($total)) {
+                    $gsa8 = $total;
                 } else {
                 }
             }
@@ -1257,17 +1249,16 @@ include_once("header.php");
                 } else {
                 }
             }
-            $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by ac1";
             $g2 = array();
             $query = mysqli_query($conn, $sql);
-            while ($acclass = mysqli_fetch_array($query)) {
-                $total = $acclass['total'];
-                $g2[$acclass['acclassid']] = $total;
+            while ($ac1 = mysqli_fetch_array($query)) {
+                $total = $ac1['total'];
             }
 
             foreach ($zhichu as $n => $m) {
-                if (isset($g2[$n])) {
-                    $gsa9 = $g2[$n];
+                if (isset($total)) {
+                    $gsa9 = $total;
                 } else {
                 }
             }
@@ -1393,17 +1384,16 @@ include_once("header.php");
                 } else {
                 }
             }
-            $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by ac1";
             $g2 = array();
             $query = mysqli_query($conn, $sql);
-            while ($acclass = mysqli_fetch_array($query)) {
-                $total = $acclass['total'];
-                $g2[$acclass['acclassid']] = $total;
+            while ($ac1 = mysqli_fetch_array($query)) {
+                $total = $ac1['total'];
             }
 
             foreach ($zhichu as $n => $m) {
-                if (isset($g2[$n])) {
-                    $gsa10 = $g2[$n];
+                if (isset($total)) {
+                    $gsa10 = $total;
                 } else {
                 }
             }
@@ -1529,17 +1519,16 @@ include_once("header.php");
                 } else {
                 }
             }
-            $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by ac1";
             $g2 = array();
             $query = mysqli_query($conn, $sql);
-            while ($acclass = mysqli_fetch_array($query)) {
-                $total = $acclass['total'];
-                $g2[$acclass['acclassid']] = $total;
+            while ($ac1 = mysqli_fetch_array($query)) {
+                $total = $ac1['total'];
             }
 
             foreach ($zhichu as $n => $m) {
-                if (isset($g2[$n])) {
-                    $gsa11 = $g2[$n];
+                if (isset($total)) {
+                    $gsa11 = $total;
                 } else {
                 }
             }
@@ -1661,17 +1650,16 @@ include_once("header.php");
                 } else {
                 }
             }
-            $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . " and acuserid='$_SESSION[uid]' group by ac1";
             $g2 = array();
             $query = mysqli_query($conn, $sql);
-            while ($acclass = mysqli_fetch_array($query)) {
-                $total = $acclass['total'];
-                $g2[$acclass['acclassid']] = $total;
+            while ($ac1 = mysqli_fetch_array($query)) {
+                $total = $ac1['total'];
             }
 
             foreach ($zhichu as $n => $m) {
-                if (isset($g2[$n])) {
-                    $gsa12 = $g2[$n];
+                if (isset($total)) {
+                    $gsa12 = $total;
                 } else {
                 }
             }
