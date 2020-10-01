@@ -35,7 +35,7 @@ $income = 0;
 $spending = 0;
 //检查是否记账并执行
 if ($_POST['Submit']) {
-    $time100 = strtotime($_POST[time]);
+    $time100 = strtotime($_POST[$time]);
     $sql = "insert into " . $prename . "account (acamount, acclassid, actime, acremark, actype, acuserid, acplace, acpayway, acname, ac0, ac1, ac2) values ('$_POST[money]', '$_POST[classid]', '$time100', '$_POST[remark]', '$_POST[category]', '$_SESSION[uid]', '$_POST[place]', '$_POST[payway]', '$_POST[name]', '$_POST[special]', '$_POST[classid]', '')";
     $query = mysqli_query($conn, $sql);
     if ($query) {
@@ -173,7 +173,7 @@ echo "<table width='100%' border='0' align='left' cellpadding='8' cellspacing='1
                 </tr>";
 
 if ($result === FALSE) {
-    die(mysqli_error());
+    die();
 }
 
 while ($row = mysqli_fetch_array($query)) {

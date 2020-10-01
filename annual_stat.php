@@ -19,7 +19,7 @@ include_once("header.php");
                             $sql = "SELECT * FROM " . $prename . "account where acuserid='$_SESSION[uid]' order by actime LIMIT 1 ";
                             $query = mysqli_query($conn, $sql);
                             $first = mysqli_fetch_array($query);
-                            $acyear = $first[actime];
+                            $acyear = $first[$actime];
                             $billyear = date("Y", $acyear);
                             $thisyear = date("Y");
                             echo "<option value='$thisyear'>" . date('Y') . "</option>";
