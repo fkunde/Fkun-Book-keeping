@@ -19,7 +19,7 @@ include_once("header.php");
                             $sql = "SELECT * FROM " . $prename . "account where acuserid='$_SESSION[uid]' order by actime LIMIT 1 ";
                             $query = mysqli_query($conn, $sql);
                             $first = mysqli_fetch_array($query);
-                            $acyear = $first[$actime];
+                            $acyear = $first[actime];
                             $billyear = date("Y", $acyear);
                             $thisyear = date("Y");
                             echo "<option value='$thisyear'>" . date('Y') . "</option>";
@@ -969,7 +969,7 @@ include_once("header.php");
 
 
             // 总和
-            $timebefore = " " . $prename . "account.actime<" . strtotime($j . " 23:59:59");
+            $timebefore = " " . $prename . "account.actime <" . strtotime($j . " 23:59:59");
             $sql = "select sum(acamount) as total,acclassid," . $prename . "account_class.classname from " . $prename . "account left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $timebefore . " and " . $prename . "account_class.classtype =1  and acuserid='$_SESSION[uid]' ";
             $query = mysqli_query($conn, $sql);
             $g1 = array();
