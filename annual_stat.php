@@ -1,7 +1,9 @@
 <?php
 include_once("header.php");
 ?>
-
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
+?>
 <head>
     <script src="./js/echarts.js"></script>
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>

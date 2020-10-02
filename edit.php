@@ -1,6 +1,9 @@
 <?php
 include_once("header.php");
 ?>
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
+?>
 <script type="text/javascript">
     var checkall = document.getElementsByName("del_id[]");
     function select() {
@@ -186,7 +189,7 @@ if ($_POST['Submit']) {
                 <th bgcolor='#EBEBEB'>操作</th>
                 </tr>";
                 if ($result === FALSE) {
-                die(mysqli_error());
+                die();
 				
                 // TODO: better error handling
 				// <th bgcolor='#EBEBEB'><form action='delete.php' method='post'><a href='javascript:select()'>全选</a> | <a href='javascript:fanselect()'>反选</a> | <a href='javascript:noselect()'>不选</a> <input type='submit' name='delete' value='删除'/></th>

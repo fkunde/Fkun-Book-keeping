@@ -2,7 +2,9 @@
 session_start();
 include_once("header.php");
 ?>
-
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
+?>
 <table align="center" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
         <td bgcolor="#EBEBEB">　账号管理</td>
@@ -18,7 +20,7 @@ include_once("header.php");
                 ?>
 
                 <script language="javascript">
-                    <!--
+                    //<!--
                     function linkok(url) {
                         question = confirm("数据即将清除，确认吗？");
                         if (question) {
