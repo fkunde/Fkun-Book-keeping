@@ -1,7 +1,9 @@
 <?php
 include_once("header.php");
 ?>
-
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
+?>
 <?php
 $income = 0;
 $spending = 0;
