@@ -34,7 +34,7 @@ include_once("header.php");
 $income = 0;
 $spending = 0;
 //检查是否记账并执行
-if (isset($_POST['Submit']) and $_POST['Submit']) {
+if ($_POST['Submit']) {
     $time100 = strtotime($_POST[$time]);
     $sql = "insert into " . $prename . "account (acamount, acclassid, actime, acremark, actype, acuserid, acplace, acpayway, acname, ac0, ac1, ac2) values ('$_POST[money]', '$_POST[classid]', '$time100', '$_POST[remark]', '$_POST[category]', '$_SESSION[uid]', '$_POST[place]', '$_POST[payway]', '$_POST[name]', '$_POST[special]', '$_POST[classid]', '')";
     $query = mysqli_query($conn, $sql);
@@ -292,16 +292,18 @@ echo "</td></tr></table>";
 <?php
 
 $sql = "select * from " . $prename . "account where acuserid='$_SESSION[uid]' ORDER BY actime ASC";
-
-
 $query = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_array($query)) {
+    $sql = "select * from " . $prename . "account_class where classid= $row[acclassid] and ufid='$_SESSION[uid]'";
+    $classquery = mysqli_query($conn, $sql);
+    $classinfo = mysqli_fetch_array($classquery);
 
-$row = mysqli_fetch_array($query);
+    if ($classinfo['classtype'] == 1) {
 
-if ($row['ac1'] == 1) {
-    $income = $income + $row['acamount'];
-} else {
-    $spending = $spending + $row['acamount'];
+        $income = $income + $row['acamount'];
+    } else {
+        $spending = $spending + $row['acamount'];
+    }
 }
 
 ?>

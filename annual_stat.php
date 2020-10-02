@@ -1899,7 +1899,7 @@ error_reporting(E_ALL ^ E_NOTICE);
                                     $rowmin = mysqli_fetch_array($querymin);
                                     $firstmonth = $rowmin['month'];
 
-                                    $sqlminout = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid and acuserid='$_SESSION[uid]' where " . $prename . "account_class.classtype =2 and " . $prename . "month.mon='" . $firstdate . "' group by month";
+                                    $sqlminout = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid and acuserid='$_SESSION[uid]' where " . $prename . "account.ac1 =2 and " . $prename . "month.mon='" . $firstdate . "' group by month";
                                     $queryminout = mysqli_query($conn, $sqlminout);
                                     $rowminout = mysqli_fetch_array($queryminout);
                                     $firstmonthout = $rowminout['month'];
@@ -2105,7 +2105,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 
                                     <?php
 
-                                    $sql = "select sum(acamount) as total ," . $prename . "category.categoryname from " . $prename . "account left join " . $prename . "category on " . $prename . "account.actype =" . $prename . "category.categoryid left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account_class.classtype =2 and acuserid='$_SESSION[uid]' group by " . $prename . "account.actype";
+                                    $sql = "select sum(acamount) as total ," . $prename . "category.categoryname from " . $prename . "account left join " . $prename . "category on " . $prename . "account.actype =" . $prename . "category.categoryid left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account.ac1 =2 and acuserid='$_SESSION[uid]' group by " . $prename . "account.actype";
                                     $s2 = array();
                                     $query = mysqli_query($conn, $sql);
                                     while ($actype = mysqli_fetch_array($query)) {
