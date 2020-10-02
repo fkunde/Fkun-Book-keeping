@@ -2,7 +2,7 @@
 session_start();
 ?>
 <?php
-if ($_GET['tj'] == 'logout') {
+if (isset($_GET['tj']) AND $_GET['tj'] == 'logout') {
     session_start();
     //开启session
 

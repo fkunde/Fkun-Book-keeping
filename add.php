@@ -34,7 +34,7 @@ include_once("header.php");
 $income = 0;
 $spending = 0;
 //检查是否记账并执行
-if ($_POST['Submit']) {
+if (isset($_POST['Submit']) and $_POST['Submit']) {
     $time100 = strtotime($_POST[$time]);
     $sql = "insert into " . $prename . "account (acamount, acclassid, actime, acremark, actype, acuserid, acplace, acpayway, acname, ac0, ac1, ac2) values ('$_POST[money]', '$_POST[classid]', '$time100', '$_POST[remark]', '$_POST[category]', '$_SESSION[uid]', '$_POST[place]', '$_POST[payway]', '$_POST[name]', '$_POST[special]', '$_POST[classid]', '')";
     $query = mysqli_query($conn, $sql);
@@ -46,8 +46,13 @@ if ($_POST['Submit']) {
         $prompttext = "<font color='red'>写入数据库时出错！</font>";
     }
 }
-echo $time100;
-echo $sql;
+if (isset($time100)) {
+    echo $time100;
+}
+if (isset($sql)) {
+    echo $sql;
+}
+
 ?>
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
@@ -148,10 +153,8 @@ echo $sql;
 
 //每页显示的数
 $pagesize = 20;
-
 //确定页数 p 参数
-$p = $_POST['p'] ? $_POST['p'] : 1;
-
+$p = isset($_POST['p']) ? $_POST['p'] : 1;
 //数据指针
 $offset = ($p - 1) * $pagesize;
 
@@ -172,7 +175,7 @@ echo "<table width='100%' border='0' align='left' cellpadding='8' cellspacing='1
                 <th bgcolor='#EBEBEB'>操作</th>
                 </tr>";
 
-if ($result === FALSE) {
+if ($result = FALSE) {
     die();
 }
 
@@ -283,9 +286,6 @@ echo ' 这里最多显示最近 ', $pagesize, ' 条';
 }*/
 echo "</td></tr></table>";
 
-
-
-
 ?>
 
 
@@ -295,21 +295,16 @@ $sql = "select * from " . $prename . "account where acuserid='$_SESSION[uid]' OR
 
 
 $query = mysqli_query($conn, $sql);
-while ($row = mysqli_fetch_array($query)) {
-    $sql = "select * from " . $prename . "account_class where classid= $row[acclassid] and ufid='$_SESSION[uid]'";
-    $classquery = mysqli_query($conn, $sql);
-    $classinfo = mysqli_fetch_array($classquery);
 
-    if ($classinfo['classtype'] == 1) {
+$row = mysqli_fetch_array($query);
 
-        $income = $income + $row['acamount'];
-    } else {
-        $spending = $spending + $row['acamount'];
-    }
+if ($row['ac1'] == 1) {
+    $income = $income + $row['acamount'];
+} else {
+    $spending = $spending + $row['acamount'];
 }
 
 ?>
-
 
 <script language="javascript">
     document.getElementById("stat").innerHTML = "<?= '总共收入<font color=MediumSeaGreen> ' . $income . '</font> 总共支出 <font color=red>' . $spending . '</font>' ?>"
