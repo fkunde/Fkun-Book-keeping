@@ -1,10 +1,9 @@
 <?php
 include_once("header.php");
-
-
 ?>
+
 <?php
-error_reporting(E_ALL^E_NOTICE);
+error_reporting(E_ALL ^ E_NOTICE);
 ?>
 
 
@@ -276,7 +275,18 @@ error_reporting(E_ALL^E_NOTICE);
         }
 
 
+        $sql = "select * from " . $prename . "account where ac1=2 and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+        $query = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_array($query)) {
+                $spending = $spending + $row['acamount'];
+        }
 
+
+        $sql = "select * from " . $prename . "account where actype=2 and ac1=2 and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+        $query = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_array($query)) {
+                $normalspending = $normalspending + $row['acamount'];
+        }
 
         echo "
 <tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $yz . "</font><font>  €</font></td></tr>
@@ -293,6 +303,8 @@ error_reporting(E_ALL^E_NOTICE);
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $suggest . "</font><font>  €</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $suggestpw . "</font><font>  €</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font color=" . $weekcolor . ">" . $wf . "  €<font color=" . $weekcolor . ">" . $weektext . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>" . $spending . "</font><font>  €</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>" . $normalspending . "</font><font>  €</font></td></tr>
 ";
         ?>
 
