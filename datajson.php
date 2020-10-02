@@ -14,32 +14,30 @@ if ($_GET['tj'] == 'logout') {
 ?>
     <?php
     include("config.php");
-    $arr = user_shell($_SESSION['uid'],$_SESSION['user_shell']);
+    $arr = user_shell($_SESSION['uid'], $_SESSION['user_shell']);
     //对权限进行判断
     ?>
 
 <?php
-	header("content-type:text/json;charset=utf-8");
-	$con = mysqli_connect("localhost", "finance", "19980322Feng!"); 
-	if (!$con) 
-	{ 
-		die('Could not connect database: ' . mysqli_error()); 
-	} 
-	$db_selected = mysqli_select_db($con,"Billsys");
-	if (!$db_selected) 
-	{ 
-	 	die ("Can\'t use yxz : " . mysqli_error()); 
-	} 
-	mysqli_query($con,"SET CHARACTER SET utf8");
-	$sql = mysqli_query($con,"SELECT * FROM `Finance_account` where acuserid='$_SESSION[uid]'");
-    $arr = array();
-      while($row = mysqli_fetch_array($sql)) {
-       $count=count($row);//不能在循环语句中，由于每次删除 row数组长度都减小
-      for($i=0;$i<$count;$i++){
-      unset($row[$i]);//删除冗余数据
-       }
-         array_push($arr,$row);
-      }
-	echo json_encode($arr,JSON_UNESCAPED_UNICODE);
-    mysqli_close($con);
+header("content-type:text/json;charset=utf-8");
+$con = mysqli_connect("localhost", "finance", "19980322Feng!");
+if (!$con) {
+    die('Could not connect database: ');
+}
+$db_selected = mysqli_select_db($con, "Billsys");
+if (!$db_selected) {
+    die("Can\'t use yxz : ");
+}
+mysqli_query($con, "SET CHARACTER SET utf8");
+$sql = mysqli_query($con, "SELECT * FROM `Finance_account` where acuserid='$_SESSION[uid]'");
+$arr = array();
+while ($row = mysqli_fetch_array($sql)) {
+    $count = count($row); //不能在循环语句中，由于每次删除 row数组长度都减小
+    for ($i = 0; $i < $count; $i++) {
+        unset($row[$i]); //删除冗余数据
+    }
+    array_push($arr, $row);
+}
+echo json_encode($arr, JSON_UNESCAPED_UNICODE);
+mysqli_close($con);
 ?>
