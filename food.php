@@ -530,7 +530,6 @@ if ($_GET["Submit2"]) {
     ?>
 </table>
 
-
 <?php
 include_once("footer.php");
 ?>
