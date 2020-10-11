@@ -43,7 +43,17 @@ if ($_GET["Submit"]) {
     }
 }
 ?>
-
+<?php
+                $suggestpw = $_SESSION['suggestpw'];
+                $foodindex = 0.8;
+                $breakfastindex = 0.3;
+                $foodperday = round((($foodindex*$suggestpw)/7),2);
+                $breakfast = $breakfastindex*$foodperday;
+                $dinner = ($foodperday-$breakfast)/2;
+                echo ($breakfast);
+                echo "<br>";
+                echo ($dinner);
+?>
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
         <td bgcolor="#EBEBEB">推荐食谱</td>
