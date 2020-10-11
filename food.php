@@ -44,20 +44,6 @@ if ($_GET["Submit"]) {
 }
 ?>
 
-<?php
-                $suggestpw = $_SESSION['suggestpw'];
-                $foodindex = 0.8;
-                $breakfastindex = 0.3;
-                $foodperday = round((($foodindex*$suggestpw)/7),2);
-                $breakfast = $breakfastindex*$foodperday;
-                $dinner = ($foodperday-$breakfast)/2;
-                echo ($breakfast);
-                echo "<br>";
-                echo ($dinner);
-?>
-
-
-
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
         <td bgcolor="#EBEBEB">推荐食谱</td>
@@ -84,8 +70,7 @@ if ($_GET["Submit"]) {
         <tr>
             <th align="left" bgcolor="#EBEBEB">Frühstück</th>
 
-            <th align="left" bgcolor="#EBEBEB">
-
+            <th align="left" bgcolor="#EBEBEB"> </th>
 
             <th align="left" bgcolor="#EBEBEB"> </th>
 
@@ -170,6 +155,7 @@ if ($_GET["Submit"]) {
                     <option value='1'>蔬菜</option>
                     <option value='2'>肉类</option>
                     <option value='3'>糖水混合物</option>
+                    <option value='4'>饮料</option>
                 </select>
                 <br /><br />
 
@@ -222,6 +208,9 @@ if ($_GET["Submit"]) {
         if ($row['ingredientstype'] == 3) {
             echo "糖水混合物";
         }
+        if ($row['ingredientstype'] == 4) {
+            echo "饮料";
+        }
         echo "
 		 </font></td>
 		 ";
@@ -270,6 +259,7 @@ if ($_GET["Submit2"]) {
                     <option value='1'>早餐</option>
                     <option value='2'>中餐</option>
                     <option value='3'>晚餐</option>
+                    <option value='4'>饮料</option>
                 </select>
                 <br /><br />
                 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
@@ -450,6 +440,9 @@ if ($_GET["Submit2"]) {
         if ($row['foodtime'] == 3) {
             echo "晚餐";
         }
+        if ($row['foodtime'] == 4) {
+            echo "饮料";
+        }
         echo "
 		 </font></td>
 		 ";
@@ -536,7 +529,6 @@ if ($_GET["Submit2"]) {
     echo "</tr>";
     ?>
 </table>
-
 
 <?php
 include_once("footer.php");
