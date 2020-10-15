@@ -239,21 +239,3 @@ body .login_fields__submit input {
 .brand img {
   width: 30px;
 }
-
-.gta5 {
-  opacity: 1;
-  top: 20px;
-  position: relative;
-  width: 500px;
-  border-top: 50px solid #D8312A;
-  height: 300px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  padding: 100px 40px 40px 40px;
-  background: #35394a;
-
-}
