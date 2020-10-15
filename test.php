@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="css/agreement.css">
 </head>
 <body>
+<script type="text/javascript" src="js/script.js"></script>
+<canvas id=c></canvas>
     <!--左侧10%-->
     <div class="left"></div>
     <!--中间80%-->
