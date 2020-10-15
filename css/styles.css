@@ -1,11 +1,11 @@
 body {
   -webkit-perspective: 800px;
           perspective: 800px;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   overflow: hidden;
   font-family: 'Gudea', sans-serif;
-  background:  #192930;
+  background:#19292f;
   /* Old browsers */
   /* FF3.6+ */
   /* background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #EA5C54), color-stop(100%, #bb6dec)); */
@@ -23,36 +23,7 @@ body {
 body ::-webkit-input-placeholder {
   color: #4E546D;
 }
-body .authent {
-  display: none;
-  background: #35394a;
-  /* Old browsers */
-  /* FF3.6+ */
-  /* background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #35394a), color-stop(100%, #1f222e)); */
-  /* Chrome,Safari4+ */
-  /* background: -webkit-linear-gradient(45deg, #35394a 0%, #1f222e 100%); */
-  /* Chrome10+,Safari5.1+ */
-  /* Opera 11.10+ */
-  /* IE10+ */
-  /* background: linear-gradient(45deg, #35394a 0%, #1f222e 100%); */
-  /* W3C */
-  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#35394a', endColorstr='#1f222e',GradientType=1 ); */
-  /* IE6-9 fallback on horizontal gradient */
-  position: absolute;
-  left: 0;
-  right: 90px;
-  margin: auto;
-  width: 100px;
-  color: white;
-  /* text-transform: uppercase; */
-  letter-spacing: 1px;
-  text-align: center;
-  padding: 20px 70px;
-  top: 200px;
-  bottom: 0;
-  height: 70px;
-  opacity: 0;
-}
+
 body .authent p {
   text-align: center;
   color: white;
