@@ -25,7 +25,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 999;
   width: 100%;
   height: 100%;
   pointer-events: none;
