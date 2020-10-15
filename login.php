@@ -183,7 +183,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                 <div class='icon'>
                     <img src='img/user_icon_copy.png'>
                 </div>
-                <input placeholder='邮箱' type='text' name='email' id='email'>
+                <input placeholder='EMAIL' type='text' name='email' id='email'>
                 <div class='validation'>
                     <img src='img/tick.png'>
                 </div>
