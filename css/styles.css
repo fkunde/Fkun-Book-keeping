@@ -60,10 +60,9 @@ body .login {
   border-top: 10px solid #bb2f2a;
   height: 320px;
   position: absolute;
-  left: 0;
+  left: 37%;
   right: 0;
-  margin: auto;
-  top: 0vw;
+  top: 10vw;
   bottom: 0;
   padding: 100px 40px 40px 40px;
   background: #000000;
