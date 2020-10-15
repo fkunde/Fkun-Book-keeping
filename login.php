@@ -15,7 +15,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FKUN记账系统</title>
+    <title>FKUN BOOKKEEPING SYSTEM</title>
 
     <link rel="stylesheet" type="text/css" href="css/default.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -215,7 +215,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                         $_SESSION['uid'] = $row['uid'];
                         // session赋值
                         $_SESSION['user_shell'] = md5($row['username'] . $row['password']);
-                        echo "<br><br><font color='green' size='5px'>Login Success...</font><meta http-equiv=refresh content='0; url=add.php'>";
+                        echo "<br><br><font color='green' size='5px'>Login Successful...</font><meta http-equiv=refresh content='0; url=add.php'>";
                     } else {
                         echo "<br><br><font color='red' size='5px'>Check your Password or Username!</font>";
                         SESSION_DESTROY();
@@ -223,26 +223,26 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                 }
                 ?>
 
-                <?php if ($_POST[$Submitzhuce]) {
-                    if (empty($_POST[$email])) {
-                        echo "<br><br><font color='red'>请输入邮箱</font>";
+                <?php if ($_POST['Submitzhuce']) {
+                    if (empty($_POST['emailreg'])) {
+                        echo "<br><br><font color='red'>PLEASE ENTER EMAIL!</font>";
                         exit;
                     }
                     $sql = "select * from " . $prename . "user where username='$_POST[usernamereg]' or email='$_POST[emailreg]'";
                     $query = mysqli_query($conn, $sql);
                     $attitle = is_array($row = mysqli_fetch_array($query));
                     if ($attitle) {
-                        echo "<br><br><font color='red'>用户或邮箱已存在！</font>";
+                        echo "<br><br><font color='red'>USER OR EMAIL EXSIST!</font>";
                         exit();
                     } else {
-                        $umima = md5($_POST[$passwordreg]);
+                        $umima = md5($_POST['passwordreg']);
                         $utime = time();
                         $sql = "insert into " . $prename . "user (username, password,email,utime) values ('$_POST[usernamereg]', '$umima', '$_POST[emailreg]', '$utime')";
                         $query = mysqli_query($conn, $sql);
                         if ($query) {
-                            echo "<br><br><font color='green'>OK，你已经成功注册！随时可以登录！</font><script>alert('注册成功，登陆前请仔细阅读用户协议') </script>";
+                            echo "<br><br><font color='green'>Registration Successful!</font><script>alert('Registration Successful! Please read the EULA before login!') </script>";
                         } else {
-                            echo "<br><br><font color='red'>出错啦，写入数据库时出错！</font>";
+                            echo "<br><br><font color='red'>SQL Erro!</font>";
                         }
                         //给用户增加默认分类
                         $sql = "select * from " . $prename . "user where username='$_POST[usernamereg]'";
@@ -252,9 +252,9 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                         $sql = "insert into " . $prename . "account_class (classname, classtype,ufid) values ('收入', '1','" . $uid . "'),('支出', '2','" . $uid . "')";
                         $query = mysqli_query($conn, $sql);
                         if ($query) {
-                            echo "<br><font color='green'>增加默认分类成功！</font>";
+                            echo "<br><font color='green'>Userdata Create...OK</font>";
                         } else {
-                            echo "<br><font color='red'>增加默认分类出错！</font>";
+                            echo "<br><font color='red'>Userdata Create...Failure!!!</font>";
                         }
                         //给用户增加默认time
                         $sql = "select * from " . $prename . "user where username='$_POST[usernamereg]'";
@@ -264,9 +264,9 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                         $sql = "insert into " . $prename . "date (date,datetype, ufid) values ('1', '0','" . $uid . "'),('0', '1','" . $uid . "')";
                         $query = mysqli_query($conn, $sql);
                         if ($query) {
-                            echo "<br><font color='green'>增加默认time成功！</font>";
+                            echo "<br><font color='green'>Usertimetable Create...OK</font>";
                         } else {
-                            echo "<br><font color='red'>增加默认time出错！</font>";
+                            echo "<br><font color='red'>Usertimetable Create...Failure!!!</font>";
                         }
                     }
                 }
