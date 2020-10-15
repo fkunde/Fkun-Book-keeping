@@ -31,17 +31,18 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
   pointer-events: none;
                         }
         /* <![CDATA[ */
-        #tab-title .selected { color:#f00;
-            font-weight:bold
+        #tab-title .selected { 
+            color:#C96464;
         }
         #tab-title span {
             padding:0 18px 8px 0;
             cursor:pointer;
         }
-        #tab-content .hide { display:none;
+        #tab-content .hide { 
+            display:none;
         }
         #tab-content ul {
-            overflow:hidden;
+            /* overflow:hidden; */
             list-style:none
         }
         #tab-content ul li {
@@ -53,8 +54,11 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
         #tab-content ul li span {
             color:#A1A3A6;
         }
-        .tishi { position:absolute;
-            bottom:10px;
+        .tishi { 
+            position:absolute;
+            bottom:-15%;
+           margin-left:5%;
+           
         }
         /* ]]> */
     </style>
@@ -79,61 +83,67 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
     </script>
     <div class='login'>
 
+    <img src="./img/GTA.png" width="200px" style="margin-left:28%;margin-top:-15%;"/>
+    <p style="margin-left:30%;margin-top:5%;color:#DEDEDE;font-size:19px;letter-spacing:4px">
+    PLEASE LOG IN
+    </p>
 	
-        <div class='login_title'>
-            <div id="tab-title">
-                <h3><span class="selected">登录</span><span>注册</span>
-				<!-- <span>找回密码</span> -->
-				</h3>
-            </div>
-        </div>
 
-        <div id="tab-content">
+
+        <div id="tab-content" style="margin-left:22%;margin-top:1%;position:absolute;">
 
 
 
             <ul>
+      <p style="margin-left:-307%;margin-top:-2%;color:#DEDEDE;font-size:20px;letter-spacing:3px;position:absolute;">
+    Username
+        </p>
+        <p style="margin-left:-290%;margin-top:149%;color:#DEDEDE;font-size:20px;letter-spacing:3px;position:absolute;">
+    Password
+        </p>
                 <form action="" method="post">
-                    <div class='login_fields'>
+                    <div class='login_fields' style="margin-left:104%;margin-top:-5%;position:absolute;">
 
                         <div class='login_fields__user'>
-                            <div class='icon'>
-                                <img src='img/user_icon_copy.png'>
-                            </div>
-                            <input placeholder='用户名' type='text' id='username' name='username'>
-                            <div class='validation'>
-                                <img src='img/tick.png'>
-                            </div>
+                            <input placeholder='' type='text' id='username' name='username'>
+
                         </input>
                     </div>
 
-                    <div class='login_fields__password'>
-                        <div class='icon'>
-                            <img src='img/lock_icon_copy.png'>
-                        </div>
-                        <input placeholder='密码' type='password' id='password' name='password'>
-                        <div class='validation'>
-                            <img src='img/tick.png'>
-                        </div>
+                    <div class='login_fields__password' style="margin-left:0%;margin-top:11%;position:absolute;">
+                        <input placeholder='' type='password' id='password' name='password'">
                     </div>
 
-                    <div class='login_fields__submit'>
-                        <input type='submit' value='登录' name='submit'>
+                    <div class='login_fields__submit'style="margin-left:64%;margin-top:34%;position:absolute;">
+                        <input type='submit' value='Log In' name='submit'>
                     </div>
 
                 </div>
             </form>
         </ul>
+        <p style="margin-left:-215%;margin-top:326%;color:#8A8A8A;font-size:15px;letter-spacing:0px;position:absolute;">
+ VERSION 1.2.5
+        </p>
+
+
+
+        <div class='login_title' style="margin-left:-213%;margin-top:314%;color:#DEDEDE; position:absolute;">
+            <div id="tab-title">
+                <h3><span class="selected" style="font-size:10px;">Login</span><span style="font-size:10px;">Signup</span>
+				<!-- <span>找回密码</span> -->
+				</h3>
+            </div>
+        </div>
 
         <ul class="hide">
+
             <form action="" method="post" name="submitzhuce">
                 <div class='login_fields'>
-
+ 
                     <div class='login_fields__user'>
-                        <div class='icon'>
-                            <img src='img/user_icon_copy.png'>
-                        </div>
-                        <input placeholder='用户名' type='text' id='username' name='username'>
+
+                        <input placeholder='USERNAME' type='text' id='username' name='username'>
+
                         <div class='validation'>
                             <img src='img/tick.png'>
                         </div>
@@ -141,10 +151,8 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                 </div>
 
                 <div class='login_fields__user'>
-                    <div class='icon'>
-                        <img src='img/user_icon_copy.png'>
-                    </div>
-                    <input placeholder='邮箱（用于找回密码）' type='text' name='email' id='email'>
+
+                    <input placeholder='EMAIL' type='text' name='email' id='email'>
                     <div class='validation'>
                         <img src='img/tick.png'>
                     </div>
@@ -152,15 +160,13 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
             </div>
 
             <div class='login_fields__password'>
-                <div class='icon'>
-                    <img src='img/lock_icon_copy.png'>
-                </div>
-                <input placeholder='密码' type='password' id='password' name='password'>
+
+                <input placeholder='PASSWORD' type='password' id='password' name='password'>
                 <div class='validation'>
                     <img src='img/tick.png'>
                 </div>
                 <div class='login_fields__submit'>
-                    <input type='submit' value='提交' name='Submitzhuce'>
+                    <input type='submit' value='SUBMIT' name='Submitzhuce'>
                 </div>
             </div>
 
@@ -208,9 +214,9 @@ if ($exist2) {
 $_SESSION['uid'] = $row['uid'];
 // session赋值
 $_SESSION['user_shell'] = md5($row['username'].$row['password']);
-echo "<br><br><font color='green'>已验证，登陆中...</font><meta http-equiv=refresh content='0; url=add.php'>";
+echo "<br><br><font color='green' size='5px'>Login Success...</font><meta http-equiv=refresh content='0; url=add.php'>";
 } else {
-echo "<br><br><font color='red'>用户名或密码错误！</font>";
+echo "<br><br><font color='red' size='5px'>Check your Password or Username!</font>";
 SESSION_DESTROY();
 }
 }
