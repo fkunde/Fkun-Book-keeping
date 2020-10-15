@@ -68,9 +68,7 @@ body p {
   color: #5B5E6F;
   font-size: 10px;
 }
-body .testtwo {
-  /* left: -320px !important; */
-}
+
 body .test {
   box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
 }
@@ -88,8 +86,8 @@ body .login {
   /* -webkit-transform: rotateX(0deg); */
           /* transform: rotateX(0deg); */
   position: relative;
-  width: 240px;
-  border-top: 2px solid #D8312A;
+  width: 500px;
+  border-top: 50px solid #D8312A;
   height: 300px;
   position: absolute;
   left: 0;
@@ -153,8 +151,8 @@ body .login_fields input[type='text'], body .login_fields input[type='password']
   background: #32364a;
   left: 0;
   padding: 10px 65px;
-  border-top: 2px solid #393d52;
-  border-bottom: 2px solid #393d52;
+  border-top: 10px solid #393d52;
+  border-bottom: 10px solid #393d52;
   border-right: none;
   border-left: none;
   outline: none;
@@ -185,7 +183,7 @@ body .login_fields__submit input {
   border-radius: 50px;
   background: transparent;
   padding: 10px 50px;
-  border: 2px solid #DC6180;
+  border: 10px solid #DC6180;
   color: #DC6180;
   /* text-transform: uppercase; */
   font-size: 11px;
@@ -206,7 +204,7 @@ body .login_fields__submit input {
           /* transition-property: background,color; */
   /* -webkit-transition-duration: .2s; */
           /* transition-duration: .2s; */
-}
+
 
 /* Color Schemes */
 .love {
@@ -240,4 +238,22 @@ body .login_fields__submit input {
 }
 .brand img {
   width: 30px;
+}
+
+.gta5 {
+  opacity: 1;
+  top: 20px;
+  position: relative;
+  width: 500px;
+  border-top: 50px solid #D8312A;
+  height: 300px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  padding: 100px 40px 40px 40px;
+  background: #35394a;
+
 }

@@ -216,8 +216,8 @@ SESSION_DESTROY();
 }
 ?>
 
-<?php if ($_POST[Submitzhuce]) {
-if (empty($_POST[email]) ) {
+<?php if ($_POST[$Submitzhuce]) {
+if (empty($_POST[$email]) ) {
 echo "<br><br><font color='red'>请输入邮箱</font>";
 exit;
 }
@@ -228,7 +228,7 @@ if ($attitle) {
 echo "<br><br><font color='red'>用户或邮箱已存在！</font>";
 exit();
 } else {
-$umima = md5($_POST[password]);
+$umima = md5($_POST[$password]);
 $utime =time();
 $sql = "insert into ".$prename."user (username, password,email,utime) values ('$_POST[username]', '$umima', '$_POST[email]', '$utime')";
 $query = mysqli_query($conn,$sql);
@@ -268,72 +268,6 @@ echo "<br><font color='red'>增加默认time出错！</font>";
 }
 ?>
 
-<?php
-if ($_POST['submitmima']) {
-include('class.phpmailer.php');
-include('class.smtp.php');
-if (empty($_POST[email]) ){
-echo "<br><br><font color='red'>请输入邮箱</font>";
-exit;
-
-}
-$email = str_replace(" ","",$_POST['email']);
-//去除空格
-
-$sql = "select * from ".$prename."user where email='$email'";
-$query = mysqli_query($conn,$sql);
-$attitle = is_array($row = mysqli_fetch_array($query));
-if ($attitle) {
-$username = $row['username'];
-$user_pass = $row['password'];
-$uid = $row['uid'];
-$getpasstime = time();
-$time = date('Y-m-d H:i');
-$token = md5($uid.$row['username'].$row['password']);
-//组合验证码
-$dir = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];
-$path = dirname($dir);
-$url = $path."/password_ret.php?email=".$email."&token=".$token;
-//构造URL
-
-$mail = new PHPMailer();
-$mail->CharSet = "utf8";
-$mail->IsSMTP();
-// set mailer to use SMTP
-$mail->Host = "smtp.yandex.com";
-// SMTP服务器
-$mail->Port = 465;
-$mail->SMTPAuth = true;
-// SMTP认证？
-$mail->Username = $zyemail;
-// 用户名
-$mail->Password = $zyemailpass;
-// 密码
-$mail->From = $zyemail;
-//发件人地址
-$mail->FromName = "FKUN记账系统";
-//发件人
-$mail->AddAddress($email, $username);
-//收件人地址，收件人名称
-$mail->WordWrap = 50;
-//$mail->AddAttachment("/var/tmp/file.tar.gz");       // 附件
-//$mail->AddAttachment("/tmp/image.jpg", "new.jpg");    // 附件,新文件名
-$mail->IsHTML(true);
-// HTML格式
-$mail->Subject = "您的密码找回链接";
-$mail->Body = "亲：".$username."：<Br>您在".$time."提交了找回密码请求，<Br>请点击下面的链接，按流程进行密码重设。<Br>".$url." <Br>点此访问<a href='https://fkun.tech/'>F_KUN</a>主页。";
-}
-
-if (!$mail->Send()) {
-echo "Mailer Error: " . $mail->ErrorInfo;
-echo "<br><br><font color=red>邮箱设置错误!</font>";
-} else {
-mysqli_query($conn,"update `".$prename."user` set `utime`='$getpasstime' where uid='$uid '");
-echo "<br><br><font color=green>找回密码邮件发送成功！请查收</font>";
-}
-
-}
-?>
 </p>
 </div>
 </div>
