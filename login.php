@@ -39,17 +39,19 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
     <div class='login'>
 
         <img src="./img/GTA.png" width="200px" style="margin-left:28%;margin-top:-15%;" />
-        <p style="margin-left:30%;margin-top:5%;color:#DEDEDE;font-size:19px;letter-spacing:4px">
-            PLEASE LOG IN
-        </p>
+        
 
 
 
-        <div id="tab-content" style="margin-left:22%;margin-top:1%;position:absolute;">
+        <div id="tab-content" style="margin-left:22%;margin-top:11%;position:absolute;">
 
 
 
             <ul>
+            <p style="margin-left:-60%;margin-top:-128%;width:300px;color:#DEDEDE;font-size:19px;letter-spacing:4px; position:absolute;">
+            PLEASE LOG IN
+            </p>
+
                 <p style="margin-left:-307%;margin-top:-2%;color:#DEDEDE;font-size:20px;letter-spacing:3px;position:absolute;">
                     Username
                 </p>
@@ -76,28 +78,19 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                     </div>
                 </form>
             </ul>
-            <p style="margin-left:-215%;margin-top:326%;color:#8A8A8A;font-size:15px;letter-spacing:0px;position:absolute;">
-                VERSION 1.2.5
-            </p>
-
-
-
-            <div class='login_title' style="margin-left:-213%;margin-top:314%;color:#DEDEDE; position:absolute;">
-                <div id="tab-title">
-                    <h3><span class="selected" style="font-size:10px;">Login</span><span style="font-size:10px;">Signup</span>
-                        <!-- <span>找回密码</span> -->
-                    </h3>
-                </div>
-            </div>
-
+     
             <ul class="hide">
-
+            <p style="margin-left:57%;margin-top:-150%;width:300px;color:#DEDEDE;font-size:19px;letter-spacing:4px; position:absolute;">
+            SIGNUP
+            <br>
+            <a href="/eula.php" style="margin-left:-6%;font-size:8px;">Read the EULA</a>
+            </p>
                 <form action="" method="post" name="submitzhuce">
                     <div class='login_fields'>
 
-                        <div class='login_fields__user'>
+                        <div class='login_fields__user' >
 
-                            <input placeholder='USERNAME' type='text' id='usernamereg' name='usernamereg'>
+                            <input placeholder='USERNAME' type='text' id='usernamereg' name='usernamereg' style="margin-left:-33%;margin-top:0%;position:absolute;">
 
                             <div class='validation'>
                                 <img src='img/tick.png'>
@@ -107,7 +100,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
 
                         <div class='login_fields__user'>
 
-                            <input placeholder='EMAIL' type='text' name='emailreg' id='emailreg'>
+                            <input placeholder='EMAIL' type='text' name='emailreg' id='emailreg' style="margin-left:-33%;margin-top:31%;position:absolute;">
                             <div class='validation'>
                                 <img src='img/tick.png'>
                             </div>
@@ -116,12 +109,12 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
 
                         <div class='login_fields__password'>
 
-                            <input placeholder='PASSWORD' type='password' id='passwordreg' name='passwordreg'>
+                            <input placeholder='PASSWORD' type='password' id='passwordreg' name='passwordreg' style="margin-left:-33%;margin-top:62%;position:absolute;">
                             <div class='validation'>
                                 <img src='img/tick.png'>
                             </div>
                             <div class='login_fields__submit'>
-                                <input type='submit' value='SUBMIT' name='Submitzhuce'>
+                                <input type='submit' value='SUBMIT' name='Submitzhuce' style="margin-left:170%;margin-top:92%;">
                             </div>
                         </div>
 
@@ -129,7 +122,18 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                     </div>
                 </form>
             </ul>
-
+            <div style="margin-left:-215%;margin-top:280%;position:absolute;">
+            <p style="color:#8A8A8A;font-size:15px;">
+                VERSION 1.2.5
+            </p>
+            <div class='login_title' style="color:#DEDEDE; margin-top:-20%;">
+                <div id="tab-title">
+                    <h3><span class="selected" style="font-size:10px;">Login</span><span style="font-size:10px;">Signup</span>
+                        <!-- <span>找回密码</span> -->
+                    </h3>
+                </div>
+            </div>
+    </div>
             <!-- <ul class="hide">
     <form action="" method="post">
         <div class='login_fields'>
