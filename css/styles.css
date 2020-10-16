@@ -3,12 +3,9 @@ body {
   -webkit-perspective: 800px;
           perspective: 800px;
   height: 100%;
-  margin: 0;
   overflow: hidden;
   font-family: 'Gudea', sans-serif;
-
-
-
+ 
   /* Old browsers */
   /* FF3.6+ */
   /* background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #EA5C54), color-stop(100%, #bb6dec)); */
@@ -45,7 +42,6 @@ body p {
 
 body .login {
   opacity: 1;
-  top: 20px;
   /* -webkit-transition-timing-function: cubic-bezier(0.68, -0.25, 0.265, 0.85); */
   /* -webkit-transition-property: -webkit-transform,opacity,box-shadow,top,left; */
           /* transition-property: transform,opacity,box-shadow,top,left; */
@@ -60,10 +56,11 @@ body .login {
   border-top: 10px solid #bb2f2a;
   height: 320px;
   position: absolute;
-  left: 37%;
-  right: 0;
-  top: 10vw;
-  bottom: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,40%);
+  margin: 0;
+
   padding: 100px 40px 40px 40px;
   background: #000000;
   /* Old browsers */
@@ -213,3 +210,39 @@ canvas {
   left: 0;
   z-index:-1;
 }
+
+ #tab-title .selected {
+            color: #C96464;
+        }
+
+        #tab-title span {
+            padding: 0 18px 8px 0;
+            cursor: pointer;
+        }
+
+        #tab-content .hide {
+            display: none;
+        }
+
+        #tab-content ul {
+            /* overflow:hidden; */
+            list-style: none
+        }
+
+        #tab-content ul li {
+            overflow: hidden;
+            border-top: 1px dotted #DDDDDD;
+            line-height: 2.1em;
+            padding: 0 1px;
+        }
+
+        #tab-content ul li span {
+            color: #A1A3A6;
+        }
+
+        .tishi {
+            position: absolute;
+            bottom: -15%;
+            margin-left: 5%;
+
+        }

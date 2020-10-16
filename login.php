@@ -16,55 +16,9 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FKUN BOOKKEEPING SYSTEM</title>
-
     <link rel="stylesheet" type="text/css" href="css/default.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
-
-    <!--必要样式-->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <style type="text/css">
-        
-
-        /* <![CDATA[ */
-        #tab-title .selected {
-            color: #C96464;
-        }
-
-        #tab-title span {
-            padding: 0 18px 8px 0;
-            cursor: pointer;
-        }
-
-        #tab-content .hide {
-            display: none;
-        }
-
-        #tab-content ul {
-            /* overflow:hidden; */
-            list-style: none
-        }
-
-        #tab-content ul li {
-            overflow: hidden;
-            border-top: 1px dotted #DDDDDD;
-            line-height: 2.1em;
-            padding: 0 1px;
-        }
-
-        #tab-content ul li span {
-            color: #A1A3A6;
-        }
-
-        .tishi {
-            position: absolute;
-            bottom: -15%;
-            margin-left: 5%;
-
-        }
-
-        /* ]]> */
-    </style>
-
 </head>
 
 <body>
