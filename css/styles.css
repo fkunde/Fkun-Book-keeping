@@ -246,3 +246,9 @@ canvas {
             margin-left: 5%;
 
         }
+        .footer {
+          position: absolute;
+          font-size: 0.7em;
+          color: #b3b3b3;
+          width: 100%;
+        }
