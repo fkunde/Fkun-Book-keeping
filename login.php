@@ -313,11 +313,11 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
             });
         });
     </script>
-
-</body>
 <p class="footer"style="margin-top:48%; text-align:center;">
 
-        Copyright © 2017-2020
-        <a href="https://fkun.tech/" target="_blank">FKUN </a> All Rights Reserved.
-      </p>
+Copyright © 2017-2020
+<a href="https://fkun.tech/" target="_blank">FKUN </a> All Rights Reserved.
+</p>
+</body>
+
 </html>
