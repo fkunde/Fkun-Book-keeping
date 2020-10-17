@@ -19,14 +19,25 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
     <link rel="stylesheet" type="text/css" href="css/default.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script type="text/javascript">
+        function disable() {
+            document.getElementById("accept").disabled = true
+            document.getElementById("accept").style.background='#BFBFBF';
+        }
+
+        function enable() {
+            document.getElementById("accept").disabled = false
+            document.getElementById("accept").style.background='#bb2f2a';
+        }
+    </script>
 </head>
 
 <body>
-<script type="text/javascript" src="js/three.js"></script>
+    <script type="text/javascript" src="js/three.js"></script>
     <?php
     include("config.php");
     ?>
-        
+
     <script type="text/javascript">
         //tab
         jQuery(document).ready(function() {
@@ -39,7 +50,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
     <div class='login'>
 
         <img src="./img/GTA.png" width="200px" style="margin-left:28%;margin-top:-15%;" />
-        
+
 
 
 
@@ -48,9 +59,9 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
 
 
             <ul>
-            <p style="margin-left:-60%;margin-top:-128%;width:300px;color:#DEDEDE;font-size:19px;letter-spacing:4px; position:absolute;">
-            PLEASE LOG IN
-            </p>
+                <p style="margin-left:-60%;margin-top:-128%;width:300px;color:#DEDEDE;font-size:19px;letter-spacing:4px; position:absolute;">
+                    PLEASE LOG IN
+                </p>
 
                 <p style="margin-left:-307%;margin-top:-2%;color:#DEDEDE;font-size:20px;letter-spacing:3px;position:absolute;">
                     Username
@@ -78,17 +89,19 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                     </div>
                 </form>
             </ul>
-     
+
             <ul class="hide">
-            <p style="margin-left:57%;margin-top:-150%;width:300px;color:#DEDEDE;font-size:19px;letter-spacing:4px; position:absolute;">
-            SIGNUP
-            <br>
-            <a href="/eula.php" style="margin-left:-6%;font-size:8px;">Read the EULA</a>
-            </p>
+                
+                <p style="margin-left:57%;margin-top:-150%;width:300px;color:#DEDEDE;font-size:19px;letter-spacing:4px; position:absolute;">
+                    SIGNUP
+                    <br>
+                    <a href="/eula.php" style="margin-left:-6%;font-size:8px;">Read the EULA</a>
+                    
+                </p>
                 <form action="" method="post" name="submitzhuce">
                     <div class='login_fields'>
 
-                        <div class='login_fields__user' >
+                        <div class='login_fields__user'>
 
                             <input placeholder='USERNAME' type='text' id='usernamereg' name='usernamereg' style="margin-left:-33%;margin-top:0%;position:absolute;">
 
@@ -113,27 +126,32 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                             <div class='validation'>
                                 <img src='img/tick.png'>
                             </div>
+                            
                             <div class='login_fields__submit'>
-                                <input type='submit' value='SUBMIT' name='Submitzhuce' style="margin-left:170%;margin-top:92%;">
+                            
+                                <input id="accept" disabled="true" type='submit' value='SUBMIT' name='Submitzhuce' style="margin-left:170%;margin-top:92%;background:#BFBFBF;" >
+                                <p style="color:#fff;margin-top:-20%;margin-left:30%;width:100px;">Accept EULA</p>
+                                <input type="checkBox" style="position:absolute;color:#fff;display: block;margin-top:-25%;margin-left:122%;" onclick="if (this.checked) {enable()} else {disable()}">
                             </div>
                         </div>
 
-
+                        
                     </div>
                 </form>
+                
             </ul>
             <div style="margin-left:-215%;margin-top:280%;position:absolute;">
-            <p style="color:#8A8A8A;font-size:15px;">
-                VERSION 1.2.5
-            </p>
-            <div class='login_title' style="color:#DEDEDE; margin-top:-20%;">
-                <div id="tab-title">
-                    <h3><span class="selected" style="font-size:10px;">Login</span><span style="font-size:10px;">Signup</span>
-                        <!-- <span>找回密码</span> -->
-                    </h3>
+                <p style="color:#8A8A8A;font-size:15px;">
+                    VERSION 1.2.5
+                </p>
+                <div class='login_title' style="color:#DEDEDE; margin-top:-20%;">
+                    <div id="tab-title">
+                        <h3><span class="selected" style="font-size:10px;">Login</span><span style="font-size:10px;">Signup</span>
+                            <!-- <span>找回密码</span> -->
+                        </h3>
+                    </div>
                 </div>
             </div>
-    </div>
             <!-- <ul class="hide">
     <form action="" method="post">
         <div class='login_fields'>
@@ -317,7 +335,8 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
 </body>
 <footer>
 
-Copyright © 2017-2020
-<a href="https://fkun.tech/" target="_blank">FKUN </a> All Rights Reserved.
-    </footer>
+    Copyright © 2017-2020
+    <a href="https://fkun.tech/" target="_blank">FKUN </a> All Rights Reserved.
+</footer>
+
 </html>
