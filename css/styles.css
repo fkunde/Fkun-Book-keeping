@@ -249,7 +249,7 @@ canvas {
         footer {
           height:50px;
           position: absolute;
-          bottom:0;
+          margin-top:48%;
           left:0px;
           font-size: 0.7em;
           color: #b3b3b3;
