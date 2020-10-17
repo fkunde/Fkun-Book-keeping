@@ -38,9 +38,9 @@ error_reporting(E_ALL ^ E_NOTICE);
                 ?>"> <br /><br />
                 旧密码：<input type="password" name="jiupassword" id="jiupassword" size="18" maxlength="15" /> *（修改必须填写）<br /><br />
                 新密码：<input type="password" name="password" id="password" size="18" maxlength="15" /> *（最多15个字符） <br /><br />
-                授权用户密码：<input type="text" name="cpassword" id="cpassword" value="<?php echo $row['cpassword'];
+                <!-- 授权用户密码：<input type="text" name="cpassword" id="cpassword" value="<?php echo $row['cpassword'];
                 ?>" size="18" maxlength="15" /><br /><br />授权用户直接到 <a href="client.php">client页面</a> 用你的用户名和授权密码添加数据，只能添加，无法修改删除，密码留空则无效。<br /><br />
-                <input name="Submitxiugai" type="submit" value="提交" class="btn btn-default" />
+                <input name="Submitxiugai" type="submit" value="提交" class="btn btn-default" /> -->
                 <?php
                 if ($_POST['Submitxiugai']) {
                     $jiumima = md5($_POST['jiupassword']);
