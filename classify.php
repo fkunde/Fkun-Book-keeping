@@ -13,14 +13,14 @@ include_once("header.php");
 </script>
 <?php
 if ($_GET["Submit"]) {
-    $sql = "select * from ".$prename."account_class where classname='$_GET[classname]' and ufid='$_SESSION[uid]'";
-    $query = mysqli_query($conn,$sql);
+    $sql = "select * from " . $prename . "account_class where classname='$_GET[classname]' and ufid='$_SESSION[uid]'";
+    $query = mysqli_query($conn, $sql);
     $attitle = is_array($row = mysqli_fetch_array($query));
     if ($attitle) {
         $status_text = "此分类名称已存在！";
     } else {
-        $sql = "insert into ".$prename."account_class (classname, classtype,ufid) values ('$_GET[classname]', '$_GET[classtype]',$_SESSION[uid])";
-        $query = mysqli_query($conn,$sql);
+        $sql = "insert into " . $prename . "account_class (classname, classtype,ufid) values ('$_GET[classname]', '$_GET[classtype]',$_SESSION[uid])";
+        $query = mysqli_query($conn, $sql);
         if ($query) {
             $status_text = "<font color=#00CC00>添加成功！</font>";
             echo "<meta http-equiv=refresh content='0; url=classify.php'>";
@@ -66,19 +66,21 @@ if ($_GET["Submit"]) {
 
     <tr>
         <th align="left" bgcolor="#EBEBEB">类别名称</th>
-        <th align="left" bgcolor="#EBEBEB"><font color='MediumSeaGreen'>收入</font></th>
+        <th align="left" bgcolor="#EBEBEB">
+            <font color='MediumSeaGreen'>收入</font>
+        </th>
         <th align="left" bgcolor="#EBEBEB">操作</th>
     </tr>
     <?php
-    $sql = "select * from ".$prename."account_class where ufid='$_SESSION[uid]' and classtype='1'";
-    $query = mysqli_query($conn,$sql);
+    $sql = "select * from " . $prename . "account_class where ufid='$_SESSION[uid]' and classtype='1'";
+    $query = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_array($query)) {
-        echo "<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>".$row['classname']."</font></td>";
+        echo "<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['classname'] . "</font></td>";
         if ($row['classtype'] == 1)
             echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>收入</font></td>";
         else
             echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>支出</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><a href='edit_classify.php?type=1&classid=".$row['classid']."'>修改</a> <a href='edit_classify.php?type=2&classid=".$row['classid']."'>转移</a> <a href='edit_classify.php?type=3&classid=".$row['classid']."'>删除</a></td>";
+        echo "<td align='left' bgcolor='#FFFFFF'><a href='edit_classify.php?type=1&classid=" . $row['classid'] . "'>修改</a> <a href='edit_classify.php?type=2&classid=" . $row['classid'] . "'>转移</a> <a href='edit_classify.php?type=3&classid=" . $row['classid'] . "'>删除</a></td>";
     }
     echo "</tr>";
     ?>
@@ -87,20 +89,22 @@ if ($_GET["Submit"]) {
 <table width="100%" border="0" align="left" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
         <th align="left" bgcolor="#EBEBEB">类别名称</th>
-        <th align="left" bgcolor="#EBEBEB"><font color='red'>支出</font></th>
+        <th align="left" bgcolor="#EBEBEB">
+            <font color='red'>支出</font>
+        </th>
         <th align="left" bgcolor="#EBEBEB">操作</th>
     </tr>
     <?php
-    $sql = "select * from ".$prename."account_class where ufid='$_SESSION[uid]' and classtype='2'";
-    $query = mysqli_query($conn,$sql);
+    $sql = "select * from " . $prename . "account_class where ufid='$_SESSION[uid]' and classtype='2'";
+    $query = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_array($query)) {
-        echo "<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>".$row['classname']."</font></td>";
+        echo "<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['classname'] . "</font></td>";
         if ($row['classtype'] == 1) {
             echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>收入</font></td>";
         } else {
             echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>支出</font></td>";
         }
-        echo "<td align='left' bgcolor='#FFFFFF'><a href='edit_classify.php?type=1&classid=".$row['classid']."'>修改</a> <a href='edit_classify.php?type=2&classid=".$row['classid']."'>转移</a> <a href='edit_classify.php?type=3&classid=".$row['classid']."'>删除</a></td>";
+        echo "<td align='left' bgcolor='#FFFFFF'><a href='edit_classify.php?type=1&classid=" . $row['classid'] . "'>修改</a> <a href='edit_classify.php?type=2&classid=" . $row['classid'] . "'>转移</a> <a href='edit_classify.php?type=3&classid=" . $row['classid'] . "'>删除</a></td>";
         echo "</tr>";
     }
     ?>
