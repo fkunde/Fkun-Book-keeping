@@ -250,6 +250,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
 
             </p>
         </div>
+        
     </div>
     <script type="text/javascript" src='js/stopExecutionOnTimeout.js?t=1'></script>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
@@ -331,12 +332,12 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
             });
         });
     </script>
+<div class="footer">
 
+Copyright © 2017-2020
+<a href="https://fkun.tech/" target="_blank">FKUN </a> All Rights Reserved.
+</div>
 </body>
-<footer>
 
-    Copyright © 2017-2020
-    <a href="https://fkun.tech/" target="_blank">FKUN </a> All Rights Reserved.
-</footer>
 
 </html>
