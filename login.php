@@ -15,7 +15,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FKUN BOOKKEEPING SYSTEM</title>
+    <title>FKUN SYSTEM</title>
     <link rel="stylesheet" type="text/css" href="css/default.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -313,11 +313,11 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
             });
         });
     </script>
-<p class="footer"style="margin-top:48%; text-align:center;">
+
+</body>
+<footer>
 
 Copyright © 2017-2020
 <a href="https://fkun.tech/" target="_blank">FKUN </a> All Rights Reserved.
-</p>
-</body>
-
+    </footer>
 </html>
