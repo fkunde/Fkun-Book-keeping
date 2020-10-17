@@ -11,3 +11,5 @@ for students to learn how to manage money
 正在制作：
  - 智能菜谱输出
  - 每周购物清单输出
+ - 快速对账
+ - 可视化日历
