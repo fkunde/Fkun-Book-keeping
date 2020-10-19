@@ -1,0 +1,266 @@
+body {
+  background: #19292f;
+  -webkit-perspective: 800px;
+  perspective: 800px;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Gudea", sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  /* Old browsers */
+  /* FF3.6+ */
+  /* background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #EA5C54), color-stop(100%, #bb6dec)); */
+  /* Chrome,Safari4+ */
+  /* background: -webkit-linear-gradient(-45deg, #EA5C54 0%, #bb6dec 100%); */
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  /* IE10+ */
+  /* background: -webkit-linear-gradient(315deg, #EA5C54 0%, #bb6dec 100%); */
+  /* background: linear-gradient(135deg, #EA5C54 0%, #bb6dec 100%); */
+  /* W3C */
+  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EA5C54 ', endColorstr='#bb6dec',GradientType=1 ); */
+  /* IE6-9 fallback on horizontal gradient */
+}
+body ::-webkit-input-placeholder {
+  color: #4e546d;
+}
+
+body .authent p {
+  text-align: center;
+  color: white;
+}
+body .success {
+  display: none;
+  color: #d5d8e2;
+}
+body .success p {
+  font-size: 14px;
+}
+body p {
+  color: #5b5e6f;
+  font-size: 10px;
+}
+
+body .login {
+  opacity: 1;
+  /* -webkit-transition-timing-function: cubic-bezier(0.68, -0.25, 0.265, 0.85); */
+  /* -webkit-transition-property: -webkit-transform,opacity,box-shadow,top,left; */
+  /* transition-property: transform,opacity,box-shadow,top,left; */
+  /* -webkit-transition-duration: .5s; */
+  /* transition-duration: .5s; */
+  /* -webkit-transform-origin: 161px 100%; */
+  /* -ms-transform-origin: 161px 100%; */
+  /* transform-origin: 161px 100%; */
+  /* -webkit-transform: rotateX(0deg); */
+  /* transform: rotateX(0deg); */
+  width: 450px;
+  border-top: 10px solid #bb2f2a;
+  height: 320px;
+  position: absolute;
+  left: 50%;
+  top: 5vh;
+  transform: translate(-50%, 20vh);
+  margin: 0;
+
+  padding: 100px 40px 40px 40px;
+  background: #000000;
+  /* Old browsers */
+  /* FF3.6+ */
+  /* background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #35394a), color-stop(100%, #1f222e)); */
+  /* Chrome,Safari4+ */
+  /* background: -webkit-linear-gradient(45deg, #35394a 0%, #1f222e 100%); */
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  /* IE10+ */
+  /* background: linear-gradient(45deg, #35394a 0%, #1f222e 100%); */
+  /* W3C */
+  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#35394a', endColorstr='#1f222e',GradientType=1 ); */
+  /* IE6-9 fallback on horizontal gradient */
+}
+body .login .validation {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  opacity: 0;
+}
+body .login .disclaimer {
+  position: absolute;
+  bottom: 20px;
+  left: 35px;
+  width: 250px;
+}
+body .login_title {
+  color: #afb1be;
+
+  text-align: left;
+  font-size: 16px;
+}
+body .login_fields {
+  height: 208px;
+  position: absolute;
+  margin-left: 50%;
+  left: 0;
+}
+body .login_fields .icon {
+  position: absolute;
+  left: 36px;
+  top: 8px;
+  opacity: 0.5;
+}
+body .login_fields input[type="password"] {
+  color: #dedede !important;
+  font-size: 16px;
+}
+body .login_fields input[type="text"],
+body .login_fields input[type="password"] {
+  color: #dedede;
+  border: none;
+  font-size: 16px;
+  width: 255px;
+  margin-top: -2px;
+  margin-left: 2px;
+  background: #1b1b1b;
+  left: 0;
+  padding: 6px 5px;
+  outline: none;
+  font-family: "Gudea", sans-serif;
+  box-shadow: none;
+}
+body .login_fields__user,
+body .login_fields__password {
+  position: relative;
+}
+body .login_fields__submit {
+  position: relative;
+  top: 35px;
+  left: 0;
+  width: 80%;
+  right: 0;
+  margin: auto;
+}
+body .login_fields__submit .forgot {
+  float: right;
+  font-size: 10px;
+  margin-top: 11px;
+  text-decoration: underline;
+}
+body .login_fields__submit .forgot a {
+  color: #606479;
+}
+body .login_fields__submit input {
+  background: #bb2f2a;
+  padding: 5px 16px;
+  border: none;
+  color: #fff;
+  /* text-transform: uppercase; */
+  font-size: 20px;
+  letter-spacing: 2px;
+  /* -webkit-transition-property: background,color; */
+  /* transition-property: background,color; */
+  /* -webkit-transition-duration: .2s; */
+  /* transition-duration: .2s; */
+}
+/* body .login_fields__submit input:focus { */
+/* box-shadow: none; */
+/* outline: none; */
+/* } */
+/* body .login_fields__submit input:hover { */
+/* color: white; */
+/* background: #DC6180; */
+/* cursor: pointer; */
+/* -webkit-transition-property: background,color; */
+/* transition-property: background,color; */
+/* -webkit-transition-duration: .2s; */
+/* transition-duration: .2s; */
+
+/* Color Schemes */
+.love {
+  position: absolute;
+  right: 20px;
+  bottom: 0px;
+  font-size: 11px;
+  font-weight: normal;
+}
+.love p {
+  color: white;
+  font-weight: normal;
+  font-family: "Open Sans", sans-serif;
+}
+.love a {
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
+.love img {
+  position: relative;
+  top: 3px;
+  margin: 0px 4px;
+  width: 10px;
+}
+
+.brand {
+  position: absolute;
+  left: 20px;
+  bottom: 14px;
+}
+.brand img {
+  width: 30px;
+}
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+#tab-title .selected {
+  color: #c96464;
+}
+
+#tab-title span {
+  padding: 0 18px 8px 0;
+  cursor: pointer;
+}
+
+#tab-content .hide {
+  display: none;
+}
+
+#tab-content ul {
+  /* overflow:hidden; */
+  list-style: none;
+}
+
+#tab-content ul li {
+  overflow: hidden;
+  border-top: 1px dotted #dddddd;
+  line-height: 2.1em;
+  padding: 0 1px;
+}
+
+#tab-content ul li span {
+  color: #a1a3a6;
+}
+
+.tishi {
+  position: absolute;
+  bottom: -15%;
+  margin-left: 5%;
+}
+.footer {
+  height: 50px;
+  position: absolute;
+  margin-top: 97vh;
+  left: 0%;
+  font-size: 0.7em;
+  color: #b3b3b3;
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (max-height: 768px) {
+  .footer {
+    display: none;
+  }
+}
