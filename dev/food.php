@@ -1,5 +1,5 @@
 <?php
-include_once("header.php");
+include_once("../header.php");
 ?>
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
@@ -8,7 +8,7 @@ error_reporting(E_ALL ^ E_NOTICE);
     function checkpost() {
         if (myform.ingredient.value == "") {
             alert("请输入食材名称");
-            window.location = 'add.php';
+            window.location = '../add.php';
             return false;
         }
     }
@@ -17,7 +17,7 @@ error_reporting(E_ALL ^ E_NOTICE);
     function checkpost() {
         if (myform3.recipe.value == "") {
             alert("请输入菜谱名称");
-            window.location = 'add.php';
+            window.location = '../add.php';
             return false;
         }
     }
@@ -622,5 +622,5 @@ if ($_GET["Submit2"]) {
 </table>
 
 <?php
-include_once("footer.php");
+include_once("../footer.php");
 ?>
