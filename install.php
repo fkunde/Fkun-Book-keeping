@@ -223,6 +223,22 @@
 
             }
         }
+
+        echo "创建表 <br />".$prename."Weekmeal .....";
+        if (intable($db_dbname,$prename."weekmeal",$conn)) {
+            echo "<br />已存在<br /><font color='red'>已经安装过啦，表前缀已经存在。<br /></font></body></html>";
+
+        } else {
+            $sql = "CREATE TABLE `$db_dbname`.`".$prename."weekmeal` (`mealid` INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY, `weekplanid` INT(15) NOT NULL,`weektime` INT(15),`ufid` INT(8) NOT NULL) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;";
+            $query = mysqli_query($conn,$sql);
+            if ($query) {
+                echo "成功<br />";
+            } else {
+                echo $sql;
+                echo "<br />失败<br /><font color='red'>安装失败啦，请检查config.php相关配置。</font></body></html>";
+
+            }
+        }
 		
         echo "<br />创建表 ".$prename."user .....";
         if (intable($db_dbname,$prename."user",$conn)) {

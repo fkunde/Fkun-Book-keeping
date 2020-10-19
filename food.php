@@ -53,6 +53,9 @@ if ($_GET["Submit"]) {
                 echo ($breakfast);
                 echo "<br>";
                 echo ($dinner);
+
+
+            
 ?>
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
@@ -80,19 +83,97 @@ if ($_GET["Submit"]) {
         <tr>
             <th align="left" bgcolor="#EBEBEB">Frühstück</th>
 
-            <th align="left" bgcolor="#EBEBEB"> </th>
+            <th align="left" bgcolor="#EBEBEB">
+            <select name="monf" id="monf" style="height:26px;">
+                                <option value="0"></option>
+                                <?php
+                                $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
+                                $query = mysqli_query($conn, $sql);
+                                while ($row = mysqli_fetch_array($query)) {
+                                    echo "<option value='$row[recipeid]'>$row[recipename]</option>";
+                                }
+                                ?>
+             </select>
+             </th>
+      
 
-            <th align="left" bgcolor="#EBEBEB"> </th>
+            <th align="left" bgcolor="#EBEBEB"> 
+            <select name="tuef" id="tuef" style="height:26px;">
+                                <option value="0"></option>
+                                <?php
+                                $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
+                                $query = mysqli_query($conn, $sql);
+                                while ($row = mysqli_fetch_array($query)) {
+                                    echo "<option value='$row[recipeid]'>$row[recipename]</option>";
+                                }
+                                ?>
+             </select>
+            </th>
 
-            <th align="left" bgcolor="#EBEBEB"> </th>
+            <th align="left" bgcolor="#EBEBEB"> 
+            <select name="wedf" id="wedf" style="height:26px;">
+                                <option value="0"></option>
+                                <?php
+                                $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
+                                $query = mysqli_query($conn, $sql);
+                                while ($row = mysqli_fetch_array($query)) {
+                                    echo "<option value='$row[recipeid]'>$row[recipename]</option>";
+                                }
+                                ?>
+             </select>
+            </th>
 
-            <th align="left" bgcolor="#EBEBEB"> </th>
+            <th align="left" bgcolor="#EBEBEB"> 
+            <select name="thuf" id="thuf" style="height:26px;">
+                                <option value="0"></option>
+                                <?php
+                                $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
+                                $query = mysqli_query($conn, $sql);
+                                while ($row = mysqli_fetch_array($query)) {
+                                    echo "<option value='$row[recipeid]'>$row[recipename]</option>";
+                                }
+                                ?>
+             </select>
+            </th>
 
-            <th align="left" bgcolor="#EBEBEB"> </th>
+            <th align="left" bgcolor="#EBEBEB"> 
+            <select name="frif" id="frif" style="height:26px;">
+                                <option value="0"></option>
+                                <?php
+                                $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
+                                $query = mysqli_query($conn, $sql);
+                                while ($row = mysqli_fetch_array($query)) {
+                                    echo "<option value='$row[recipeid]'>$row[recipename]</option>";
+                                }
+                                ?>
+             </select>
+            </th>
 
-            <th align="left" bgcolor="#EBEBEB"> </th>
+            <th align="left" bgcolor="#EBEBEB"> 
+            <select name="satf" id="satf" style="height:26px;">
+                                <option value="0"></option>
+                                <?php
+                                $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
+                                $query = mysqli_query($conn, $sql);
+                                while ($row = mysqli_fetch_array($query)) {
+                                    echo "<option value='$row[recipeid]'>$row[recipename]</option>";
+                                }
+                                ?>
+             </select>
+            </th>
 
-            <th align="left" bgcolor="#EBEBEB"> </th>
+            <th align="left" bgcolor="#EBEBEB"> 
+            <select name="sunf" id="sunf" style="height:26px;">
+                                <option value="0"></option>
+                                <?php
+                                $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
+                                $query = mysqli_query($conn, $sql);
+                                while ($row = mysqli_fetch_array($query)) {
+                                    echo "<option value='$row[recipeid]'>$row[recipename]</option>";
+                                }
+                                ?>
+             </select>
+            </th>
 
         </tr>
         <tr>
