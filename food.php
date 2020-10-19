@@ -49,7 +49,7 @@ if ($_GET["Submit"]) {
 if ($_GET["Submitplan"]) {
     $sql = "select * from " . $prename . "weekmeal where weektime='$_GET[weektime]' and ufid='$_SESSION[uid]'";
     $query = mysqli_query($conn, $sql);
-    $attitle = is_array($row = mysqli_fetch_array($query));
+    $attitle = is_array($rowplan = mysqli_fetch_array($query));
     if ($attitle) {
         $status_meal = "当周食谱已存在！";
     } else {
