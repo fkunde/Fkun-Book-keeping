@@ -229,7 +229,7 @@
             echo "<br />已存在<br /><font color='red'>已经安装过啦，表前缀已经存在。<br /></font></body></html>";
 
         } else {
-            $sql = "CREATE TABLE `$db_dbname`.`".$prename."weekmeal` (`mealid` INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY, `weekplanid` INT(15) NOT NULL,`weektime` INT(15),`ufid` INT(8) NOT NULL) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;";
+            $sql = "CREATE TABLE `$db_dbname`.`".$prename."weekmeal` (`monf` INT(15),`monm` INT(15),`mona` INT(15),`tuef` INT(15),`tuem` INT(15),`tuea` INT(15),`wedf` INT(15),`wedm` INT(15),`weda` INT(15),`thuf` INT(15),`thum` INT(15),`thua` INT(15),`frif` INT(15),`frim` INT(15),`fria` INT(15),`satf` INT(15),`satm` INT(15),`sata` INT(15),`sunf` INT(15),`sunm` INT(15),`suna` INT(15),`weekplanid` INT(15) NOT NULL AUTO_INCREMENT PRIMARY KEY,`weektime` INT(15),`ufid` INT(8) NOT NULL) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;";
             $query = mysqli_query($conn,$sql);
             if ($query) {
                 echo "成功<br />";
