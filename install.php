@@ -239,6 +239,17 @@
 
             }
         }
+        echo "<br />addieren standard daten";
+        $query = mysqli_query($conn,"select * from ".$prename."weekmeal where weekplanid='1'");
+        $attitle = is_array($row = mysqli_fetch_array($query));
+        if ($attitle) {
+            echo "Es gibt schon standard daten !<br />";
+            exit();
+        } else {
+            $sql = "insert into Finance_weekmeal (ufid, weektime, monf, monm, mona, tuef, tuem, tuea, wedf, wedm, weda, thuf, thum, thua, frif, frim, fria, satf, satm, sata, sunf, sunm, suna) values ('1', '1', '', '','','', '','','', '','','', '','','', '','','', '','','', '','')";
+            $query = mysqli_query($conn,$sql);
+            echo "创建成功！<br />";
+        }
 		
         echo "<br />创建表 ".$prename."user .....";
         if (intable($db_dbname,$prename."user",$conn)) {

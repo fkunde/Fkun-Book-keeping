@@ -52,6 +52,7 @@ if ($_GET["Submitplan"]) {
     $attitle = is_array($rowplan = mysqli_fetch_array($query));
     if ($attitle) {
         $status_meal = "当周食谱已存在！";
+       
     } else {
         $sqlplan = "insert into " . $prename . "weekmeal (ufid, weektime, monf, monm, mona, tuef, tuem, tuea, wedf, wedm, weda, thuf, thum, thua, frif, frim, fria, satf, satm, sata, sunf, sunm, suna) values ('$_SESSION[uid]', '$_GET[weektime]', '$_GET[monf]', '$_GET[monm]','$_GET[mona]','$_GET[tuef]', '$_GET[tuem]','$_GET[tuea]','$_GET[wedf]', '$_GET[wedm]','$_GET[weda]','$_GET[thuf]', '$_GET[thum]','$_GET[thua]','$_GET[frif]', '$_GET[frim]','$_GET[fria]','$_GET[satf]', '$_GET[satm]','$_GET[sata]','$_GET[sunf]', '$_GET[sunm]','$_GET[suna]')";
         $query = mysqli_query($conn, $sqlplan);
@@ -62,9 +63,11 @@ if ($_GET["Submitplan"]) {
             $status_meal = "<font color=#FF0000>添加失败,写入数据库时发生错误！</font>";
             echo "<meta http-equiv=refresh content='0; url=food.php'>";   
         }
-        
+       
     }
+    
 }
+
 ?>
 <?php
 $suggestpw = $_SESSION['suggestpw'];
