@@ -834,7 +834,7 @@ if ($_GET["Submit2"]) {
         echo "<td font color='MediumSeaGreen'> " . $sumprice . " </font></td>";
         echo "<td font color='MediumSeaGreen'> " . $row['satiety'] . " </font></td>";
         echo "<td font color='MediumSeaGreen'> " . $row['difficulty'] . " </font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><a href='edit_food.php?type=3&recipeid=" . $row['recipeid'] . "'>删除</a></td></tr>";
+        echo "<td align='left' bgcolor='#FFFFFF'><a href='edit_recipe.php?type=3&recipeid=" . $row['recipeid'] . "'>删除</a></td></tr>";
     }
     echo "</tr>";
     ?>
