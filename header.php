@@ -53,15 +53,15 @@ if (isset($_GET['tj']) AND $_GET['tj'] == 'logout') {
                     <div class="collapse navbar-collapse" id="example-navbar-collapse">
                         <ul class="nav navbar-nav">
                              
-                            <li><a href="annual_stat.php">账目统计</a></li>
-							<li><a href="prediction.php">资金状态</a></li>
-							<li><a href="food.php">精确饮食</a></li>
-							<li><a href="plan.php">消费计划</a></li>
+                            <li><a href="annual_stat.php">统计</a></li>
+							<li><a href="prediction.php">状态</a></li>
+							<li><a href="food.php">饮食</a></li>
+							<li><a href="plan.php">计划</a></li>
 
-							<li><a href="category.php">交易分类</a></li>
-							<li><a href="payway.php">交易方式</a></li>
-                            <li><a href="search.php">导入/导出</a></li>
-                            <li><a href="edit.php">总览/查询</a></li>
+							<li><a href="category.php">分类</a></li>
+							<li><a href="payway.php">方式</a></li>
+                            <li><a href="search.php">导出</a></li>
+                            <li><a href="edit.php">总览</a></li>
                             <li><a href="users.php"><?php echo"账号：";
                                 echo $arr['username'];
                                 ?></a></li>
