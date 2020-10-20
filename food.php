@@ -45,29 +45,38 @@ if ($_GET["Submit"]) {
 ?>
 <?php
 
-
+$thisweek = date('W', time());
+$weektime = date("Y") . $thisweek;
 if ($_GET["Submitplan"]) {
-    $sql = "select * from " . $prename . "weekmeal where weektime='$_GET[weektime]' and ufid='$_SESSION[uid]'";
+    $sql = "select * from " . $prename . "weekmeal where weektime='" . $weektime . "' and ufid='$_SESSION[uid]'";
     $query = mysqli_query($conn, $sql);
     $attitle = is_array($rowplan = mysqli_fetch_array($query));
     if ($attitle) {
-        $status_meal = "当周食谱已存在！";
-       
+        $status_meal = "当周菜谱已更新！";
+        $sqlplan = "update " . $prename . "weekmeal set monf='$_GET[monf]', monm='$_GET[monm]', mona='$_GET[mona]', tuef='$_GET[tuef]', tuem='$_GET[tuem]', tuea='$_GET[tuea]', wedf='$_GET[wedf]', wedm='$_GET[wedm]', weda='$_GET[weda]', thuf='$_GET[thuf]', thum='$_GET[thum]', thua='$_GET[thua]', frif='$_GET[frif]', frim='$_GET[frim]', fria='$_GET[fria]', satf='$_GET[sat]', satm='$_GET[satm]', sata='$_GET[sata]', sunf='$_GET[sunf]', sunm='$_GET[sunm]', suna='$_GET[suna]' where weektime='" . $weektime . "' and ufid='$_SESSION[uid]'";
+        $query = mysqli_query($conn, $sqlplan);
+        if ($query) {
+            $status_meal = "<font color=#00CC00>更新成功！</font>";
+            echo "<meta http-equiv=refresh content='0; url=food.php'>";
+        } else {
+            $status_meal = "<font color=#FF0000>添加失败,写入数据库时发生错误！</font>";
+            echo "<meta http-equiv=refresh content='0; url=food.php'>";
+        }
     } else {
-        $sqlplan = "insert into " . $prename . "weekmeal (ufid, weektime, monf, monm, mona, tuef, tuem, tuea, wedf, wedm, weda, thuf, thum, thua, frif, frim, fria, satf, satm, sata, sunf, sunm, suna) values ('$_SESSION[uid]', '$_GET[weektime]', '$_GET[monf]', '$_GET[monm]','$_GET[mona]','$_GET[tuef]', '$_GET[tuem]','$_GET[tuea]','$_GET[wedf]', '$_GET[wedm]','$_GET[weda]','$_GET[thuf]', '$_GET[thum]','$_GET[thua]','$_GET[frif]', '$_GET[frim]','$_GET[fria]','$_GET[satf]', '$_GET[satm]','$_GET[sata]','$_GET[sunf]', '$_GET[sunm]','$_GET[suna]')";
+
+        $sqlplan = "insert into " . $prename . "weekmeal (ufid, weektime, monf, monm, mona, tuef, tuem, tuea, wedf, wedm, weda, thuf, thum, thua, frif, frim, fria, satf, satm, sata, sunf, sunm, suna) values ('$_SESSION[uid]','" . $weektime . "', '$_GET[monf]', '$_GET[monm]','$_GET[mona]','$_GET[tuef]', '$_GET[tuem]','$_GET[tuea]','$_GET[wedf]', '$_GET[wedm]','$_GET[weda]','$_GET[thuf]', '$_GET[thum]','$_GET[thua]','$_GET[frif]', '$_GET[frim]','$_GET[fria]','$_GET[satf]', '$_GET[satm]','$_GET[sata]','$_GET[sunf]', '$_GET[sunm]','$_GET[suna]')";
         $query = mysqli_query($conn, $sqlplan);
         if ($query) {
             $status_meal = "<font color=#00CC00>添加成功！</font>";
             echo "<meta http-equiv=refresh content='0; url=food.php'>";
         } else {
             $status_meal = "<font color=#FF0000>添加失败,写入数据库时发生错误！</font>";
-            echo "<meta http-equiv=refresh content='0; url=food.php'>";   
+            echo "<meta http-equiv=refresh content='0; url=food.php'>";
         }
-       
     }
-    
 }
 ?>
+
 <?php
 $suggestpw = $_SESSION['suggestpw'];
 $foodindex = 0.8;
@@ -75,23 +84,24 @@ $breakfastindex = 0.3;
 $foodperday = round((($foodindex * $suggestpw) / 7), 2);
 $breakfast = $breakfastindex * $foodperday;
 $dinner = ($foodperday - $breakfast) / 2;
-echo ($breakfast);
-echo "<br>";
-echo ($dinner);
+// 一些参数
+
 ?>
 <!--
-    需要继续进行的操作
-默认显示存在的食谱
+开发中……
+*为已完成
 
-显示周数
+默认显示存在的食谱*
 
-周数计算保存
+显示周数*
 
-测试多用户可用性
+周数计算保存*
 
-添加食材删除功能
+测试多用户可用性*
 
-添加食谱更改功能
+添加食材删除功能*
+
+添加食谱更改功能*
 
 食材统计
 
@@ -109,7 +119,14 @@ echo ($dinner);
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
-        <td bgcolor="#EBEBEB">食谱</td>
+        <td bgcolor="#EBEBEB">食谱&nbsp;（
+            <?php
+            echo date('Y');
+            echo " 年 第 ";
+            echo $thisweek = date('W', time());
+            ?>
+            周）
+        </td>
     </tr>
     <form id="myform" name="form3" method="get" onsubmit="return checkpost();">
         <table width="100%" border="0" align="left" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
@@ -140,8 +157,18 @@ echo ($dinner);
                     <select name="monf" id="monf" style="height:26px;">
 
                         <?php
+
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['monf'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['monf'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
+
                         while ($row = mysqli_fetch_array($query)) {
                             echo "<option value='$row[recipeid]'>$row[recipename]</option>";
                         }
@@ -156,6 +183,14 @@ echo ($dinner);
                     <select name="tuef" id="tuef" style="height:26px;">
 
                         <?php
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['tuef'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['tuef'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -169,6 +204,15 @@ echo ($dinner);
                     <select name="wedf" id="wedf" style="height:26px;">
 
                         <?php
+
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['wedf'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['wedf'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -182,6 +226,15 @@ echo ($dinner);
                     <select name="thuf" id="thuf" style="height:26px;">
 
                         <?php
+
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['thuf'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['thuf'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -195,6 +248,15 @@ echo ($dinner);
                     <select name="frif" id="frif" style="height:26px;">
 
                         <?php
+
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['frif'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['frif'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -208,6 +270,15 @@ echo ($dinner);
                     <select name="satf" id="satf" style="height:26px;">
 
                         <?php
+
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['satf'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['satf'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -221,6 +292,14 @@ echo ($dinner);
                     <select name="sunf" id="sunf" style="height:26px;">
 
                         <?php
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['sunf'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['sunf'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -238,6 +317,15 @@ echo ($dinner);
                     <select name="monm" id="monm" style="height:26px;">
 
                         <?php
+
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['monm'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['monm'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -251,6 +339,14 @@ echo ($dinner);
                     <select name="tuem" id="tuem" style="height:26px;">
 
                         <?php
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['tuem'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['tuem'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -264,6 +360,14 @@ echo ($dinner);
                     <select name="wedm" id="wedm" style="height:26px;">
 
                         <?php
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['wedm'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['wedm'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -277,6 +381,14 @@ echo ($dinner);
                     <select name="thum" id="thum" style="height:26px;">
 
                         <?php
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['thum'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['thum'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -290,6 +402,14 @@ echo ($dinner);
                     <select name="frim" id="frim" style="height:26px;">
 
                         <?php
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['frim'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['frim'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -303,6 +423,14 @@ echo ($dinner);
                     <select name="satm" id="satm" style="height:26px;">
 
                         <?php
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['satm'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['satm'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -315,6 +443,14 @@ echo ($dinner);
                     <select name="sunm" id="sunm" style="height:26px;">
 
                         <?php
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['sunm'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['sunm'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -332,6 +468,15 @@ echo ($dinner);
                     <select name="mona" id="mona" style="height:26px;">
 
                         <?php
+
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['mona'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['mona'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -344,6 +489,15 @@ echo ($dinner);
                     <select name="tuea" id="tuea" style="height:26px;">
 
                         <?php
+
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['tuea'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['tuea'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -357,6 +511,16 @@ echo ($dinner);
                     <select name="weda" id="weda" style="height:26px;">
 
                         <?php
+
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['weda'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['weda'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
+
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -370,6 +534,16 @@ echo ($dinner);
                     <select name="thua" id="thua" style="height:26px;">
 
                         <?php
+
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['thua'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['thua'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
+
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -382,6 +556,15 @@ echo ($dinner);
                     <select name="fria" id="fria" style="height:26px;">
 
                         <?php
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['fria'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['fria'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
+
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -395,6 +578,14 @@ echo ($dinner);
                     <select name="sata" id="sata" style="height:26px;">
 
                         <?php
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['sata'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['sata'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -408,6 +599,14 @@ echo ($dinner);
                     <select name="suna" id="suna" style="height:26px;">
 
                         <?php
+                        $sqlold = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+                        $queryold = mysqli_query($conn, $sqlold);
+                        $rowold = mysqli_fetch_array($queryold);
+                        $sqlrecipename = "select * from " . $prename . "recipe where recipeid = '" . $rowold['suna'] . "' and ufid='$_SESSION[uid]'";
+                        $queryrecipename = mysqli_query($conn, $sqlrecipename);
+                        $rowrecipename = mysqli_fetch_array($queryrecipename);
+                        echo "<option value=" . $rowold['suna'] . ">" . $rowrecipename['recipename'] . "</option>";
+                        echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=2 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
@@ -423,7 +622,7 @@ echo ($dinner);
 
 
 
-        <input type="submit" name="Submitplan" value="添加" class="btn btn-default" />
+        <input type="submit" name="Submitplan" value="添加/更新" class="btn btn-default" />
         <?php echo $status_meal;
         ?>
         <br>

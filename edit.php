@@ -68,8 +68,8 @@ error_reporting(E_ALL ^ E_NOTICE);
 if ($_GET['ok']) {
 
     //针对$ok被激活后的处理：
-    $shij = strtotime("$_GET[shijian]");
-    $sql = "update " . $prename . "account set acamount='" . $_GET['jine'] . "',acplace='" . $_GET['place'] . "',actype='" . $_GET['actype'] . "',acpayway='" . $_GET['acpayway'] . "',acname='" . $_GET['name'] . "',acremark='" . $_GET['beizhu'] . "',ac0='" . $_GET['ac0'] . "',actime='" . $shij . "' where acid='" . $_GET['id'] . "' and acuserid='" . $_SESSION['uid'] . "'";
+    $sqltime = strtotime("$_GET[time]");
+    $sql = "update " . $prename . "account set acamount='" . $_GET['amount'] . "',acplace='" . $_GET['place'] . "',actype='" . $_GET['actype'] . "',acpayway='" . $_GET['acpayway'] . "',acname='" . $_GET['name'] . "',acremark='" . $_GET['beizhu'] . "',ac0='" . $_GET['ac0'] . "',actime='" . $sqltime . "' where acid='" . $_GET['id'] . "' and acuserid='" . $_SESSION['uid'] . "'";
     $result = mysqli_query($conn, $sql);
     if ($result)
         echo ("<script type='text/javascript'>alert('修改成功！');history.go(-2);</script>");
@@ -93,7 +93,7 @@ if ($_GET['ok']) {
         <td bgcolor='#FFFFFF'>
    <form method=get action=''>
 <INPUT TYPE='hidden' name='id' value=" . $row['acid'] . ">
-金额：<input type=text name='jine' value=" . $row['acamount'] . "><br /><br />";
+金额：<input type=text name='amount' value=" . $row['acamount'] . "><br /><br />";
 
         echo "分类：<select name='actype'>";
 
@@ -135,7 +135,7 @@ if ($_GET['ok']) {
         echo "<br /><br />
 		
 
-时间：<input rows='1' cols='20' name='shijian' class='sang_Calender' value='" . date('Y-m-d H:i', $row['actime']) . "'> <br /><br />
+时间：<input rows='1' cols='20' name='time' class='sang_Calender' value='" . date('Y-m-d H:i', $row['actime']) . "'> <br /><br />
 备注：<input type=text name='beizhu' value=" . $row['acremark'] . "><br /><br />
 位置：<input type=text name='place' value=" . $row['acplace'] . "><br /><br />
 交易对象：<input type=text name='name' value=" . $row['acname'] . "><br /><br />
