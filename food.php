@@ -67,7 +67,6 @@ if ($_GET["Submitplan"]) {
     }
     
 }
-
 ?>
 <?php
 $suggestpw = $_SESSION['suggestpw'];
@@ -80,7 +79,6 @@ echo ($breakfast);
 echo "<br>";
 echo ($dinner);
 ?>
-
 <!--
     需要继续进行的操作
 默认显示存在的食谱
