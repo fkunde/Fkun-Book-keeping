@@ -56,7 +56,7 @@ if ($_GET["Submitplan"]) {
         $sqlplan = "update " . $prename . "weekmeal set monf='$_GET[monf]', monm='$_GET[monm]', mona='$_GET[mona]', tuef='$_GET[tuef]', tuem='$_GET[tuem]', tuea='$_GET[tuea]', wedf='$_GET[wedf]', wedm='$_GET[wedm]', weda='$_GET[weda]', thuf='$_GET[thuf]', thum='$_GET[thum]', thua='$_GET[thua]', frif='$_GET[frif]', frim='$_GET[frim]', fria='$_GET[fria]', satf='$_GET[satf]', satm='$_GET[satm]', sata='$_GET[sata]', sunf='$_GET[sunf]', sunm='$_GET[sunm]', suna='$_GET[suna]' where weektime='" . $weektime . "' and ufid='$_SESSION[uid]'";
         $query = mysqli_query($conn, $sqlplan);
         if ($query) {
-            $status_meal = "<font color=#00CC00>更新成功！</font>";f
+            $status_meal = "<font color=#00CC00>更新成功！</font>";
             echo "<meta http-equiv=refresh content='0; url=food.php'>";
         } else {
             $status_meal = "<font color=#FF0000>添加失败,写入数据库时发生错误！</font>";
