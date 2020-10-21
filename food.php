@@ -673,15 +673,16 @@ $dinner = ($foodperday - $breakfast) / 2;
                         $queryingredient = mysqli_query($conn, $sqlingredient);
                         $rowingredient = mysqli_fetch_array($queryingredient);
                         $zuamount = $rowall['am' . $zunum];
+
+
+
+
                         $zuname . $zunum = $rowingredient['ingredientname'] . "*" . $rowall['am' . $zunum] . $rowingredient['ingredientunit'];
 
-
-
-
-
-
                         // 待编写  合并相同项
-                        
+
+
+
                         echo $rowingredient['ingredientname'] . "*" . $zuamount . $rowingredient['ingredientunit'];
                         echo "<br>";
                     }
