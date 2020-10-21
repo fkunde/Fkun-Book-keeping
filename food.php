@@ -52,6 +52,7 @@ if ($_GET["Submitplan"]) {
     $query = mysqli_query($conn, $sql);
     $attitle = is_array($rowplan = mysqli_fetch_array($query));
     if ($attitle) {
+
         $status_meal = "当周菜谱已更新！";
         $sqlplan = "update " . $prename . "weekmeal set monf='$_GET[monf]', monm='$_GET[monm]', mona='$_GET[mona]', tuef='$_GET[tuef]', tuem='$_GET[tuem]', tuea='$_GET[tuea]', wedf='$_GET[wedf]', wedm='$_GET[wedm]', weda='$_GET[weda]', thuf='$_GET[thuf]', thum='$_GET[thum]', thua='$_GET[thua]', frif='$_GET[frif]', frim='$_GET[frim]', fria='$_GET[fria]', satf='$_GET[satf]', satm='$_GET[satm]', sata='$_GET[sata]', sunf='$_GET[sunf]', sunm='$_GET[sunm]', suna='$_GET[suna]' where weektime='" . $weektime . "' and ufid='$_SESSION[uid]'";
         $query = mysqli_query($conn, $sqlplan);
@@ -113,6 +114,8 @@ $dinner = ($foodperday - $breakfast) / 2;
 
 食材剩余量计算
 
+菜谱时间段改为勾选框
+
 
 
 -->
@@ -124,8 +127,9 @@ $dinner = ($foodperday - $breakfast) / 2;
             echo date('Y');
             echo " 年 第 ";
             echo $thisweek = date('W', time());
+            echo " 周）";
             ?>
-            周）
+
         </td>
     </tr>
     <form id="myform" name="form3" method="get" onsubmit="return checkpost();">
@@ -168,10 +172,10 @@ $dinner = ($foodperday - $breakfast) / 2;
                         echo "<option value=''>留空</option>";
                         $sql = "select * from " . $prename . "recipe where foodtime=1 and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
-
                         while ($row = mysqli_fetch_array($query)) {
                             echo "<option value='$row[recipeid]'>$row[recipename]</option>";
                         }
+
                         ?>
                     </select>
 
@@ -637,6 +641,68 @@ $dinner = ($foodperday - $breakfast) / 2;
     </tr>
     <tr>
         <td bgcolor="#FFFFFF">
+            <!-- 
+    先拉整个食材列表
+    然后判断本周食材是否出现 出去不必要的部分
+    进行计数
+-->
+
+            <?php
+            $sqling = "select * from " . $prename . "ingredients where ufid='$_SESSION[uid]'";
+            $querying = mysqli_query($conn, $sqling);
+            $rowing = mysqli_fetch_array($querying);
+            $sqlrecnum = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+            $queryrecnum = mysqli_query($conn, $sqlrecnum);
+            $rowrecnum = mysqli_fetch_array($queryrecnum);
+
+            for ($i = 0; $i <= 20; $i++) {
+                $allrecipe = $rowrecnum[$i];
+
+                // echo $allrecipe;
+
+                for ($zufor = 1; $zufor <= 7; $zufor++) {
+                    $zunum = strval($zufor);
+                    $sqlall = "select * from " . $prename . "recipe where recipeid=" . $allrecipe . " and ufid='$_SESSION[uid]'";
+                    $queryall = mysqli_query($conn, $sqlall);
+                    $rowall = mysqli_fetch_array($queryall);
+
+                    if ($rowall['zu' . $zunum]) {
+                        // echo $rowall['zu' . $zunum];
+                        // echo "<br>";
+                        $sqlingredient = "select * from " . $prename . "ingredients where ingredientid = '" . $rowall['zu' . $zunum] . "' and ufid='$_SESSION[uid]'";
+                        $queryingredient = mysqli_query($conn, $sqlingredient);
+                        $rowingredient = mysqli_fetch_array($queryingredient);
+                        $zuamount = $rowall['am' . $zunum];
+
+
+
+
+                        $zuname . $zunum = $rowingredient['ingredientname'] . "*" . $rowall['am' . $zunum] . $rowingredient['ingredientunit'];
+
+                        // 待编写  合并相同项
+
+
+
+                        echo $rowingredient['ingredientname'] . "*" . $zuamount . $rowingredient['ingredientunit'];
+                        echo "<br>";
+                    }
+                }
+            }
+            // 菜谱列表获取
+
+
+
+
+
+
+
+
+
+
+
+            ?>
+
+
 
         </td>
     </tr>
