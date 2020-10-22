@@ -33,7 +33,9 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
 </head>
 
 <body>
-    <script type="text/javascript" src="js/three.js"></script>
+   
+<script type="text/javascript" src="js/three.js"></script>
+    
     <?php
     include("config.php");
     ?>
