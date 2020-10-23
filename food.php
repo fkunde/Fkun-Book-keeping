@@ -648,7 +648,7 @@ $dinner = ($foodperday - $breakfast) / 2;
     然后判断本周食材是否出现 出去不必要的部分
     进行计数
 -->
-
+<table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
             <?php
             $sqling = "select * from " . $prename . "ingredients where ufid='$_SESSION[uid]'";
             $querying = mysqli_query($conn, $sqling);
@@ -676,8 +676,9 @@ $dinner = ($foodperday - $breakfast) / 2;
                         $queryingredient = mysqli_query($conn, $sqlingredient);
                         $rowingredient = mysqli_fetch_array($queryingredient);
                         $zuamount = $rowall['am' . $zunum];
-
-
+                        $zumaxamount = $rowingredient['ingredientquantity'];
+                        $ingneedbuy =($zuamount/$zumaxamount);
+                        
 
 
                         $zuname . $zunum = $rowingredient['ingredientname'] . "*" . $rowall['am' . $zunum] . $rowingredient['ingredientunit'];
@@ -685,7 +686,7 @@ $dinner = ($foodperday - $breakfast) / 2;
                         // 待编写  合并相同项
 
                         $oneingarray = array(
-                            array($rowingredient['ingredientname'], $zuamount, $rowingredient['ingredientunit'])
+                            array($rowingredient['ingredientname'], $zuamount, $rowingredient['ingredientunit'],$ingneedbuy)
                         );
 
                         $ingarray = array_merge_recursive($ingarray, $oneingarray);
@@ -696,36 +697,43 @@ $dinner = ($foodperday - $breakfast) / 2;
                     }
                 }
             }
-            //print_r($ingarray);
+            // print_r($ingarray);
             $item = array();
             foreach ($ingarray as $k => $v) {
                 if (!isset($item[$v[0]])) {
                     $item[$v[0]] = $v;
                 } else {
+                    $item[$v[0]][3] += $v[3];
                     $item[$v[0]][1] += $v[1];
                 }
             }
 
-            // 菜谱列表获取
-            echo '<table border="1" width="300">';
-            echo '<tr bgcolor="#dddddd">';
-            echo '<th>食材名称</th><th>数量</th><th>单位</th>';
-            echo '</tr>';
-            foreach ($item as $key => $value) {
-                echo '<tr>';
-                //foreach里面嵌套一个for循环也是可以的
-                /*for($n=0;$n<count($value);$n++)
-                {
-                    echo "<td>$value[$n]</td>";
-                }*/
-                //foreach里面嵌套foreach
+            $itemnum = array();
+            foreach ($item as $k => $v) {
+                $itemnum[$v[0]][0] = $v[0]; 
+                $itemnum[$v[0]][1] = $v[1]; 
+                    $itemnum[$v[0]][2] = $v[2]; 
+                    $itemnum[$v[0]][3] = round($v[3],2); 
+            }
+            
 
+       
+            
+            // 菜谱列表获取
+           
+
+            echo '<tr bgcolor="#dddddd">';
+            echo '<th>食材名称</th><th>数量</th><th>单位</th><th>所需购买量</th>';
+            echo '</tr>';
+            foreach ($itemnum as $key => $value) {
+                echo '<tr>';
+     
                 foreach ($value as $mn) {
                     echo "<td>{$mn}</td>";
                 }
                 echo '</tr>';
             }
-            echo '</table>';
+            
             // echo $rowingredient['ingredientname'] . "*" . $zuamount . $rowingredient['ingredientunit'];
 
 
@@ -738,7 +746,7 @@ $dinner = ($foodperday - $breakfast) / 2;
 
             ?>
 
-
+        </table>
 
         </td>
     </tr>
