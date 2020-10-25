@@ -172,7 +172,7 @@ $dinner = ($foodperday - $breakfast) / 2;
                         $rowrecipename = mysqli_fetch_array($queryrecipename);
                         echo "<option value=" . $rowold['monf'] . ">" . $rowrecipename['recipename'] . "</option>";
                         echo "<option value=''>留空</option>";
-                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3 or foodtime=7) and ufid='$_SESSION[uid]'";
+                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3 or foodtime=5 or  foodtime=7) and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
                             echo "<option value='$row[recipeid]'>$row[recipename]</option>";
@@ -197,7 +197,7 @@ $dinner = ($foodperday - $breakfast) / 2;
                         $rowrecipename = mysqli_fetch_array($queryrecipename);
                         echo "<option value=" . $rowold['tuef'] . ">" . $rowrecipename['recipename'] . "</option>";
                         echo "<option value=''>留空</option>";
-                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3 or foodtime=7) and ufid='$_SESSION[uid]'";
+                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3  or foodtime=5 or foodtime=7) and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
                             echo "<option value='$row[recipeid]'>$row[recipename]</option>";
@@ -219,7 +219,7 @@ $dinner = ($foodperday - $breakfast) / 2;
                         $rowrecipename = mysqli_fetch_array($queryrecipename);
                         echo "<option value=" . $rowold['wedf'] . ">" . $rowrecipename['recipename'] . "</option>";
                         echo "<option value=''>留空</option>";
-                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3 or foodtime=7) and ufid='$_SESSION[uid]'";
+                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3  or foodtime=5 or foodtime=7) and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
                             echo "<option value='$row[recipeid]'>$row[recipename]</option>";
@@ -241,7 +241,7 @@ $dinner = ($foodperday - $breakfast) / 2;
                         $rowrecipename = mysqli_fetch_array($queryrecipename);
                         echo "<option value=" . $rowold['thuf'] . ">" . $rowrecipename['recipename'] . "</option>";
                         echo "<option value=''>留空</option>";
-                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3 or foodtime=7) and ufid='$_SESSION[uid]'";
+                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3  or foodtime=5 or foodtime=7) and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
                             echo "<option value='$row[recipeid]'>$row[recipename]</option>";
@@ -263,7 +263,7 @@ $dinner = ($foodperday - $breakfast) / 2;
                         $rowrecipename = mysqli_fetch_array($queryrecipename);
                         echo "<option value=" . $rowold['frif'] . ">" . $rowrecipename['recipename'] . "</option>";
                         echo "<option value=''>留空</option>";
-                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3 or foodtime=7) and ufid='$_SESSION[uid]'";
+                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3  or foodtime=5 or foodtime=7) and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
                             echo "<option value='$row[recipeid]'>$row[recipename]</option>";
@@ -285,7 +285,7 @@ $dinner = ($foodperday - $breakfast) / 2;
                         $rowrecipename = mysqli_fetch_array($queryrecipename);
                         echo "<option value=" . $rowold['satf'] . ">" . $rowrecipename['recipename'] . "</option>";
                         echo "<option value=''>留空</option>";
-                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3 or foodtime=7) and ufid='$_SESSION[uid]'";
+                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3  or foodtime=5 or foodtime=7) and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
                             echo "<option value='$row[recipeid]'>$row[recipename]</option>";
@@ -306,7 +306,7 @@ $dinner = ($foodperday - $breakfast) / 2;
                         $rowrecipename = mysqli_fetch_array($queryrecipename);
                         echo "<option value=" . $rowold['sunf'] . ">" . $rowrecipename['recipename'] . "</option>";
                         echo "<option value=''>留空</option>";
-                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3 or foodtime=7) and ufid='$_SESSION[uid]'";
+                        $sql = "select * from " . $prename . "recipe where (foodtime=1 or foodtime=3  or foodtime=5 or foodtime=7) and ufid='$_SESSION[uid]'";
                         $query = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_array($query)) {
                             echo "<option value='$row[recipeid]'>$row[recipename]</option>";
@@ -634,119 +634,103 @@ $dinner = ($foodperday - $breakfast) / 2;
         <br>
     </form>
 </table>
-
-
 <br>
+
+<?php
+$sqling = "select * from " . $prename . "ingredients where ufid='$_SESSION[uid]'";
+$querying = mysqli_query($conn, $sqling);
+$rowing = mysqli_fetch_array($querying);
+$sqlrecnum = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
+$queryrecnum = mysqli_query($conn, $sqlrecnum);
+$rowrecnum = mysqli_fetch_array($queryrecnum);
+$ingarray = array();
+
+for ($i = 0; $i <= 20; $i++) {
+    $allrecipe = $rowrecnum[$i];
+    $sqlall = "select * from " . $prename . "recipe where recipeid=" . $allrecipe . " and ufid='$_SESSION[uid]'";
+    $queryall = mysqli_query($conn, $sqlall);
+    if ($queryall) {
+        $rowall = mysqli_fetch_array($queryall);
+        $liststat = '';
+    } else {
+        $liststat = '(暂无)';
+        break;
+    }
+
+    for ($zufor = 1; $zufor <= 7; $zufor++) {
+        $zunum = strval($zufor);
+
+        if ($rowall['zu' . $zunum]) {
+            // echo $rowall['zu' . $zunum];
+            // echo "<br>";
+            $sqlingredient = "select * from " . $prename . "ingredients where ingredientid = '" . $rowall['zu' . $zunum] . "' and ufid='$_SESSION[uid]'";
+            $queryingredient = mysqli_query($conn, $sqlingredient);
+            $rowingredient = mysqli_fetch_array($queryingredient);
+            $zuamount = $rowall['am' . $zunum];
+            $zumaxamount = $rowingredient['ingredientquantity'];
+            $ingneedbuy = ($zuamount / $zumaxamount);
+            $oneingarray = array(
+                array($rowingredient['ingredientname'], $zuamount, $rowingredient['ingredientunit'], $ingneedbuy)
+            );
+            $ingarray = array_merge_recursive($ingarray, $oneingarray);
+
+
+            // echo "<br>";
+
+        }
+    }
+}
+// print_r($ingarray);
+$item = array();
+foreach ($ingarray as $k => $v) {
+    if (!isset($item[$v[0]])) {
+        $item[$v[0]] = $v;
+    } else {
+        $item[$v[0]][3] += $v[3];
+        $item[$v[0]][1] += $v[1];
+    }
+}
+
+$itemnum = array();
+foreach ($item as $k => $v) {
+    $itemnum[$v[0]][0] = $v[0];
+    $itemnum[$v[0]][1] = $v[1];
+    $itemnum[$v[0]][2] = $v[2];
+    $itemnum[$v[0]][3] = round($v[3], 2);
+}
+
+
+
+?>
+
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
-        <td bgcolor="#EBEBEB">购物清单</td>
+        <?php
+        echo '<td bgcolor="#EBEBEB">购物清单' . $liststat . '</td>';
+        ?>
     </tr>
     <tr>
         <td bgcolor="#FFFFFF">
-            <!-- 
-    先拉整个食材列表
-    然后判断本周食材是否出现 出去不必要的部分
-    进行计数
--->
-<table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
-            <?php
-            $sqling = "select * from " . $prename . "ingredients where ufid='$_SESSION[uid]'";
-            $querying = mysqli_query($conn, $sqling);
-            $rowing = mysqli_fetch_array($querying);
-            $sqlrecnum = "select * from " . $prename . "weekmeal where weektime = '" . $weektime . "' and ufid='$_SESSION[uid]'";
-            $queryrecnum = mysqli_query($conn, $sqlrecnum);
-            $rowrecnum = mysqli_fetch_array($queryrecnum);
-            $ingarray = array();
+            <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
 
-            for ($i = 0; $i <= 20; $i++) {
-                $allrecipe = $rowrecnum[$i];
-
-                // echo $allrecipe;
-
-                for ($zufor = 1; $zufor <= 7; $zufor++) {
-                    $zunum = strval($zufor);
-                    $sqlall = "select * from " . $prename . "recipe where recipeid=" . $allrecipe . " and ufid='$_SESSION[uid]'";
-                    $queryall = mysqli_query($conn, $sqlall);
-                    $rowall = mysqli_fetch_array($queryall);
-
-                    if ($rowall['zu' . $zunum]) {
-                        // echo $rowall['zu' . $zunum];
-                        // echo "<br>";
-                        $sqlingredient = "select * from " . $prename . "ingredients where ingredientid = '" . $rowall['zu' . $zunum] . "' and ufid='$_SESSION[uid]'";
-                        $queryingredient = mysqli_query($conn, $sqlingredient);
-                        $rowingredient = mysqli_fetch_array($queryingredient);
-                        $zuamount = $rowall['am' . $zunum];
-                        $zumaxamount = $rowingredient['ingredientquantity'];
-                        $ingneedbuy =($zuamount/$zumaxamount);
-                        
+                <?php
+                // 菜谱列表获取
 
 
-                        $zuname . $zunum = $rowingredient['ingredientname'] . "*" . $rowall['am' . $zunum] . $rowingredient['ingredientunit'];
-
-                        // 待编写  合并相同项
-
-                        $oneingarray = array(
-                            array($rowingredient['ingredientname'], $zuamount, $rowingredient['ingredientunit'],$ingneedbuy)
-                        );
-
-                        $ingarray = array_merge_recursive($ingarray, $oneingarray);
-
-
-                        // echo "<br>";
-
-                    }
-                }
-            }
-            // print_r($ingarray);
-            $item = array();
-            foreach ($ingarray as $k => $v) {
-                if (!isset($item[$v[0]])) {
-                    $item[$v[0]] = $v;
-                } else {
-                    $item[$v[0]][3] += $v[3];
-                    $item[$v[0]][1] += $v[1];
-                }
-            }
-
-            $itemnum = array();
-            foreach ($item as $k => $v) {
-                $itemnum[$v[0]][0] = $v[0]; 
-                $itemnum[$v[0]][1] = $v[1]; 
-                    $itemnum[$v[0]][2] = $v[2]; 
-                    $itemnum[$v[0]][3] = round($v[3],2); 
-            }
-            
-
-       
-            
-            // 菜谱列表获取
-           
-
-            echo '<tr bgcolor="#dddddd">';
-            echo '<th>食材名称</th><th>数量</th><th>单位</th><th>所需购买量</th>';
-            echo '</tr>';
-            foreach ($itemnum as $key => $value) {
-                echo '<tr>';
-     
-                foreach ($value as $mn) {
-                    echo "<td>{$mn}</td>";
-                }
+                echo '<tr bgcolor="#dddddd">';
+                echo '<th>食材名称</th><th>数量</th><th>单位</th><th>所需购买量</th>';
                 echo '</tr>';
-            }
-            
-            // echo $rowingredient['ingredientname'] . "*" . $zuamount . $rowingredient['ingredientunit'];
+                foreach ($itemnum as $key => $value) {
+                    echo '<tr>';
 
+                    foreach ($value as $mn) {
+                        echo "<td>{$mn}</td>";
+                    }
+                    echo '</tr>';
+                }
+                ?>
 
-
-
-
-
-
-
-
-            ?>
-
-        </table>
+            </table>
 
         </td>
     </tr>
@@ -848,7 +832,7 @@ if ($_GET["Submit2"]) {
     if ($attitle) {
         $status_text2 = "食谱已存在！";
     } else {
-        $foodtime = $_GET['fru'] + $_GET['mit']+ $_GET['abe'];
+        $foodtime = $_GET['fru'] + $_GET['mit'] + $_GET['abe'];
         $sql = "insert into " . $prename . "recipe (recipename, ufid, zu1, am1, zu2, am2, zu3, am3, zu4,  am4, zu5, am5, zu6, am6, zu7, am7, satiety, foodtime, difficulty) values ('$_GET[recipename]', $_SESSION[uid], '$_GET[zu1]', '$_GET[am1]', '$_GET[zu2]', '$_GET[am2]', '$_GET[zu3]', '$_GET[am3]', '$_GET[zu4]', '$_GET[am4]', '$_GET[zu5]', '$_GET[am5]', '$_GET[zu6]', '$_GET[am6]', '$_GET[zu7]', '$_GET[am7]', '$_GET[satiety]', '" . $foodtime . "', '$_GET[difficulty]')";
         $query = mysqli_query($conn, $sql);
         if ($query) {
@@ -1054,21 +1038,21 @@ if ($_GET["Submit2"]) {
         echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>";
         if ($row['foodtime'] == 1) {
             echo "早";
-        }elseif($row['foodtime'] == 2){
+        } elseif ($row['foodtime'] == 2) {
             echo "中";
-        }elseif($row['foodtime'] == 4){
+        } elseif ($row['foodtime'] == 4) {
             echo "晚";
-        }elseif($row['foodtime'] == 3){
+        } elseif ($row['foodtime'] == 3) {
             echo "早/中";
-        }elseif($row['foodtime'] == 6){
+        } elseif ($row['foodtime'] == 6) {
             echo "中/晚";
-        }elseif($row['foodtime'] == 7){
+        } elseif ($row['foodtime'] == 7) {
             echo "早/中/晚";
-        }else{
+        } else {
             echo "早/晚";
         }
-        
-        
+
+
 
         echo "
 		 </font></td>
