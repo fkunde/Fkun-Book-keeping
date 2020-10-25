@@ -136,11 +136,9 @@ error_reporting(E_ALL ^ E_NOTICE);
         $lastmon =  date('Y-m-d', strtotime('-1 monday', time())); //无论今天几号,-1 monday为上一个有效周未
         $sqlweek = " " . $prename . "account.actime >=" . strtotime($lastmon . " 0:0:0") . " and " . $prename . "account.actime <" . strtotime($now . "23:59:59");
         $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $sqlweek . " and acuserid='$_SESSION[uid]' and ac0='0' group by " . $prename . "account.ac1";
-        $s2 = array();
         $query = mysqli_query($conn, $sql);
-        while ($acclass = mysqli_fetch_array($query)) {
-            $total = $acclass['total'];
-            $s2[$acclass['acclassid']] = $total;
+        while ($rowwf = mysqli_fetch_array($query)) {
+            $total = $rowwf['total'];
         }
 
         $wf = $total;
@@ -175,12 +173,10 @@ error_reporting(E_ALL ^ E_NOTICE);
             $base == "0";
         }
         //常务
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1=2 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.acclassid and ac0='0'";
-        $s2 = array();
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1=2 and " . $sqltime . " and acuserid='$_SESSION[uid]' and ac0='0' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
-        while ($acclass = mysqli_fetch_array($query)) {
-            $total = $acclass['total'];
-            $s2[$acclass['acclassid']] = $total;
+        while ($rowgnf = mysqli_fetch_array($query)) {
+            $total = $rowgnf['total'];
         }
         $gnf = $total;
 
@@ -189,11 +185,9 @@ error_reporting(E_ALL ^ E_NOTICE);
         $monthstart =  date('Y-m-01');
         $sqlmon = " " . $prename . "account.actime >=" . strtotime($monthstart . " 0:0:0") . " and " . $prename . "account.actime <" . strtotime($now . " 23:59:59");
         $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $sqlmon . " and acuserid='$_SESSION[uid]' and ac0='1' group by " . $prename . "account.ac1";
-        $s2 = array();
         $query = mysqli_query($conn, $sql);
-        while ($acclass = mysqli_fetch_array($query)) {
-            $totaled = $acclass['total'];
-            $s2[$acclass['ac1']] = $totaled;
+        while ($rowmgf = mysqli_fetch_array($query)) {
+            $totaled = $rowmgf['total'];
         }
 
         $mgf = $totaled;
@@ -278,16 +272,16 @@ error_reporting(E_ALL ^ E_NOTICE);
         $sql = "select * from " . $prename . "account where ac1=2 and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         $query = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($query)) {
-                $spending = $spending + $row['acamount'];
+            $spending = $spending + $row['acamount'];
         }
 
-
-        $sql = "select * from " . $prename . "account where actype=2 and ac1=2 and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+        //多用户适配！！
+        $sql = "select * from " . $prename . "account where accategory=2 and ac1=2 and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         $query = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($query)) {
-                $foodspending = $foodspending + $row['acamount'];
+            $foodspending = $foodspending + $row['acamount'];
         }
-        $foodpct= 100*round(($foodspending/$spending),5);
+        $foodpct = 100 * round(($foodspending / $spending), 5);
         echo "
 <tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $yz . "</font><font>  €</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $usable . "</font><font>  €</font></td></tr>
@@ -306,10 +300,10 @@ error_reporting(E_ALL ^ E_NOTICE);
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $foodpct . "</font><font>% </font></td></tr>
 ";
 
-session_start();          
-$_SESSION['suggestpw']=$suggestpw;
-?>
-</table>
+        session_start();
+        $_SESSION['suggestpw'] = $suggestpw;
+        ?>
+    </table>
 </div>
 <?php
 include_once("footer.php");
