@@ -23,7 +23,7 @@ if ($_GET['Submit']) {
             echo "<script type='text/javascript'>alert('添加成功，空数据自动跳过！');window.location='batch_add.php';</script>";
             exit;
         }
-        $query = mysqli_query($conn, "insert into " . $prename . "account (acamount, acclassid, actime, acremark, actype, acuserid, acplace, acpayway, acname, ac0, ac1, ac2) values(''$value','" . $path3[$key] . "','$time100','" . $path4[$key] . "','" . $path2[$key] . ",'$_SESSION[uid]',,'" . $path5[$key] . "','" . $path6[$key] . "','" . $path1[$key] . "','','','')");
+        $query = mysqli_query($conn, "insert into " . $prename . "account (acamount, acclassid, actime, acremark, accategory, acuserid, acplace, acpayway, acname, ac0, ac1, ac2) values(''$value','" . $path3[$key] . "','$time100','" . $path4[$key] . "','" . $path2[$key] . ",'$_SESSION[uid]',,'" . $path5[$key] . "','" . $path6[$key] . "','" . $path1[$key] . "','','','')");
 
 
         //$sql="insert into ".$prename."account (acmoney, acclassid, actime, acremark,zhifu,jiid) values('$path','$path1','$path2','$path3','$path4','$_SESSION[uid]')";

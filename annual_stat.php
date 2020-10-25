@@ -2105,12 +2105,12 @@ error_reporting(E_ALL ^ E_NOTICE);
 
                                     <?php
 
-                                    $sql = "select sum(acamount) as total ," . $prename . "category.categoryname from " . $prename . "account left join " . $prename . "category on " . $prename . "account.actype =" . $prename . "category.categoryid left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account.ac1 =2 and acuserid='$_SESSION[uid]' group by " . $prename . "account.actype";
+                                    $sql = "select sum(acamount) as total ," . $prename . "category.categoryname from " . $prename . "account left join " . $prename . "category on " . $prename . "account.accategory =" . $prename . "category.categoryid left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account.ac1 =2 and acuserid='$_SESSION[uid]' group by " . $prename . "account.accategory";
                                     $s2 = array();
                                     $query = mysqli_query($conn, $sql);
-                                    while ($actype = mysqli_fetch_array($query)) {
+                                    while ($accategory = mysqli_fetch_array($query)) {
 
-                                        echo "{value: '" . $actype['total'] . "', name: '" . $actype['categoryname'] . "'},";
+                                        echo "{value: '" . $accategory['total'] . "', name: '" . $accategory['categoryname'] . "'},";
                                     }
 
                                     ?>

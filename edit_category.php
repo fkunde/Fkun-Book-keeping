@@ -28,10 +28,10 @@ include_once("header.php");
             }
             //执行操作--转移分类
             if ($_GET['Submit2']) {
-                $sql = "select * from ".$prename."account where actype= '$_GET[categoryid]' and acuserid='$_SESSION[uid]'";
+                $sql = "select * from ".$prename."account where accategory= '$_GET[categoryid]' and acuserid='$_SESSION[uid]'";
                 $query = mysqli_query($conn,$sql);
                 while ($row = mysqli_fetch_array($query)) {
-                    $sql = "update ".$prename."account set actype= '$_GET[tocategoryid]' where acid= '$row[acid]' and acuserid='$_SESSION[uid]'";
+                    $sql = "update ".$prename."account set accategory= '$_GET[tocategoryid]' where acid= '$row[acid]' and acuserid='$_SESSION[uid]'";
                     mysqli_query($conn,$sql);
                 }
                 echo "转移完成，你可以查询此分类下是否还有记录，已确认是否全部转移成功！</td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=category.php'>";
@@ -39,7 +39,7 @@ include_once("header.php");
             }
             //执行操作--删除分类
             if ($_GET['Submit3']) {
-                $sql = "select * from ".$prename."account where actype='$_GET[categoryid]' and acuserid='$_SESSION[uid]'";
+                $sql = "select * from ".$prename."account where accategory='$_GET[categoryid]' and acuserid='$_SESSION[uid]'";
                 $query = mysqli_query($conn,$sql);
                 if ($row = mysqli_fetch_array($query)) {
                     echo "<font color='red'>无法删除！在此分类下有账目，请将账目转移到其他分类。</font></td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=category.php'>";

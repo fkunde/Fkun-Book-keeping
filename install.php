@@ -25,7 +25,7 @@
             echo "<br />已存在<br /><font color='red'>已经安装过啦，表前缀已经存在。<br /></font></body></html>";
 
         } else {
-            $sql = "CREATE TABLE `$db_dbname`.`".$prename."account` (`acid` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, `acamount` DECIMAL(10,2) NOT NULL, `acclassid` INT(8) NOT NULL, `actime` INT(11) NOT NULL, `acremark` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `actype` INT(8) NOT NULL, `acuserid` INT(8) NOT NULL, `acplace` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `acpayway` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `acname` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `ac0` INT(8) NOT NULL, `ac1` INT(8) NOT NULL  , `ac2` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL )   ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci";
+            $sql = "CREATE TABLE `$db_dbname`.`".$prename."account` (`acid` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, `acamount` DECIMAL(10,2) NOT NULL, `acclassid` INT(8) NOT NULL, `actime` INT(11) NOT NULL, `acremark` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `accategory` INT(8) NOT NULL, `acuserid` INT(8) NOT NULL, `acplace` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `acpayway` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `acname` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `ac0` INT(8) NOT NULL, `ac1` INT(8) NOT NULL  , `ac2` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL )   ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci";
             $query = mysqli_query($conn,$sql);
             if ($query) {
                 echo "成功<br />";

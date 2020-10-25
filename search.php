@@ -50,8 +50,8 @@ $spending = 0;
                     用文本复制以下内容保存为csv后缀名<br />
                     或excel导出csv格式文件，格式必须如下：<br /><br />
                     日期,交易对象,分类,交易类型,备注,位置,支付方式,金额,特殊消费<br />
-                    2015-11-30 05:15,IKEA,一般支出,家具,JÜLICH,233.33,0<br />
-                    2015-11-30 05:15,IKEA,一般支出,备注,JÜLICH,233.33,2<br /><br />
+                    2020-10-24 01:01,IKEA,一般支出,家具,JÜLICH,233.33,0<br />
+                    2020-10-24 01:02,IKEA,一般支出,备注,JÜLICH,233.33,2<br /><br />
                 </div>
                 <p>
                     请选择要导入的CSV文件：<br /><br />
@@ -153,11 +153,11 @@ $spending = 0;
     //只查询分类收
     if ($_POST['classid'] == "zc" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] == "") {
 
-        $sql = "select * from " . $prename . "account where actype='2' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+        $sql = "select * from " . $prename . "account where accategory='2' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
     }
     if ($_POST['classid'] == "sr" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] == "") {
 
-        $sql = "select * from " . $prename . "account where actype='1' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+        $sql = "select * from " . $prename . "account where accategory='1' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
     }
     //只查询分类支
 
@@ -185,14 +185,14 @@ $spending = 0;
     //查询收支，备注
     if ($_POST['classid'] == "sr" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] <> "") {
         $type = "1";
-        $sql = "select * from " . $prename . "account where actype='$type' and acremark like '$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+        $sql = "select * from " . $prename . "account where accategory='$type' and acremark like '$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
     }
     if ($_POST['classid'] == "zc" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] <> "") {
         $type = "2";
 
 
 
-        $sql = "select * from " . $prename . "account where actype='$type' and acremark like '$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+        $sql = "select * from " . $prename . "account where accategory='$type' and acremark like '$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
     }
 
     //查询收支，日期
@@ -201,14 +201,14 @@ $spending = 0;
 
         $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
-        $sql = "select * from " . $prename . "account where actype='$type' and " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+        $sql = "select * from " . $prename . "account where accategory='$type' and " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
     }
     if ($_POST['classid'] == "zc" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] == "") {
         $type = "2";
 
         $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
-        $sql = "select * from " . $prename . "account where actype='$type' and " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+        $sql = "select * from " . $prename . "account where accategory='$type' and " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
     }
     //查询收支，日期，备注
     if ($_POST['classid'] == "sr" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
@@ -217,7 +217,7 @@ $spending = 0;
 
         $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
-        $sql = "select * from " . $prename . "account where actype='$type' and " . $sqltime . " and acremark like '$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+        $sql = "select * from " . $prename . "account where accategory='$type' and " . $sqltime . " and acremark like '$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
     }
     if ($_POST['classid'] == "zc" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
         $type = "2";
@@ -225,7 +225,7 @@ $spending = 0;
 
         $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
-        $sql = "select * from " . $prename . "account where actype='$type' and " . $sqltime . " and acremark like '$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+        $sql = "select * from " . $prename . "account where accategory='$type' and " . $sqltime . " and acremark like '$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
     }
 
     //查询日期，备注
@@ -285,7 +285,7 @@ $spending = 0;
         $sqlpay = "select * from " . $prename . "account_payway where payid=$row[acpayway] and ufid='$_SESSION[uid]'";
         $payquery = mysqli_query($conn, $sqlpay);
         $payinfo = mysqli_fetch_array($payquery);
-        $sqlcategory = "select * from " . $prename . "category where categoryid=$row[actype] and ufid='$_SESSION[uid]'";
+        $sqlcategory = "select * from " . $prename . "category where categoryid=$row[accategory] and ufid='$_SESSION[uid]'";
         $categoryquery = mysqli_query($conn, $sqlcategory);
         $categoryinfo = mysqli_fetch_array($categoryquery);
         echo "<tr>";
@@ -383,14 +383,14 @@ $spending = 0;
 
 
 
-            $sql = "select * from " . $prename . "account where actype='$type' and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+            $sql = "select * from " . $prename . "account where accategory='$type' and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
         if ($_POST['classid'] == "zc" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] <> "") {
             $type = "2";
 
 
 
-            $sql = "select * from " . $prename . "account where actype='$type' and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+            $sql = "select * from " . $prename . "account where accategory='$type' and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
         //查询收支，日期，金额
         if ($_POST['classid'] == "sr" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
@@ -398,14 +398,14 @@ $spending = 0;
 
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
-            $sql = "select * from " . $prename . "account where actype='$type' and " . $sqltime . " and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+            $sql = "select * from " . $prename . "account where accategory='$type' and " . $sqltime . " and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
         if ($_POST['classid'] == "zc" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
             $type = "2";
 
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
-            $sql = "select * from " . $prename . "account where actype='$type' and " . $sqltime . " and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+            $sql = "select * from " . $prename . "account where accategory='$type' and " . $sqltime . " and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
 
         //查询日期，金额
@@ -434,11 +434,11 @@ $spending = 0;
         //只查询分类收
         if ($_POST['classid'] == "zc" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] == "") {
 
-            $sql = "select * from " . $prename . "account where actype='2' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+            $sql = "select * from " . $prename . "account where accategory='2' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
         if ($_POST['classid'] == "sr" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] == "") {
 
-            $sql = "select * from " . $prename . "account where actype='1' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+            $sql = "select * from " . $prename . "account where accategory='1' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
         //只查询分类支
 
@@ -461,14 +461,14 @@ $spending = 0;
 
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
-            $sql = "select * from " . $prename . "account where actype='$type' and " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+            $sql = "select * from " . $prename . "account where accategory='$type' and " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
         if ($_POST['classid'] == "zc" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] == "") {
             $type = "2";
 
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
-            $sql = "select * from " . $prename . "account where actype='$type' and " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+            $sql = "select * from " . $prename . "account where accategory='$type' and " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
 
         //查询分类，日期

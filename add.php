@@ -36,7 +36,7 @@ $spending = 0;
 //检查是否记账并执行
 if ($_POST['Submit']) {
     $time100 = strtotime($_POST['time']);
-    $sql = "insert into " . $prename . "account (acamount, acclassid, actime, acremark, actype, acuserid, acplace, acpayway, acname, ac0, ac1, ac2) values ('$_POST[money]', '$_POST[classid]', '$time100', '$_POST[remark]', '$_POST[category]', '$_SESSION[uid]', '$_POST[place]', '$_POST[payway]', '$_POST[name]', '$_POST[special]', '$_POST[classid]', '')";
+    $sql = "insert into " . $prename . "account (acamount, acclassid, actime, acremark, accategory, acuserid, acplace, acpayway, acname, ac0, ac1, ac2) values ('$_POST[money]', '$_POST[classid]', '$time100', '$_POST[remark]', '$_POST[category]', '$_SESSION[uid]', '$_POST[place]', '$_POST[payway]', '$_POST[name]', '$_POST[special]', '$_POST[classid]', '')";
     $query = mysqli_query($conn, $sql);
     if ($query) {
         $prompttext = "<font color='#009900'>记录成功！</font>";
@@ -74,8 +74,8 @@ if (isset($sql)) {
                     <?php
                     $sql = "select * from " . $prename . "category where ufid='$_SESSION[uid]'";
                     $query = mysqli_query($conn, $sql);
-                    while ($actype = mysqli_fetch_array($query)) {
-                        echo "<option value='$actype[categoryid]'>$actype[categoryname]</option>";
+                    while ($accategory = mysqli_fetch_array($query)) {
+                        echo "<option value='$accategory[categoryid]'>$accategory[categoryname]</option>";
                     }
 
                     ?>
@@ -188,7 +188,7 @@ while ($row = mysqli_fetch_array($query)) {
     $payquery = mysqli_query($conn, $sqlpay);
     $payinfo = mysqli_fetch_array($payquery);
 
-    $sqlcategory = "select * from " . $prename . "category where categoryid=$row[actype] and ufid='$_SESSION[uid]'";
+    $sqlcategory = "select * from " . $prename . "category where categoryid=$row[accategory] and ufid='$_SESSION[uid]'";
     $categoryquery = mysqli_query($conn, $sqlcategory);
     $categoryinfo = mysqli_fetch_array($categoryquery);
 
