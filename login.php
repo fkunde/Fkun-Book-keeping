@@ -154,27 +154,6 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                     </div>
                 </div>
             </div>
-            <!-- <ul class="hide">
-    <form action="" method="post">
-        <div class='login_fields'>
-
-            <div class='login_fields__user'>
-                <div class='icon'>
-                    <img src='img/user_icon_copy.png'>
-                </div>
-                <input placeholder='EMAIL' type='text' name='email' id='email'>
-                <div class='validation'>
-                    <img src='img/tick.png'>
-                </div>
-            </input>
-            <div class='login_fields__submit'>
-                <input type='submit' value='找回' name='submitmima'>
-            </div>
-        </div>
-    </div>
-</form>
-</ul> -->
-
 
         </div>
         <div class="tishi">
@@ -221,18 +200,6 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                             echo "<br><br><font color='green'>Registration Successful!</font><script>alert('Registration Successful! Please read the EULA before login!') </script>";
                         } else {
                             echo "<br><br><font color='red'>SQL Erro!</font>";
-                        }
-                        //给用户增加默认分类
-                        $sql = "select * from " . $prename . "user where username='$_POST[usernamereg]'";
-                        $query = mysqli_query($conn, $sql);
-                        $row = mysqli_fetch_assoc($query);
-                        $uid = $row['uid'];
-                        $sql = "insert into " . $prename . "account_class (classname, classtype,ufid) values ('收入', '1','" . $uid . "'),('支出', '2','" . $uid . "')";
-                        $query = mysqli_query($conn, $sql);
-                        if ($query) {
-                            echo "<br><font color='green'>Userdata Create...OK</font>";
-                        } else {
-                            echo "<br><font color='red'>Userdata Create...Failure!!!</font>";
                         }
                         //给用户增加默认time
                         $sql = "select * from " . $prename . "user where username='$_POST[usernamereg]'";

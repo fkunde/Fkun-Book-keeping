@@ -35,31 +35,7 @@
 
             }
         }
-        echo "<br />创建表 ".$prename."account_class .....";
-        if (intable($db_dbname,$prename."account_class",$conn)) {
-            echo "<br />已存在<br /><font color='red'>已经安装过啦，表前缀已经存在。</font></body></html>";
-
-        } else {
-            $sql = "CREATE TABLE `$db_dbname`.`".$prename."account_class` (`classid` INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY, `classname` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `classtype` INT(1) NOT NULL, `ufid` INT(8) NOT NULL) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;";
-            $query = mysqli_query($conn,$sql);
-            if ($query) {
-                echo "成功<br />";
-            } else {
-                echo "失败<br /><font color='red'>安装失败啦，请检查config.php相关配置。</font></body></html>";
-            }
-        }
-        echo "<br />加入默认分类.....";
-        $query = mysqli_query($conn,"select * from ".$prename."account_class where classname='收入'");
-        $attitle = is_array($row = mysqli_fetch_array($query));
-        if ($attitle) {
-            echo "分类已存在！<br />";
-            exit();
-        } else {
-            $sql = "insert into ".$prename."account_class (classname, classtype,ufid) values ('收入', '1','1'),('支出', '2','1')";
-            $query = mysqli_query($conn,$sql);
-            echo "创建成功！<br />";
-        }
-
+        
         echo "<br />创建表 ".$prename."account_payway .....";
         if (intable($db_dbname,$prename."account_payway",$conn)) {
             echo "<br />已存在<br /><font color='red'>已安装。</font></body></html>";
@@ -80,7 +56,7 @@
             echo "Es gibt schon standard daten !<br />";
             exit();
         } else {
-            $sql = "insert into ".$prename."account_payway (paywayname,ufid) values ('BAR','1'),('KARTE','1'),('PAYPAL','1'),('ÜBERWEISUNG','1')";
+            $sql = "insert into ".$prename."account_payway (paywayname,ufid) values ('现金','1'),('刷卡','1'),('支付宝','1'),('微信','1')";
             $query = mysqli_query($conn,$sql);
             echo "创建成功！<br />";
         }
@@ -105,7 +81,7 @@
             echo "Es gibt schon standard daten !<br />";
             exit();
         } else {
-            $sql = "insert into ".$prename."category (categoryname,ufid) values ('STANDARD','1'),('LEBENSMITTEL','1'),('HOBBY','1')";
+            $sql = "insert into ".$prename."category (categoryname,ufid) values ('食物','1'),('生活用品','1'),('娱乐','1')";
             $query = mysqli_query($conn,$sql);
             echo "创建成功！<br />";
         }
@@ -273,7 +249,7 @@
             exit();
         } else{
             $utime = strtotime("now");
-            $query = mysqli_query($conn,"insert into ".$prename."user (uid, username, password,email,utime) values ('1', 'fkun', '1f1bea267ae8548344114a01da1b2512','admin@fkun.tech','$utime')");
+            $query = mysqli_query($conn,"insert into ".$prename."user (uid, username, password,email,utime) values ('1', 'test', 'test','admin@fkun.tech','$utime')");
 
 
 
