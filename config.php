@@ -10,10 +10,6 @@ $db_dbname = "Billsys";
 //数据库名 将 jizhang 修改为你的数据库名
 $prename = "Finance_";
 //表前缀
-$zyemail = "";
-//配置找回密码邮箱，推荐163邮箱
-$zyemailpass = "";
-//邮箱密码
 $conn = new mysqli($db_servername,$db_username,$db_password);
 if ($conn->connect_error) {
     die("数据库连接错误，请检查config.php设置！");
@@ -27,7 +23,6 @@ $banben=PHP_VERSION;
 if($banben<5){
 	die('PHP版本小于5.0，请升级！');
 }
-
 
 function user_shell($uid,$shell) {
     //其他页面权限判断
@@ -47,7 +42,7 @@ function user_shell($uid,$shell) {
 
 
 //基本设置
-date_default_timezone_set("Asia/Shanghai");
+date_default_timezone_set("Europe/Berlin");
 //date_default_timezone_set('America/Argentina/Buenos_Aires');
 //时区设置为北京时间 亚洲/上海 阿根廷时间date_default_timezone_set( 'America/Argentina/Buenos_Aires' );
 
@@ -61,7 +56,6 @@ function user_mktime($onlinetime) {
         $_SESSION['times'] = mktime();
     }
 }
-
 
 //数据库是否存在
 function indatabase($db_dbname,$conn) {
@@ -79,5 +73,4 @@ function intable($dbname,$tablename,$conn) {
     //重新关联账本数据库
     return $intable;
 }
-
 ?>
