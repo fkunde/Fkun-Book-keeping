@@ -62,50 +62,62 @@ error_reporting(E_ALL ^ E_NOTICE);
     $startdate1 = "$thisyear-01-01";
     $enddate1 = "$thisyear-01-31";
     $daysinmonth1 = 31;
+    $gatsuname1 = 'JAN';
 
     $startdate2 = "$thisyear-02-01";
     $enddate2 = "$thisyear-02-28";
     $daysinmonth2 = 28;
+    $gatsuname2 = 'FEB';
 
     $startdate3 = "$thisyear-03-01";
     $enddate3 = "$thisyear-03-31";
     $daysinmonth3 = 31;
+    $gatsuname3 = 'MAR';
 
     $startdate4 = "$thisyear-04-01";
     $enddate4 = "$thisyear-04-30";
     $daysinmonth4 = 30;
+    $gatsuname4 = 'APR';
 
     $startdate5 = "$thisyear-05-01";
     $enddate5 = "$thisyear-05-31";
     $daysinmonth5 = 31;
+    $gatsuname5 = 'MAY';
 
     $startdate6 = "$thisyear-06-01";
     $enddate6 = "$thisyear-06-30";
     $daysinmonth6 = 30;
+    $gatsuname6 = 'JUN';
 
     $startdate7 = "$thisyear-07-01";
     $enddate7 = "$thisyear-07-31";
     $daysinmonth7 = 31;
+    $gatsuname7 = 'JUL';
 
     $startdate8 = "$thisyear-08-01";
     $enddate8 = "$thisyear-08-31";
     $daysinmonth8 = 31;
+    $gatsuname8 = 'AUG';
 
     $startdate9 = "$thisyear-09-01";
     $enddate9 = "$thisyear-09-30";
     $daysinmonth9 = 30;
+    $gatsuname9 = 'SEP';
 
     $startdate10 = "$thisyear-10-01";
     $enddate10 = "$thisyear-10-31";
     $daysinmonth10 = 31;
+    $gatsuname10 = 'OTC';
 
     $startdate11 = "$thisyear-11-01";
     $enddate11 = "$thisyear-11-30";
     $daysinmonth11 = 30;
+    $gatsuname11 = 'NOV';
 
     $startdate12 = "$thisyear-12-01";
     $enddate12 = "$thisyear-12-31";
     $daysinmonth12 = 31;
+    $gatsuname12 = 'DEC';
 
 
     for ($monthnum = 1; $monthnum <= 12; $monthnum++) {
@@ -206,6 +218,26 @@ error_reporting(E_ALL ^ E_NOTICE);
             $$npd = "-";
             $$mpd = "-";
         }
+        $monthname = strval("gatsuname" . $monthnum);
+
+        echo '<div style="width:7%;float:left;">';
+        echo '<table id="excel" width="60px" border="0" align="left" bgcolor="#B3B3B3" style="float:left" class="table table-striped table-bordered">';
+        echo '<tr><th bgcolor="#EBEBEB">';
+        echo $$monthname;     
+        echo '</th></tr>';
+
+            echo "
+<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $$ys . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $$yf . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>" . $$gs . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>" . $$gsa . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>" . $$sf . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>" . $$nf . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>" . $$npd . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>" . $$mpd . "</font></td></tr>
+           </table>
+           </div> ";
+
     }
     //年度统计
     $sqltime = " " . $prename . "account.actime >=" . strtotime($startdate1 . " 0:0:0") . " and " . $prename . "account.actime <" . strtotime($enddate12 . " 23:59:59");
@@ -281,264 +313,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 
     ?>
-    <div style="width:7%;float:left;">
-        <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
-            <tr>
-                <th bgcolor='#EBEBEB'>JAN</th>
-            </tr>
-
-
-            <?php
-            echo "
-<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $ys1 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $yf1 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gs1 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gsa1 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $sf1 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $nf1 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $npd1 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $mpd1 . "</font></td></tr>
-            ";
-            ?>
-        </table>
-    </div>
-
-
-
-    <div style="width:7%;float:left;">
-        <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
-            <tr>
-                <th bgcolor='#EBEBEB'>FEB</th>
-            </tr>
-            <?php
-            echo "
-<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $ys2 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $yf2 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gs2 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gsa2 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $sf2 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $nf2 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $npd2 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $mpd2 . "</font></td></tr>
-            ";
-            ?>
-        </table>
-    </div>
-
-    <div style="width:7%;float:left;">
-        <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
-            <tr>
-                <th bgcolor='#EBEBEB'>MAR</th>
-            </tr>
-            <?php
-            echo "
-<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $ys3 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $yf3 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gs3 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gsa3 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $sf3 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $nf3 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $npd3 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $mpd3 . "</font></td></tr>
-            ";
-            ?>
-
-
-        </table>
-    </div>
-
-    <div style="width:7%;float:left;">
-        <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
-            <tr>
-                <th bgcolor='#EBEBEB'>APR</th>
-            </tr>
-            <?php
-            echo "
-<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $ys4 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $yf4 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gs4 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gsa4 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $sf4 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $nf4 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $npd4 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $mpd4 . "</font></td></tr>
-            ";
-            ?>
-
-
-        </table>
-    </div>
-
-    <div style="width:7%;float:left;">
-        <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
-            <tr>
-                <th bgcolor='#EBEBEB'>MAI</th>
-            </tr>
-            <?php
-            echo "
-<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $ys5 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $yf5 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gs5 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gsa5 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $sf5 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $nf5 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $npd5 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $mpd5 . "</font></td></tr>
-            ";
-            ?>
-
-
-        </table>
-    </div>
-
-    <div style="width:7%;float:left;">
-        <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
-            <tr>
-                <th bgcolor='#EBEBEB'>JUN</th>
-            </tr>
-            <?php
-            echo "
-<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $ys6 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $yf6 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gs6 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gsa6 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $sf6 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $nf6 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $npd6 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $mpd6 . "</font></td></tr>
-            ";
-            ?>
-
-
-        </table>
-    </div>
-
-    <div style="width:7%;float:left;">
-        <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
-            <tr>
-                <th bgcolor='#EBEBEB'>JUL</th>
-            </tr>
-            <?php
-
-            echo "
-<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $ys7 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $yf7 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gs7 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gsa7 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $sf7 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $nf7 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $npd7 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $mpd7 . "</font></td></tr>
-            ";
-            ?>
-
-
-        </table>
-    </div>
-
-    <div style="width:7%;float:left;">
-        <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
-            <tr>
-                <th bgcolor='#EBEBEB'>AUG</th>
-            </tr>
-            <?php
-
-            echo "
-<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $ys8 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $yf8 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gs8 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gsa8 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $sf8 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $nf8 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $npd8 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $mpd8 . "</font></td></tr>
-            ";
-            ?>
-
-
-        </table>
-    </div>
-    <div style="width:7%;float:left;">
-        <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
-            <tr>
-                <th bgcolor='#EBEBEB'>SEP</th>
-            </tr>
-            <?php
-            echo "<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $ys9 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $yf9 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gs9 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gsa9 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $sf9 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $nf9 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $npd9 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $mpd9 . "</font></td></tr>
-            ";
-            ?>
-
-
-        </table>
-    </div>
-
-    <div style="width:7%;float:left;">
-        <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
-            <tr>
-                <th bgcolor='#EBEBEB'>OCT</th>
-            </tr>
-            <?php
-            echo "<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $ys10 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $yf10 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gs10 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gsa10 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $sf10 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $nf10 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $npd10 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $mpd10 . "</font></td></tr>
-            ";
-            ?>
-
-
-        </table>
-    </div>
-
-    <div style="width:7%;float:left;">
-        <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
-            <tr>
-                <th bgcolor='#EBEBEB'>NOV</th>
-            </tr>
-            <?php
-            echo "<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $ys11 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $yf11 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gs11 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gsa11 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $sf11 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $nf11 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $npd11 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $mpd11 . "</font></td></tr>
-            ";
-            ?>
-
-
-        </table>
-    </div>
-
-    <div style="width:7%;float:left;">
-        <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
-            <tr>
-                <th bgcolor='#EBEBEB'>DEC</th>
-            </tr>
-            <?php
-            echo "<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $ys12 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $yf12 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gs12 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $gsa12 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $sf12 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $nf12 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $npd12 . "</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $mpd12 . "</font></td></tr>
-            ";
-            ?>
-        </table>
-    </div>
+    
 
 
     <div style="width:7%;float:left;">
