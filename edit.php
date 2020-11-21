@@ -418,7 +418,7 @@ echo "</select>"; */
             <form id="form1" name="form1" method="post" action="">
                 选择分类：
                 <select name="accategory" id="accategory" style="height:26px;">
-
+                <option value='quan'>ALL</option>
 
                     <?php
                     $sqlcategory = "select * from " . $prename . "category where ufid='$_SESSION[uid]'";
