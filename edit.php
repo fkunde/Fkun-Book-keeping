@@ -81,9 +81,9 @@ if ($_GET['ok']) {
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
 
-        $sql2 = "select * from " . $prename . "account_class where categoryid= '" . $row['accategoryid'] . "' and ufid='" . $_SESSION['uid'] . "'";
-        $classquery = mysqli_query($conn, $sql2);
-        $classinfo = mysqli_fetch_array($classquery, MYSQLI_ASSOC);
+        $sql2 = "select * from " . $prename . "category where categoryid= '" . $row['accategoryid'] . "' and ufid='" . $_SESSION['uid'] . "'";
+        $categoryquery = mysqli_query($conn, $sql2);
+        $categoryinfo = mysqli_fetch_array($categoryquery, MYSQLI_ASSOC);
 
         echo "<table align='left' width='100%' border='0' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3' class='table table-striped table-bordered'>
       <tr>
