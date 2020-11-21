@@ -81,7 +81,7 @@ if ($_GET['ok']) {
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
 
-        $sql2 = "select * from " . $prename . "account_class where classid= '" . $row['acclassid'] . "' and ufid='" . $_SESSION['uid'] . "'";
+        $sql2 = "select * from " . $prename . "account_class where categoryid= '" . $row['accategoryid'] . "' and ufid='" . $_SESSION['uid'] . "'";
         $classquery = mysqli_query($conn, $sql2);
         $classinfo = mysqli_fetch_array($classquery, MYSQLI_ASSOC);
 
@@ -105,8 +105,8 @@ if ($_GET['ok']) {
 
         $sqlcategory = "select * from " . $prename . "category where ufid='" . $_SESSION['uid'] . "'";
         $categoryquery = mysqli_query($conn, $sqlcategory);
-        while ($categoryinfo = mysqli_fetch_array($categoryquery)) {
-            echo " <option value=" . $categoryinfo['categoryid'] . ">" . $categoryinfo['categoryname'] . "</option>";
+        while ($categoryname = mysqli_fetch_array($categoryquery)) {
+            echo " <option value=" . $categoryname['categoryid'] . ">" . $categoryname['categoryname'] . "</option>";
         }
         echo "</select><br /><br />";
         echo "支付方式：<select name='acpayway'>";
@@ -125,7 +125,7 @@ if ($_GET['ok']) {
         echo "
 
 收入/支出：";
-        if ($row['ac1'] == 1) {
+        if ($row['ac1'] == '1') {
             echo '收入';
             $income = $income + $row['acamount'];
         } else {
@@ -225,12 +225,12 @@ if ($_POST['Submit']) {
 
                 $sqlcategory = "select * from " . $prename . "category where categoryid=$row[accategory] and ufid='$_SESSION[uid]'";
                 $categoryquery = mysqli_query($conn, $sqlcategory);
-                $categoryinfo = mysqli_fetch_array($categoryquery);
+                $categoryname = mysqli_fetch_array($categoryquery);
                 echo "<tr>";
                 if ($row['ac1'] == 1) {
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $categoryinfo['categoryname'] . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $categoryname['categoryname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>";
                     if ($row['ac1'] == "1") {
                         echo "收入";
@@ -245,7 +245,7 @@ if ($_POST['Submit']) {
                 } elseif ($row['ac0'] == '1') {
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $categoryinfo['categoryname'] . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $categoryname['categoryname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>";
                     if ($row['ac1'] == "1") {
                         echo "收入";
@@ -260,7 +260,7 @@ if ($_POST['Submit']) {
                 } elseif ($row['ac0'] == "2") {
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $categoryinfo['categoryname'] . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $categoryname['categoryname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>";
                     if ($row['ac1'] == "1") {
                         echo "收入";
@@ -275,7 +275,7 @@ if ($_POST['Submit']) {
                 } else {
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $categoryinfo['categoryname'] . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $categoryname['categoryname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>";
                     if ($row['ac1'] == "1") {
                         echo "收入";
@@ -481,7 +481,7 @@ echo "</select>"; */
 
 
     //查询日期，备注
-    if ($_POST['classid'] == "quan" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
+    if ($_POST['categoryid'] == "quan" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
 
         $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
@@ -535,14 +535,13 @@ echo "</select>"; */
     while ($row = mysqli_fetch_array($query)) {
         $sqlcategory = "select * from " . $prename . "category where categoryid=$row[accategory] and ufid='$_SESSION[uid]'";
         $categoryquery = mysqli_query($conn, $sqlcategory);
-        $categoryinfo = mysqli_fetch_array($categoryquery);
+        $categoryname = mysqli_fetch_array($categoryquery);
 
         echo "<tr>";
-        if ($row['ac1'] == 1 && $row['ac0'] !== 1) {
+        if ($row['ac1'] == '1' && $row['ac0'] !== '1') {
             echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . date("Y-m-d", $row['actime']) . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $categoryinfo['categoryname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $classinfo['classname'] . "</font></td>";
+            echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $categoryname['categoryname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acremark'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acplace'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $payinfo['paywayname'] . "</font></td>";
@@ -550,8 +549,7 @@ echo "</select>"; */
         } elseif ($row['ac0'] == '1') {
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . date("Y-m-d", $row['actime']) . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $categoryinfo['categoryname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $classinfo['classname'] . "</font></td>";
+            echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $categoryname['categoryname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acremark'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acplace'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $payinfo['paywayname'] . "</font></td>";
@@ -559,8 +557,7 @@ echo "</select>"; */
         } elseif ($row['ac0'] == "2") {
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . date("Y-m-d", $row['actime']) . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $categoryinfo['categoryname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $classinfo['classname'] . "</font></td>";
+            echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $categoryname['categoryname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acremark'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acplace'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $payinfo['paywayname'] . "</font></td>";
@@ -568,8 +565,7 @@ echo "</select>"; */
         } else {
             echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $categoryinfo['categoryname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $classinfo['classname'] . "</font></td>";
+            echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $categoryname['categoryname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acremark'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acplace'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $payinfo['paywayname'] . "</font></td>";
@@ -625,60 +621,60 @@ echo "</select>"; */
         $a = $mumList[0];
         $c = $mumList[1];
         //只查询备注
-        if ($_POST['classid'] == "quan" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] <> "") {
+        if ($_POST['accategory'] == "quan" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] <> "") {
 
             $sql = "select * from " . $prename . "account where acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
         //什么都没填
-        if ($_POST['classid'] == "quan" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] == "") {
+        if ($_POST['accategory'] == "quan" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] == "") {
             $sql = "select * from " . $prename . "account where acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
         //只查询分类
-        if ($_POST['classid'] <> "quan" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] == "") {
-            $sqlclassid = "acclassid=" . $_POST['classid'];
-            $sql = "select * from " . $prename . "account where " . $sqlclassid . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+        if ($_POST['accategory'] <> "quan" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] == "") {
+            $sqlcategory = "accategory=" . $_POST['categoryid'];
+            $sql = "select * from " . $prename . "account where " . $sqlcategory . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
 
         //只查询分类收
-        if ($_POST['classid'] == "zc" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] == "") {
+        if ($_POST['accategory'] == "zc" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] == "") {
 
             $sql = "select * from " . $prename . "account where ac0='0' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
-        if ($_POST['classid'] == "sr" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] == "") {
+        if ($_POST['accategory'] == "sr" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] == "") {
 
             $sql = "select * from " . $prename . "account where ac0>'0' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
         //只查询分类支
 
         //只查询日期
-        if ($_POST['classid'] == "quan" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] == "") {
+        if ($_POST['accategory'] == "quan" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] == "") {
 
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
             $sql = "select * from " . $prename . "account where " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
-        if ($_POST['classid'] == "quan" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] == "") {
+        if ($_POST['accategory'] == "quan" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] == "") {
 
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
             $sql = "select * from " . $prename . "account where " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
         //------------------------------
         //查询分类，日期，备注
-        if ($_POST['classid'] <> "" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
+        if ($_POST['accategory'] <> "" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
 
-            $sqlclassid = "acclassid=" . $_POST['classid'];
+            $sqlcategory = "accategory=" . $_POST['accategory'];
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
-            $sql = "select * from " . $prename . "account where " . $sqlclassid . " and " . $sqltime . " and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+            $sql = "select * from " . $prename . "account where " . $sqlcategory . " and " . $sqltime . " and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
         //----------------------------------------
         //查询收支，备注
-        if ($_POST['classid'] == "sr" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] <> "") {
+        if ($_POST['accategory'] == "sr" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] <> "") {
             $type = "0";
 
 
             $sql = "select * from " . $prename . "account where ac0='$type' and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
-        if ($_POST['classid'] == "zc" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] <> "") {
+        if ($_POST['accategory'] == "zc" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] <> "") {
             $type != "0";
 
 
@@ -686,14 +682,14 @@ echo "</select>"; */
         }
 
         //查询收支，日期
-        if ($_POST['classid'] == "sr" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] == "") {
+        if ($_POST['accategory'] == "sr" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] == "") {
             $type = "0";
 
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
             $sql = "select * from " . $prename . "account where ac0='$type' and " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
-        if ($_POST['classid'] == "zc" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] == "") {
+        if ($_POST['accategory'] == "zc" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] == "") {
             $type != "0";
 
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
@@ -701,14 +697,14 @@ echo "</select>"; */
             $sql = "select * from " . $prename . "account where ac0='$type' and " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
         //查询收支，日期，备注
-        if ($_POST['classid'] == "sr" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
+        if ($_POST['accategory'] == "sr" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
             $type = "0";
 
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
             $sql = "select * from " . $prename . "account where ac0='$type' and " . $sqltime . " and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
-        if ($_POST['classid'] == "zc" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
+        if ($_POST['accategory'] == "zc" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
             $type != "0";
 
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
@@ -717,7 +713,7 @@ echo "</select>"; */
         }
 
         //查询日期，备注
-        if ($_POST['classid'] == "quan" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
+        if ($_POST['accategory'] == "quan" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] <> "") {
 
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
@@ -727,20 +723,20 @@ echo "</select>"; */
 
         //--------------------------------------
         //查询分类，备注
-        if ($_POST['classid'] <> "quan" && $_POST['classid'] <> "sr" && $_POST['classid'] <> "zc" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] <> "") {
+        if ($_POST['accategory'] <> "quan" && $_POST['time1'] == "" && $_POST['time2'] == "" && $_POST['beizhu'] <> "") {
 
-            $sqlclassid = "acclassid=" . $_POST['classid'];
+            $sqlcategory = "accategory=" . $_POST['accategory'];
 
-            $sql = "select * from " . $prename . "account where " . $sqlclassid . " and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+            $sql = "select * from " . $prename . "account where " . $sqlcategory . " and acamount>'$a' and acamount<'$c' and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
 
         //查询分类，日期
-        if ($_POST['classid'] <> "quan" && $_POST['classid'] <> "sr" && $_POST['classid'] <> "zc" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] == "") {
+        if ($_POST['accategory'] <> "quan" && $_POST['time1'] <> "" && $_POST['time2'] <> "" && $_POST['beizhu'] == "") {
 
-            $sqlclassid = "acclassid=" . $_POST['classid'];
+            $sqlcategory = "accategory=" . $_POST['accategory'];
             $sqltime = " actime >" . strtotime($_POST['time1'] . " 0:0:0") . " and actime <" . strtotime($_POST['time2'] . " 23:59:59");
 
-            $sql = "select * from " . $prename . "account where " . $sqlclassid . " and " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
+            $sql = "select * from " . $prename . "account where " . $sqlcategory . " and " . $sqltime . " and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         }
 
 
@@ -756,33 +752,27 @@ echo "</select>"; */
 				<th bgcolor='#EBEBEB'>时间</th>
 				<th bgcolor='#EBEBEB'>交易对象</th>
 				<th bgcolor='#EBEBEB'>分类</th>
-                <th bgcolor='#EBEBEB'>交易类型</th>
                 <th bgcolor='#EBEBEB'>备注</th>
 				<th bgcolor='#EBEBEB'>位置</th>
 				<th bgcolor='#EBEBEB'>支付方式</th>
 				<th bgcolor='#EBEBEB'>金额</th>
 				<th bgcolor='#EBEBEB'><a href='javascript:select()'>全选</a> | <a href='javascript:fanselect()'>反选</a> | <a href='javascript:noselect()'>不选</a> <input type='submit' name='delete' value='删除'/></th>
                 </tr>
-				";
+                ";
+
         $query = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($query)) {
-            $sql = "select * from " . $prename . "account_class where classid= $row[acclassid] and ufid='$_SESSION[uid]'";
-            $classquery = mysqli_query($conn, $sql);
-            $classinfo = mysqli_fetch_array($classquery);
-
             $sqlpay = "select * from " . $prename . "account_payway where payid=$row[acpayway] and ufid='$_SESSION[uid]'";
             $payquery = mysqli_query($conn, $sqlpay);
-            $payinfo = mysqli_fetch_array($payquery);
-
             $sqlcategory = "select * from " . $prename . "category where categoryid=$row[accategory] and ufid='$_SESSION[uid]'";
             $categoryquery = mysqli_query($conn, $sqlcategory);
-            $categoryinfo = mysqli_fetch_array($categoryquery);
+            $payinfo = mysqli_fetch_array($payquery);
+            $categoryname = mysqli_fetch_array($categoryquery);
             echo "<tr>";
-            if ($classinfo['classtype'] == 1 && $row['ac0'] !== 1) {
+            if ($row['ac1'] == '1' && $row['ac0'] !== '1') {
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $categoryinfo['categoryname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $classinfo['classname'] . "</font></td>";
+                echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $categoryname['categoryname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acremark'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acplace'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $payinfo['paywayname'] . "</font></td>";
@@ -790,8 +780,7 @@ echo "</select>"; */
             } elseif ($row['ac0'] !== '0') {
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $categoryinfo['categoryname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $classinfo['classname'] . "</font></td>";
+                echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $categoryname['categoryname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acremark'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acplace'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $payinfo['paywayname'] . "</font></td>";
@@ -799,8 +788,7 @@ echo "</select>"; */
             } else {
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $categoryinfo['categoryname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $classinfo['classname'] . "</font></td>";
+                echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $categoryname['categoryname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acremark'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acplace'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $payinfo['paywayname'] . "</font></td>";
