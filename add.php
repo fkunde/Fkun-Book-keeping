@@ -57,7 +57,7 @@ if (isset($sql)) {
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" class='table table-striped table-bordered'>
     <tr >
-        <td bgcolor="#e8e8e8">账目内容</td>
+        <td bgcolor="#e8e8e8">记账内容 （目前依然为beta测试版，遇到BUG欢迎在论坛bbs.fkun.tech或博客blog.fkun.tech中留言反馈。）</td>
     </tr>
     <tr>
         <td bgcolor="#e8e8e8">
