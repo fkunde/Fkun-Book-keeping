@@ -1132,9 +1132,9 @@ if ($_GET["Submit2"]) {
         }
         $sumprice = round(($sum1 + $sum2 + $sum3 + $sum4 + $sum5 + $sum6 + $sum7), 2);
 
-        echo "<td font color='MediumSeaGreen'> " . $sumprice . " </font></td>";
-        echo "<td font color='MediumSeaGreen'> " . $row['satiety'] . " </font></td>";
-        echo "<td font color='MediumSeaGreen'> " . $row['difficulty'] . " </font></td>";
+        echo "<td font color='MediumSeaGreen'bgcolor='#FFFFFF'> " . $sumprice . " </font></td>";
+        echo "<td font color='MediumSeaGreen'bgcolor='#FFFFFF'> " . $row['satiety'] . " </font></td>";
+        echo "<td font color='MediumSeaGreen'bgcolor='#FFFFFF'> " . $row['difficulty'] . " </font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><a href='edit_recipe.php?type=3&recipeid=" . $row['recipeid'] . "'>删除</a></td></tr>";
     }
     echo "</tr>";

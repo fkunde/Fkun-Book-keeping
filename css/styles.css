@@ -1,5 +1,5 @@
 body {
-  background: #19292f;
+  background: #151620;
   -webkit-perspective: 800px;
   perspective: 800px;
   height: 100%;
@@ -23,16 +23,16 @@ body {
   /* IE6-9 fallback on horizontal gradient */
 }
 body ::-webkit-input-placeholder {
-  color: #4e546d;
+  color: #2c2c2c;
 }
 
 body .authent p {
   text-align: center;
-  color: white;
+  color: rgb(58, 58, 58);
 }
 body .success {
   display: none;
-  color: #d5d8e2;
+  color: #7e7e7e;
 }
 body .success p {
   font-size: 14px;
@@ -114,7 +114,7 @@ body .login .disclaimer {
   width: 250px;
 }
 body .login_title {
-  color: #afb1be;
+  color: #272727;
 
   text-align: left;
   font-size: 16px;
@@ -197,30 +197,6 @@ body .login_fields__submit input {
 /* -webkit-transition-duration: .2s; */
 /* transition-duration: .2s; */
 
-/* Color Schemes */
-.love {
-  position: absolute;
-  right: 20px;
-  bottom: 0px;
-  font-size: 11px;
-  font-weight: normal;
-}
-.love p {
-  color: white;
-  font-weight: normal;
-  font-family: "Open Sans", sans-serif;
-}
-.love a {
-  color: white;
-  font-weight: 700;
-  text-decoration: none;
-}
-.love img {
-  position: relative;
-  top: 3px;
-  margin: 0px 4px;
-  width: 10px;
-}
 
 .brand {
   position: absolute;
@@ -243,6 +219,8 @@ canvas {
 
 #tab-title span {
   padding: 0 18px 8px 0;
+  color: #e4e4e4;
+
   cursor: pointer;
 }
 
@@ -257,13 +235,13 @@ canvas {
 
 #tab-content ul li {
   overflow: hidden;
-  border-top: 1px dotted #dddddd;
+  border-top: 1px dotted #6d6d6d;
   line-height: 2.1em;
   padding: 0 1px;
 }
 
 #tab-content ul li span {
-  color: #a1a3a6;
+  color: #237195;
 }
 
 .tishi {
@@ -277,7 +255,7 @@ canvas {
   margin-top: 97vh;
   left: 0%;
   font-size: 0.7em;
-  color: #b3b3b3;
+  color: #afafaf;
   width: 100%;
   text-align: center;
 }
