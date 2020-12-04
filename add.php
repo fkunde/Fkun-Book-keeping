@@ -57,20 +57,20 @@ if (isset($sql)) {
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" class='table table-striped table-bordered'>
     <tr >
-        <td bgcolor="#e8e8e8">账目内容</td>
+        <td bgcolor="#e8e8e8">记账内容 （目前依然为beta测试版，遇到BUG欢迎在论坛bbs.fkun.tech或博客blog.fkun.tech中留言反馈。）</td>
     </tr>
     <tr>
         <td bgcolor="#e8e8e8">
             <form id="form2" name="myform2" method="post" onsubmit="return checkpost2();">
-                <font> 金额：</font><input name="money" type="text" id="money" size="8" />
+                <font> 账目金额：</font><input name="money" type="text" id="money" size="8" />
                 <div style="display:none;">
 
                 </div>
-                <font> €</font>
+                <!-- <font> €</font> -->
 
                 <br /><br />
 
-                <font> 分类：</font><select name="category" id="categoryid" style="height:26px;">
+                <font> 账目分类：</font><select name="category" id="categoryid" style="height:26px;">
                     <?php
                     $sql = "select * from " . $prename . "category where ufid='$_SESSION[uid]'";
                     $query = mysqli_query($conn, $sql);
@@ -80,11 +80,11 @@ if (isset($sql)) {
 
                     ?>
                 </select>
-                <font color="red"><a href="category.php" style="color:#7f7f7f;">添加类别</a></font>
+                <font color="red"><a href="category.php" style="color:#7f7f7f;">管理类别</a></font>
 
                 <br /><br />
 
-                <font> 方式：</font><select name="payway" id="payid" style="height:26px;">
+                <font> 支付方式：</font><select name="payway" id="payid" style="height:26px;">
                     <?php
                     $sql = "select * from " . $prename . "account_payway where ufid='$_SESSION[uid]'";
                     $query = mysqli_query($conn, $sql);
@@ -96,12 +96,12 @@ if (isset($sql)) {
 
                     ?>
                 </select>
-                <font color="red"><a href="payway.php" style="color:#7f7f7f;">添加交易方式</a></font>
-                <br /><br /> 名称：
+                <font color="red"><a href="payway.php" style="color:#7f7f7f;">管理支付方式</a></font>
+                <br /><br /> 账目名称：
                 <input name="name" type="text" id="name" />
-                <br /><br /> 地点：
+                <br /><br /> 交易地点：
                 <input name="place" type="text" id="place" />
-                <br /><br /> 备注：
+                <br /><br /> 账目备注：
                 <input name="remark" type="text" id="remark" />
                 <br /><br />
                 交易时间：<input type="text" name="time" id="time" class="sang_Calender" value="<?php $xz = date("Y-m-d H:i");;
@@ -171,7 +171,7 @@ echo "<table width='100%' border='1' align='left' cellpadding='8' cellspacing='1
                 <th bgcolor='#EBEBEB'>备注</th>
 				<th bgcolor='#EBEBEB'>位置</th>
 				<th bgcolor='#EBEBEB'>支付方式</th>
-				<th bgcolor='#EBEBEB'>金额€</th>
+				<th bgcolor='#EBEBEB'>金额</th>
                 <th bgcolor='#EBEBEB'>操作</th>
                 </tr>";
 
