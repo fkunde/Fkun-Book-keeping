@@ -11,7 +11,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 </head>
 
 <body>
-    <div style="width:7%;float:left;">
+    <div style="width:7vw;float:left;margin-left:0.5vw;margin-top:0.5vw;">
         <table id="excel" width='60%' border='0' align='left' cellpadding='3' bgcolor='#B3B3B3' style="float:left;" class='table table-striped table-bordered' position="absolute">
             <tr>
                 <th bgcolor='#EBEBEB'>
@@ -220,7 +220,7 @@ error_reporting(E_ALL ^ E_NOTICE);
         }
         $monthname = strval("gatsuname" . $monthnum);
 
-        echo '<div style="width:7%;float:left;">';
+        echo '<div style="width:7vw;float:left;margin-top:0.5vw;">';
         echo '<table id="excel" width="60px" border="0" align="left" bgcolor="#B3B3B3" style="float:left" class="table table-striped table-bordered">';
         echo '<tr><th bgcolor="#EBEBEB">';
         echo $$monthname;     
@@ -316,7 +316,7 @@ error_reporting(E_ALL ^ E_NOTICE);
     
 
 
-    <div style="width:7%;float:left;">
+    <div style="width:7%;float:left;margin-top:0.5vw;">
         <table id="excel" width='60px' border='0' align='left' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
             <tr>
                 <th bgcolor='#EBEBEB'>年度统计</th>

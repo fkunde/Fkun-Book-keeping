@@ -55,12 +55,12 @@ if (isset($sql)) {
 
 ?>
 
-<table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
-    <tr>
-        <td bgcolor="#EBEBEB">账目内容</td>
+<table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" class='table table-striped table-bordered'>
+    <tr >
+        <td bgcolor="#e8e8e8">账目内容</td>
     </tr>
     <tr>
-        <td bgcolor="#FFFFFF">
+        <td bgcolor="#e8e8e8">
             <form id="form2" name="myform2" method="post" onsubmit="return checkpost2();">
                 <font> 金额：</font><input name="money" type="text" id="money" size="8" />
                 <div style="display:none;">
@@ -80,7 +80,7 @@ if (isset($sql)) {
 
                     ?>
                 </select>
-                <font color="red"><a href="category.php" style="color:#ccc;">添加类别</a></font>
+                <font color="red"><a href="category.php" style="color:#7f7f7f;">添加类别</a></font>
 
                 <br /><br />
 
@@ -96,7 +96,7 @@ if (isset($sql)) {
 
                     ?>
                 </select>
-                <font color="red"><a href="payway.php" style="color:#ccc;">添加交易方式</a></font>
+                <font color="red"><a href="payway.php" style="color:#7f7f7f;">添加交易方式</a></font>
                 <br /><br /> 名称：
                 <input name="name" type="text" id="name" />
                 <br /><br /> 地点：
@@ -112,7 +112,7 @@ if (isset($sql)) {
                     <option value='2'>支出</option>
                     <option value='1'>收入</option>
                 </select>
-                <font color="red"><a href="classify.php" style="color:#ccc;"></a></font>
+                <font color="red"><a href="classify.php" style="color:#7f7f7f;"></a></font>
                 <br /><br /> 特殊消费:
                 <select name="special" id="special" style="height:26px;">
                     <option value='0'>否</option>
@@ -162,7 +162,7 @@ $offset = ($p - 1) * $pagesize;
 $query_sql = "SELECT * FROM " . $prename . "account where acuserid='$_SESSION[uid]' ORDER BY actime DESC LIMIT  $offset , $pagesize";
 $query = mysqli_query($conn, $query_sql);
 
-echo "<table width='100%' border='0' align='left' cellpadding='8' cellspacing='1' bgcolor='#B3B3B3' class='table table-striped table-bordered'>
+echo "<table width='100%' border='1' align='left' cellpadding='8' cellspacing='1' bgcolor='#696969' class='table table-striped table-bordered'>
                 <tr>
 				<th bgcolor='#EBEBEB'>时间</th>
 				<th bgcolor='#EBEBEB'>交易对象</th>
