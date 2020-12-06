@@ -281,12 +281,12 @@ error_reporting(E_ALL ^ E_NOTICE);
         while ($row = mysqli_fetch_array($query)) {
             $foodspending = $foodspending + $row['acamount'];
         }
-        if($spending!="0"){
-            $foodpct = 100 * round(($foodspending / $spending), 5);
-        }else{
+        if ($spending = "0") {
             $foodpct = 0;
+        } else {
+            $foodpct = 100 * round(($foodspending / $spending), 5);
         }
-        
+
         echo "
 <tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $yz . "</font><font>  €</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $usable . "</font><font>  €</font></td></tr>
