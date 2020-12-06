@@ -19,7 +19,7 @@ if ($_GET["Submit"]) {
     $query = mysqli_query($conn,$sql);
     $attitle = is_array($row = mysqli_fetch_array($query));
     if ($attitle) {
-        $status_text = "此类别已存在！";
+        $status_text = "类别已存在！";
     } else {
         $sql = "insert into ".$prename."category (categoryname, ufid) values ('$_GET[categoryname]', $_SESSION[uid])";
         $query = mysqli_query($conn,$sql);
@@ -36,7 +36,7 @@ if ($_GET["Submit"]) {
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
-        <td bgcolor="#EBEBEB">　新建分类</td>
+        <td bgcolor="#EBEBEB">　添加分类   (例如 食物)</td>
     </tr>
     <tr>
         <td bgcolor="#FFFFFF">

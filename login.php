@@ -101,7 +101,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                     
                 </p>
                 <form action="" method="post" name="submitzhuce">
-                    <div class='login_fields'>
+                    <div class='login_fields' style='z-index:-999;' >
 
                         <div class='login_fields__user'>
 
@@ -122,7 +122,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                             </input>
                         </div>
 
-                        <div class='login_fields__password'>
+                        <div class='login_fields__password' style='z-index:-1;' >
 
                             <input placeholder='PASSWORD' type='password' id='passwordreg' name='passwordreg' style="margin-left:-33%;margin-top:62%;position:absolute;">
                             <div class='validation'>
@@ -206,7 +206,8 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                         $query = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_assoc($query);
                         $uid = $row['uid'];
-                        $sql = "insert into " . $prename . "date (date,datetype, ufid) values ('1', '0','" . $uid . "'),('0', '1','" . $uid . "')";
+                        $timenow = time();
+                        $sql = "insert into " . $prename . "date (date,datetype, ufid) values ('" . $timenow . "', '0','" . $uid . "'),('0', '1','" . $uid . "')";
                         $query = mysqli_query($conn, $sql);
                         if ($query) {
                             echo "<br><font color='green'>Usertimetable Create...OK</font>";

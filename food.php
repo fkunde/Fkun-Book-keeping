@@ -157,7 +157,7 @@ $dinner = ($foodperday - $breakfast) / 2;
             <tr>
 
 
-                <th align="left" bgcolor="#EBEBEB">Frühstück</th>
+                <th align="left" bgcolor="#EBEBEB">Frühstück (早餐)</th>
 
                 <th align="left" bgcolor="#EBEBEB">
                     <select name="monf" id="monf" style="height:26px;">
@@ -317,7 +317,7 @@ $dinner = ($foodperday - $breakfast) / 2;
 
             </tr>
             <tr>
-                <th align="left" bgcolor="#EBEBEB">Mittagessen</th>
+                <th align="left" bgcolor="#EBEBEB">Mittagessen (中餐)</th>
 
                 <th align="left" bgcolor="#EBEBEB">
                     <select name="monm" id="monm" style="height:26px;">
@@ -468,7 +468,7 @@ $dinner = ($foodperday - $breakfast) / 2;
 
             </tr>
             <tr>
-                <th align="left" bgcolor="#EBEBEB">Abendessen</th>
+                <th align="left" bgcolor="#EBEBEB">Abendessen (晚餐)</th>
 
                 <th align="left" bgcolor="#EBEBEB">
                     <select name="mona" id="mona" style="height:26px;">

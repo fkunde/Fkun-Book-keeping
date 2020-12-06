@@ -41,7 +41,7 @@ $setdate = strtotime("$_GET[timedate]");
             echo"
 			 <form method=get action=''>
 
-			计划日期：<input rows='1' cols='20' name='timedate' class='sang_Calender' value='".date('Y-m-d H:i',$rowget['date'])."'> 
+			计划目标日期：<input rows='1' cols='20' name='timedate' class='sang_Calender' value='".date('Y-m-d H:i',$rowget['date'])."'> 
 		<input type=submit name=ok value='提交' class='btn'>	
 		</form>
 		<br />
@@ -64,7 +64,7 @@ if ($_GET['okdate2']) {
         $rowget2 = mysqli_fetch_array($resultget2);
             echo"
 			 <form method=get action=''>
-			离开时长：<input name='timedate2' size='3' value='".$rowget2['date']."'>天
+			中断时长：<input name='timedate2' size='3' value='".$rowget2['date']."'>天
 		     <input type=submit name=okdate2 value='提交' class='btn'>	
 		
 		</form>
@@ -97,7 +97,7 @@ if ($_GET["Submit"]) {
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
-        <td bgcolor="#EBEBEB">　新建预算</td>
+        <td bgcolor="#EBEBEB">　添加普通预算  (例如大额消费计划)</td>
     </tr>
     <tr>
         <td bgcolor="#FFFFFF">
@@ -119,7 +119,7 @@ if ($_GET["Submit"]) {
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
-        <td bgcolor="#EBEBEB">　预算管理</td>
+        <td bgcolor="#EBEBEB">预算管理</td>
     </tr>
 </table>
 
@@ -170,7 +170,7 @@ if ($_GET["Submit2"]) {
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
-        <td bgcolor="#EBEBEB">　新建基础开销</td>
+        <td bgcolor="#EBEBEB">　添加每月基础开销  (例如房租)</td>
     </tr>
     <tr>
         <td bgcolor="#FFFFFF">

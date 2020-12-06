@@ -237,7 +237,11 @@ error_reporting(E_ALL ^ E_NOTICE);
         } else {
             $canbealive = round(($usable) / (($base / '30') + $nomalpday));
         }
-        $planpday = ($plantotal / $toplan);
+        if ($toplan > "0") {
+            $planpday = ($plantotal / $toplan);
+        } else {
+            $planpday = "0";
+        }
         $suggest = round((('30' * ($nomalpday)) + $base), 2);
         $suggestpw = round(('7' * ($nomalpday)), 2);
 
@@ -268,7 +272,6 @@ error_reporting(E_ALL ^ E_NOTICE);
             $weektext =  " (超标)";
         }
 
-
         $sql = "select * from " . $prename . "account where ac1=2 and acuserid='$_SESSION[uid]' ORDER BY actime ASC";
         $query = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($query)) {
@@ -281,12 +284,23 @@ error_reporting(E_ALL ^ E_NOTICE);
         while ($row = mysqli_fetch_array($query)) {
             $foodspending = $foodspending + $row['acamount'];
         }
-        if ($spending > 0) {
-            $foodpct = 0;
-        } else {
+        
+        if ($spending > "0") {
             $foodpct = 100 * round(($foodspending / $spending), 5);
+        } else {
+            $foodpct = 0;
         }
 
+        if($plantotal = 0){
+            $plantotal = "0";
+        }
+        if($toplan < 0){
+            $disptoplan = "0";
+            $disptoplanmonth = "0";
+        }else{
+            $disptoplan = $toplan;
+            $disptoplanmonth = $toplanmonth;
+        }
         echo "
 <tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $yz . "</font><font>  €</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $usable . "</font><font>  €</font></td></tr>
@@ -295,7 +309,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $plantotal . " €</font><font><a href='plan.php'>  修改</a></font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $verpass . "</font><font>  天</font><font>(离开" . $dateback . " 天)</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFf'><font color=" . $alivecolor . ">" . $canbealive . "</font><font>  天</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $toplan . "</font><font>  天（</font><font>" . $toplanmonth . "</font><font>  个月）</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>" . $disptoplan . "</font><font>  天（</font><font>" . $disptoplanmonth . "</font><font>  个月）</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font color=" . $remaincolor . ">" . $remain . "</font><font>  €</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font >" . $base . "</font><font>  €/月</font><font><a href='plan.php'>  修改</a></font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $nomalpday . "</font><font>  €/日</font></td></tr>
