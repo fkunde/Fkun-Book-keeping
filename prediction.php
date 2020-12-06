@@ -281,7 +281,7 @@ error_reporting(E_ALL ^ E_NOTICE);
         while ($row = mysqli_fetch_array($query)) {
             $foodspending = $foodspending + $row['acamount'];
         }
-        if ($spending = "0") {
+        if ($spending > 0) {
             $foodpct = 0;
         } else {
             $foodpct = 100 * round(($foodspending / $spending), 5);
