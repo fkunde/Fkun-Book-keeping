@@ -73,4 +73,6 @@ function intable($dbname,$tablename,$conn) {
     //重新关联账本数据库
     return $intable;
 }
+
+$Currency= "€";
 ?>

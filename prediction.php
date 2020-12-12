@@ -157,6 +157,8 @@ error_reporting(E_ALL ^ E_NOTICE);
         }
         if ($plantotal == 0) {
             $plantotal == "0";
+        }else{
+            $plantotal = $plantotal;
         }
         $usable = $yz - $plantotal;
 
@@ -291,9 +293,7 @@ error_reporting(E_ALL ^ E_NOTICE);
             $foodpct = 0;
         }
 
-        if($plantotal = 0){
-            $plantotal = "0";
-        }
+
         if($toplan < 0){
             $disptoplan = "0";
             $disptoplanmonth = "0";
@@ -301,21 +301,22 @@ error_reporting(E_ALL ^ E_NOTICE);
             $disptoplan = $toplan;
             $disptoplanmonth = $toplanmonth;
         }
+        $Currency= "€";
         echo "
-<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $yz . "</font><font>  €</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $usable . "</font><font>  €</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $yz . "</font><font>  " . $Currency . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $usable . "</font><font>  " . $Currency . "</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $now . "</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $enddate . "</font><font><a href='plan.php'>  修改</a></font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $plantotal . " €</font><font><a href='plan.php'>  修改</a></font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>" . $plantotal . " </font><font>" . $Currency . "<a href='plan.php'>  修改</a></font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $verpass . "</font><font>  天</font><font>(离开" . $dateback . " 天)</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFf'><font color=" . $alivecolor . ">" . $canbealive . "</font><font>  天</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $disptoplan . "</font><font>  天（</font><font>" . $disptoplanmonth . "</font><font>  个月）</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color=" . $remaincolor . ">" . $remain . "</font><font>  €</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font >" . $base . "</font><font>  €/月</font><font><a href='plan.php'>  修改</a></font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $nomalpday . "</font><font>  €/日</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $suggest . "</font><font>  €</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font>" . $suggestpw . "</font><font>  €</font></td></tr>
-<tr><td align='left' bgcolor='#FFFFFF'><font color=" . $weekcolor . ">" . $wf . "  €<font color=" . $weekcolor . ">" . $weektext . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font color=" . $remaincolor . ">" . $remain . "</font><font>  " . $Currency . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font >" . $base . "</font><font>  " . $Currency . "/月</font><font><a href='plan.php'>  修改</a></font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $nomalpday . "</font><font>  " . $Currency . "/日</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>" . $suggest . "</font><font>  " . $Currency . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font>" . $suggestpw . "</font><font>  " . $Currency . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font color=" . $weekcolor . ">" . $wf . "  " . $Currency . "<font color=" . $weekcolor . ">" . $weektext . "</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $foodpct . "</font><font>% </font></td></tr>
 ";
 
