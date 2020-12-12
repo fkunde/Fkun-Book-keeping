@@ -301,7 +301,7 @@ error_reporting(E_ALL ^ E_NOTICE);
             $disptoplan = $toplan;
             $disptoplanmonth = $toplanmonth;
         }
-        $Currency= "€";
+       
         echo "
 <tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $yz . "</font><font>  " . $Currency . "</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $usable . "</font><font>  " . $Currency . "</font></td></tr>
