@@ -261,13 +261,36 @@ error_reporting(E_ALL ^ E_NOTICE);
     } else {
     }
 
+    $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+    $query = mysqli_query($conn, $sql);
+    $acbefore = mysqli_fetch_array($query);
+    $totalbefore = $acbefore['total'];
+    if (isset($totalbefore)) {
+        $allbeforeincome = $totalbefore;
+    } else {
+    }
+
+    $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+    $query = mysqli_query($conn, $sql);
+    $acbeforesp = mysqli_fetch_array($query);
+    $totalbeforesp = $acbeforesp['total'];
+    if (isset($totalbeforesp)) {
+        $allbeforesp = $totalbeforesp;
+    } else {
+    }
+    if ($allbeforesp == "") {
+        $allbeforesp = "0";
+    }
+    if ($allbeforeincome == "") {
+        $allbeforeincome = "0";
+    }
     if ($yearincome == "") {
         $yearincome = "0";
     }
     if ($yearspend == "") {
         $yearspend = "0";
     }
-    $yearflow = $yearincome - $yearspend;
+    $yearflow = $allbeforeincome - $allbeforesp;
     //年 常务
     $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $sqltime . " and ac0=0 and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
     $query = mysqli_query($conn, $sql);
