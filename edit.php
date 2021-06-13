@@ -1,9 +1,7 @@
 <?php
 include_once("header.php");
 ?>
-<?php
-error_reporting(E_ALL ^ E_NOTICE);
-?>
+
 <script type="text/javascript">
     var checkall = document.getElementsByName("del_id[]");
 

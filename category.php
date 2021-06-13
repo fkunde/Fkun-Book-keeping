@@ -1,9 +1,7 @@
 <?php
 include_once("header.php");
 ?>
-<?php
-error_reporting(E_ALL ^ E_NOTICE);
-?>
+
 <script language="JavaScript">
     function checkpost() {
         if (myform.category.value == "") {
