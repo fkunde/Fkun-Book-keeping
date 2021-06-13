@@ -232,7 +232,7 @@
             echo "<br />已存在<br /><font color='red'>已经安装过啦，表前缀已经存在。</font></body></html>";
 
         } else {
-            $query = mysqli_query($conn,"CREATE TABLE `$db_dbname`.`".$prename."user` (`uid` INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY, `username` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `password` VARCHAR(35) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `email` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,  `cpassword` VARCHAR(35) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `utime` INT(11) NOT NULL) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;");
+            $query = mysqli_query($conn,"CREATE TABLE `$db_dbname`.`".$prename."user` (`uid` INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY, `username` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `password` VARCHAR(35) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `email` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,  `utime` INT(11) NOT NULL) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;");
             if ($query) {
                 echo "成功<br />";
             } else {
@@ -248,7 +248,8 @@
             echo "<br />默认用户已存在！<br /><a href='login.php'>点这里立即登录</a>";
             exit();
         } else{
-            $utime = strtotime("now");
+            $nowdate = date("Y-m-d H:i:s");
+            $utime = strtotime($nowdate);
             $query = mysqli_query($conn,"insert into ".$prename."user (uid, username, password,email,utime) values ('1', 'test', 'test','admin@fkun.tech','$utime')");
 
 

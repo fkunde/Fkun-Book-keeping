@@ -34,7 +34,7 @@ include_once("header.php");
 $income = 0;
 $spending = 0;
 //检查是否记账并执行
-if ($_POST['Submit']) {
+if (isset($_POST['Submit'])) {
     $time100 = strtotime($_POST['time']);
     $sql = "insert into " . $prename . "account (acamount, acclassid, actime, acremark, accategory, acuserid, acplace, acpayway, acname, ac0, ac1, ac2) values ('$_POST[money]', '$_POST[classid]', '$time100', '$_POST[remark]', '$_POST[category]', '$_SESSION[uid]', '$_POST[place]', '$_POST[payway]', '$_POST[name]', '$_POST[special]', '$_POST[classid]', '')";
     $query = mysqli_query($conn, $sql);
@@ -47,10 +47,10 @@ if ($_POST['Submit']) {
     }
 }
 if (isset($time100)) {
-    echo $time100;
+   // echo $time100;
 }
 if (isset($sql)) {
-    echo $sql;
+    //echo $sql;
 }
 
 ?>
@@ -180,9 +180,6 @@ if ($result = FALSE) {
 }
 
 while ($row = mysqli_fetch_array($query)) {
-    $sql = "select * from " . $prename . "account_class where classid=$row[acclassid] and ufid='$_SESSION[uid]'";
-    $classquery = mysqli_query($conn, $sql);
-    $classinfo = mysqli_fetch_array($classquery);
 
     $sqlpay = "select * from " . $prename . "account_payway where payid=$row[acpayway] and ufid='$_SESSION[uid]'";
     $payquery = mysqli_query($conn, $sqlpay);
@@ -291,21 +288,16 @@ echo "</td></tr></table>";
 
 <?php
 
-$sql = "select * from " . $prename . "account where acuserid='$_SESSION[uid]' ORDER BY actime ASC";
 $query = mysqli_query($conn, $sql);
-while ($row = mysqli_fetch_array($query)) {
-    $sql = "select * from " . $prename . "account_class where classid= $row[acclassid] and ufid='$_SESSION[uid]'";
+
+    $sql = "select SUM(acamount) as income from " . $prename . "account where ac1='1' and acuserid='$_SESSION[uid]'";
     $classquery = mysqli_query($conn, $sql);
     $classinfo = mysqli_fetch_array($classquery);
-
-    if ($classinfo['classtype'] == 1) {
-
-        $income = $income + $row['acamount'];
-    } else {
-        $spending = $spending + $row['acamount'];
-    }
-}
-
+    $income = $classinfo['income'];
+    $sql = "select SUM(acamount) as spend from " . $prename . "account where ac1='2' and acuserid='$_SESSION[uid]'";
+    $classquery2 = mysqli_query($conn, $sql);
+    $classinfo2 = mysqli_fetch_array($classquery2);
+    $spending = $classinfo2['spend'];
 ?>
 
 <script language="javascript">
