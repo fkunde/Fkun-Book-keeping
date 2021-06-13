@@ -1,6 +1,5 @@
 <?php
 session_start();
-error_reporting(E_ALL || ~E_NOTICE);
 /*
 if(isset($_SESSION['user_shell']))
 {

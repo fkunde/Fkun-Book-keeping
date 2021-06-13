@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);//debug mode 0 off -1 on
 //数据库配置信息，根据情况修改，否则无法安装
 $db_servername = "localhost";
 //Mysql服务器地址 将 localhost 修改为你的数据库地址

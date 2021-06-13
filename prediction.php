@@ -2,12 +2,6 @@
 include_once("header.php");
 ?>
 
-<?php
-error_reporting(E_ALL ^ E_NOTICE);
-?>
-
-
-
 
 <div style="width:auto;float:left;">
     <table width='60px' border='0' align='left' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3' style="float:left" class='table table-striped table-bordered'>
