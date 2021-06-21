@@ -40,6 +40,13 @@ if (isset($_GET['tj']) and $_GET['tj'] == 'logout') {
         .table-bordered>tfoot>tr>td {
             border: 1px solid #a5a5a5;
         }
+        .hidephone{
+            display: block;
+            }
+@media (max-width: 768px){
+    .hidephone{
+        display: none !important;
+        }}
     </style>
 </head>
 
@@ -65,7 +72,7 @@ if (isset($_GET['tj']) and $_GET['tj'] == 'logout') {
                     <div class="collapse navbar-collapse" id="example-navbar-collapse">
                         <ul class="nav navbar-nav" style="font-size:medium;">
                             <li><a href="add.php">记账</a></li>
-                            <li><a href="annual_stat.php">统计</a></li>
+                            <li><a class="hidephone" href="annual_stat.php">统计</a></li>
                             <li><a href="prediction.php">状态</a></li>
                             <li><a href="food.php">饮食</a></li>
                             <li><a href="plan.php">计划</a></li>
