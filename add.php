@@ -141,13 +141,7 @@ if (isset($sql)) {
 
 </table>
 
-<table align="left" width="100%" height="20" border="0" align="left" cellpadding="5" cellspacing="1" bgcolor="#B3B3B3" class='table table-striped table-bordered'>
-    <tr>
-        <td align="left" bgcolor="#EBEBEB">
-            <font id="stat"></font>
-        </td>
-    </tr>
-</table>
+
 
 <?php
 
@@ -169,8 +163,8 @@ echo "<table width='100%' border='1' align='left' cellpadding='8' cellspacing='1
 				<th bgcolor='#EBEBEB'>分类</th>
                 <th bgcolor='#EBEBEB'>收支</th>
                 <th bgcolor='#EBEBEB'>备注</th>
-				<th bgcolor='#EBEBEB'>位置</th>
-				<th bgcolor='#EBEBEB'>支付方式</th>
+				<th bgcolor='#EBEBEB'>交易位置</th>
+				<th bgcolor='#EBEBEB'>资金账户</th>
 				<th bgcolor='#EBEBEB'>金额</th>
                 <th bgcolor='#EBEBEB'>操作</th>
                 </tr>";
@@ -264,11 +258,18 @@ echo "<table width='100%' border='0' align='left' cellpadding='5' cellspacing='1
 //计算总数
 $count_result = mysqli_query($conn, "SELECT count(*) as count FROM " . $prename . "account where acuserid='$_SESSION[uid]'");
 $count_array = mysqli_fetch_array($count_result);
-
+echo "
+<table align='left' width='100%' height='20' border='0' align='left' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3' class='table table-striped table-bordered'>
+    <tr>
+        <td align='left' bgcolor='#EBEBEB'>
+            <font id='stat'></font>
+        </td>
+    </tr>
+</table>";
 //计算总的页数
 $pagenum = ceil($count_array['count'] / $pagesize);
 echo '共记 ', $count_array['count'], ' 条 ';
-echo ' 这里最多显示最近 ', $pagesize, ' 条';
+// echo ' 这里最多显示最近 ', $pagesize, ' 条';
 
 //循环输出各页数目及连接
 

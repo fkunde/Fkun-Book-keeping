@@ -72,8 +72,9 @@ if (isset($_GET['tj']) and $_GET['tj'] == 'logout') {
                     <div class="collapse navbar-collapse" id="example-navbar-collapse">
                         <ul class="nav navbar-nav" style="font-size:medium;">
                             <li><a href="add.php">记账</a></li>
-                            <li><a class="hidephone" href="annual_stat.php">统计</a></li>
-                            <li><a href="prediction.php">状态</a></li>
+                            <!-- <li><a class="hidephone" href="status.php">统计</a></li> -->
+                            <li><a href="status.php">统计</a></li>
+                            <li><a href="balance.php">状态</a></li>
                             <li><a href="food.php">饮食</a></li>
                             <li><a href="plan.php">计划</a></li>
                             <li><a href="category.php">分类</a></li>

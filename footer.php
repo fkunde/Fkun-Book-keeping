@@ -1,6 +1,6 @@
-<table align="center" width="100%" height="20" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#B3B3B3" class='table table-striped table-bordered'>
+<table align="center" width="100%" height="20" align="center" cellpadding="5" cellspacing="1">
     <tr>
-        <td align="center" bgcolor="#EBEBEB">Copyright &copy;<a href="https://fkun.tech/">F_KUN</a> <?php echo date('Y'); ?> &nbsp Bookkeeping System v1.2.5 beta</td>
+        <td align="center" >Copyright &copy; <a href="https://fkun.tech/">F_KUN</a>  2015 - <?php echo date('Y'); ?> &nbsp Bookkeeping System Ver.3.0.1 beta</td>
     </tr>
 </table>
 </div>
