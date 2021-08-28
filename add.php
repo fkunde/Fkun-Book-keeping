@@ -57,7 +57,8 @@ if (isset($sql)) {
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" class='table table-striped table-bordered'>
     <tr >
-        <td bgcolor="#e8e8e8">记账内容 （目前依然为beta测试版，遇到BUG欢迎在<span><a href="https://bbs.fkun.tech/">论坛bbs.fkun.tech</a></span>或<span><a href="https://blog.fkun.tech/">博客blog.fkun.tech</a></span>中留言反馈。）</td>
+        <td bgcolor="#e8e8e8">记账内容</td>
+        <!-- <td bgcolor="#e8e8e8">记账内容 （目前依然为beta测试版，遇到BUG欢迎在<span><a href="https://bbs.fkun.tech/">论坛bbs.fkun.tech</a></span>或<span><a href="https://blog.fkun.tech/">博客blog.fkun.tech</a></span>中留言反馈。）</td> -->
     </tr>
     <tr>
         <td bgcolor="#e8e8e8">
