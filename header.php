@@ -56,9 +56,9 @@ if (isset($_GET['tj']) and $_GET['tj'] == 'logout') {
     $arr = user_shell($_SESSION['uid'], $_SESSION['user_shell']);
     //对权限进行判断
     ?>
-    <div style="max-width:100vw;width:auto;margin-left: auto;margin-right: auto;padding:5px; background-color: #BAC3CB;">
+    <div style="max-width:100vw;width:auto;margin-left: auto;margin-right: auto;padding:5px; background-color: #fff;">
         <div class="table-responsive">
-            <nav class="navbar navbar-default" role="navigation">
+            <nav class="navbar navbar-default" role="navigation" style="background-color:#e8e8e8;" >
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
@@ -69,7 +69,7 @@ if (isset($_GET['tj']) and $_GET['tj'] == 'logout') {
                         </button>
                         <!-- <a class="navbar-brand" href="add.php">记账</a> -->
                     </div>
-                    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                    <div class="collapse navbar-collapse" id="example-navbar-collapse" >
                         <ul class="nav navbar-nav" style="font-size:medium;">
                             <li><a href="add.php">记账</a></li>
                             <!-- <li><a class="hidephone" href="status.php">统计</a></li> -->

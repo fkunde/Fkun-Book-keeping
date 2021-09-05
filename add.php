@@ -57,7 +57,7 @@ if (isset($sql)) {
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" class='table table-striped table-bordered'>
     <tr >
-        <td bgcolor="#e8e8e8">记账内容</td>
+        <td bgcolor="#e8e8e8">账目内容</td>
         <!-- <td bgcolor="#e8e8e8">记账内容 （目前依然为beta测试版，遇到BUG欢迎在<span><a href="https://bbs.fkun.tech/">论坛bbs.fkun.tech</a></span>或<span><a href="https://blog.fkun.tech/">博客blog.fkun.tech</a></span>中留言反馈。）</td> -->
     </tr>
     <tr>
@@ -105,9 +105,10 @@ if (isset($sql)) {
                 <br /><br /> 账目备注：
                 <input name="remark" type="text" id="remark" />
                 <br /><br />
-                交易时间：<input type="text" name="time" id="time" class="sang_Calender" value="<?php $xz = date("Y-m-d H:i");;
-                                                                                            echo "$xz";
-                                                                                            ?>" />
+                交易时间：<input type="text" name="time" id="time" class="sang_Calender" value="
+                <?php $xz = date("Y-m-d H:i");
+                      echo "$xz";
+                      ?>" />
                 <br /><br />
                 <font> 收支类型：</font><select name="classid" id="classid" style="height:26px;">
                     <option value='2'>支出</option>
@@ -120,13 +121,15 @@ if (isset($sql)) {
                     <option value='1'>周期消费</option>
                     <option value='2'>偶然消费</option>
                 </select>
-                <br /><br />&nbsp &nbsp
                 <input name="Submit" type="submit" id="submit" value="记账" style=" 
 			            background-color: #4CAF50;
                         border: none;
                         color: white;
 						width: 100px;
                         height: 50px;
+                        position: absolute;
+                        margin-left: 150px;
+                        margin-top: -70px;
                         padding: 12px 20px;
                         text-align: center;
                         text-decoration: none;
