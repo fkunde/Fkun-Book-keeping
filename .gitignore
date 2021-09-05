@@ -1,3 +1,4 @@
 *.py
 Thumbs.db
 .user.ini
+.DS_Store
