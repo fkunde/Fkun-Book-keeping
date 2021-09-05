@@ -8,14 +8,14 @@ include_once("header.php");
 </div>
 <div style="float:left;position:relative;">
     <table border='0' align='left' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3' style="float:left; width:80px;" class='table table-striped table-bordered'>
-        <tr>
+    <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>剩余资金</font>
+                <font>当前资金余额</font>
             </td>
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>活动资金</font>
+                <font>可支配流动资产</font>
             </td>
         </tr>
         <tr>
@@ -25,62 +25,62 @@ include_once("header.php");
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>计划日期</font>
+                <font>目标计划日期</font>
             </td>
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>计划预算</font>
+                <font>计划预算/预付款</font>
             </td>
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>已经存活</font>
+                <font>已经生存</font>
             </td>
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>预计存活</font>
+                <font>预计生存</font>
             </td>
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>距离计划</font>
+                <font>距离目标</font>
             </td>
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>计划剩余</font>
+                <font>目标计划剩余</font>
             </td>
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>固定开销</font>
+                <font>周期固定开销</font>
             </td>
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>常务开销</font>
+                <font>常务生活开销</font>
             </td>
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>推荐每月</font>
+                <font>每月基本生存总开销</font>
             </td>
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>推荐周常</font>
+                <font>周常务生活开销建议</font>
             </td>
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>本周实际</font>
+                <font>本周实际常务生活开销</font>
             </td>
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>饮食系数</font>
+                <font>生活开销系数</font>
             </td>
         </tr>
     </table>
