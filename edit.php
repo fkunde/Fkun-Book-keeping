@@ -129,7 +129,7 @@ if ($_GET['ok']) {
         laydate.render({
           elem: '.Calender' //指定元素
           ,type: 'datetime'
-          ,theme: '#393D49'
+          ,theme: '#39C5BB'
         });
         </script>
         <br /><br />
