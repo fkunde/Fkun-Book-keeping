@@ -9,8 +9,13 @@ include_once("header.php");
             return false;
         }
         if (myform.classid.value == "") {
-            alert("添加分类");
+            alert("请添加分类");
             window.location = 'classify.php';
+            return false;
+        }
+        if (myform.time.value == "") {
+            alert("请选择日期");
+            window.location = 'add.php';
             return false;
         }
     }
@@ -18,13 +23,18 @@ include_once("header.php");
     function checkpost2() {
 
         if (myform2.money.value == "") {
-            alert("请输入金额");
+            alert("请请输入金额");
             window.location = 'add.php';
             return false;
         }
         if (myform2.classid.value == "") {
-            alert("添加分类");
+            alert("请添加分类");
             window.location = 'classify.php';
+            return false;
+        }
+        if (myform2.time.value == "") {
+            alert("请选择日期");
+            window.location = 'add.php';
             return false;
         }
     }
@@ -63,7 +73,7 @@ if (isset($sql)) {
     <tr>
         <td bgcolor="#e8e8e8">
             <form id="form2" name="myform2" method="post" onsubmit="return checkpost2();">
-                <font> 账目金额：</font><input name="money" type="text" id="money" size="8" />
+                <font> 账目金额: </font><input name="money" type="text" id="money" size="8" />
                 <div style="display:none;">
 
                 </div>
@@ -71,7 +81,7 @@ if (isset($sql)) {
 
                 <br /><br />
 
-                <font> 账目分类：</font><select name="category" id="categoryid" style="height:26px;">
+                <font> 账目分类: </font><select name="category" id="categoryid" style="height:26px;">
                     <?php
                     $sql = "select * from " . $prename . "category where ufid='$_SESSION[uid]'";
                     $query = mysqli_query($conn, $sql);
@@ -85,7 +95,7 @@ if (isset($sql)) {
 
                 <br /><br />
 
-                <font> 支付方式：</font><select name="payway" id="payid" style="height:26px;">
+                <font> 支付方式: </font><select name="payway" id="payid" style="height:26px;">
                     <?php
                     $sql = "select * from " . $prename . "account_payway where ufid='$_SESSION[uid]'";
                     $query = mysqli_query($conn, $sql);
@@ -98,24 +108,23 @@ if (isset($sql)) {
                     ?>
                 </select>
                 <font color="red"><a href="payway.php" style="color:#7f7f7f;">管理支付方式</a></font>
-                <br /><br /> 账目名称：
+                <br /><br /> 账目名称: 
                 <input name="name" type="text" id="name" />
-                <br /><br /> 交易地点：
+                <br /><br /> 交易地点: 
                 <input name="place" type="text" id="place" />
-                <br /><br /> 账目备注：
+                <br /><br /> 账目备注: 
                 <input name="remark" type="text" id="remark" />
                 <br /><br />
-                交易时间：<input type="text" name="time" id="time" class="sang_Calender" value="
-                <?php $xz = date("Y-m-d H:i");
-                      echo "$xz";
-                      ?>" />
+              
+                交易时间: <input type="text" name="time" id="time" class="sang_Calender" value="<?php $addnow = date("Y-m-d H:i:s");
+                echo "$addnow";?>"></input>
                 <br /><br />
-                <font> 收支类型：</font><select name="classid" id="classid" style="height:26px;">
+                <font> 收支类型: </font><select name="classid" id="classid" style="height:26px;">
                     <option value='2'>支出</option>
                     <option value='1'>收入</option>
                 </select>
                 <font color="red"><a href="classify.php" style="color:#7f7f7f;"></a></font>
-                <br /><br /> 特殊消费:
+                <br /><br /> 特殊消费: 
                 <select name="special" id="special" style="height:26px;">
                     <option value='0'>否</option>
                     <option value='1'>周期消费</option>
@@ -128,8 +137,8 @@ if (isset($sql)) {
 						width: 100px;
                         height: 50px;
                         position: absolute;
-                        margin-left: 150px;
-                        margin-top: -70px;
+                        margin-left: 25px;
+                        margin-top: -25px;
                         padding: 12px 20px;
                         text-align: center;
                         text-decoration: none;

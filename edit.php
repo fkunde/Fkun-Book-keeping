@@ -91,9 +91,9 @@ if ($_GET['ok']) {
         <td bgcolor='#FFFFFF'>
    <form method=get action=''>
 <INPUT TYPE='hidden' name='id' value=" . $row['acid'] . ">
-金额：<input type=text name='amount' value=" . $row['acamount'] . "><br /><br />";
+        账目金额: <input type=text name='amount' value=" . $row['acamount'] . "><br /><br />";
 
-        echo "分类：<select name='accategory'>";
+        echo "账目分类: <select name='accategory'>";
 
         $sqlold = "select * from " . $prename . "category where categoryid=" . $row['accategory'] . " and ufid='" . $_SESSION['uid'] . "'";
         $queryold = mysqli_query($conn, $sqlold);
@@ -107,7 +107,7 @@ if ($_GET['ok']) {
             echo " <option value=" . $categoryname['categoryid'] . ">" . $categoryname['categoryname'] . "</option>";
         }
         echo "</select><br /><br />";
-        echo "支付方式：<select name='acpayway'>";
+        echo "支付方式: <select name='acpayway'>";
 
         $sqlold = "select * from " . $prename . "account_payway where payid=" . $row['acpayway'] . " and ufid='" . $_SESSION['uid'] . "'";
         $queryold = mysqli_query($conn, $sqlold);
@@ -121,24 +121,11 @@ if ($_GET['ok']) {
         }
         echo "</select><br /><br />";
         echo "
-
-收入/支出：";
-        if ($row['ac1'] == '1') {
-            echo '收入';
-            $income = $income + $row['acamount'];
-        } else {
-            echo '支出';
-            $spending = $spending + $row['acamount'];
-        }
-        echo "<br /><br />
-		
-
-时间：<input rows='1' cols='20' name='time' class='sang_Calender' value='" . date('Y-m-d H:i', $row['actime']) . "'> <br /><br />
-备注：<input type=text name='beizhu' value=" . $row['acremark'] . "><br /><br />
-位置：<input type=text name='place' value=" . $row['acplace'] . "><br /><br />
-交易对象：<input type=text name='name' value=" . $row['acname'] . "><br /><br />
-
-特殊消费: 
+        账目名称: <input type=text name='name' value=" . $row['acname'] . "><br /><br />
+        交易时间: <input rows='1' cols='20' name='time' class='sang_Calender' value='" . date('Y-m-d H:i', $row['actime']) . "'> <br /><br />
+        交易地点: <input type=text name='place' value=" . $row['acplace'] . "><br /><br />
+        账目备注: <input type=text name='beizhu' value=" . $row['acremark'] . "><br /><br />
+        特殊消费: 
          <select name='ac0' id='ac0' style='height:26px;'>
             <option value=" . $row['ac0'] . ">
             ";
@@ -156,6 +143,16 @@ if ($_GET['ok']) {
             <option value='2'>偶然消费</option> 	
              </select>	
  <br /><br />            
+ 收入/支出: ";
+ if ($row['ac1'] == '1') {
+     echo '收入';
+     $income = $income + $row['acamount'];
+ } else {
+     echo '支出';
+     $spending = $spending + $row['acamount'];
+ }
+ echo "<br /><br />
+ 
 
 
 
