@@ -7,7 +7,7 @@ include_once("header.php");
 <div style="width:100%;float:left;margin-left: 0%;position:relative;">
 </div>
 <div style="float:left;position:relative;">
-    <table border='0' align='left' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3' style="float:left; width:80px;" class='table table-striped table-bordered'>
+    <table border='0' align='left' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3' style="float:left; width:165px;" class='table table-striped table-bordered'>
     <tr>
             <td align='left' bgcolor='#FFFFFF'>
                 <font>当前资金余额</font>
