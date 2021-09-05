@@ -122,7 +122,16 @@ if ($_GET['ok']) {
         echo "</select><br /><br />";
         echo "
         账目名称: <input type=text name='name' value=" . $row['acname'] . "><br /><br />
-        交易时间: <input rows='1' cols='20' name='time' class='sang_Calender' value='" . date('Y-m-d H:i', $row['actime']) . "'> <br /><br />
+        交易时间: <input rows='1' cols='20' name='time' class='Calender' value='" . date('Y-m-d H:i', $row['actime']) . "'> 
+        <script src='js/laydate/laydate.js'></script> 
+        <script>
+        //执行一个laydate实例
+        laydate.render({
+          elem: '.Calender' //指定元素
+          ,type: 'datetime'
+        });
+        </script>
+        <br /><br />
         交易地点: <input type=text name='place' value=" . $row['acplace'] . "><br /><br />
         账目备注: <input type=text name='beizhu' value=" . $row['acremark'] . "><br /><br />
         特殊消费: 

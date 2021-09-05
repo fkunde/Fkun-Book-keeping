@@ -116,8 +116,16 @@ if (isset($sql)) {
                 <input name="remark" type="text" id="remark" />
                 <br /><br />
               
-                交易时间: <input type="text" name="time" id="time" class="sang_Calender" value="<?php $addnow = date("Y-m-d H:i:s");
+                交易时间: <input type="text" name="time" id="time" class="Calender" value="<?php $addnow = date("Y-m-d H:i:s");
                 echo "$addnow";?>"></input>
+                <script src="js/laydate/laydate.js"></script> 
+                <script>
+                //执行一个laydate实例
+                laydate.render({
+                  elem: '.Calender' //指定元素
+                  ,type: 'datetime'
+                });
+                </script>
                 <br /><br />
                 <font> 收支类型: </font><select name="classid" id="classid" style="height:26px;">
                     <option value='2'>支出</option>
