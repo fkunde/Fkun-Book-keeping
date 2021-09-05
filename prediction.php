@@ -27,7 +27,7 @@ include_once("header.php");
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>计划预算</font>
+                <font>计划预算/预付款</font>
             </td>
         </tr>
         <tr>
