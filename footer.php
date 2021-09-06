@@ -1,4 +1,4 @@
-<table style="color:#666; font-weight: normal; font-size: 0.5rem; margin-bottom:8px;" align="center" width="100%" cellpadding="5" cellspacing="1">
+<table style="color:#666; font-weight: normal; font-size: 1rem; margin-bottom:8px;" align="center" width="100%" cellpadding="5" cellspacing="1">
     <tr>
         <td align="center" >Copyright &copy; <a href="https://fkun.tech/">F_KUN</a>  2015 - <?php echo date('Y'); ?> &nbsp Bookkeeping System Ver.3.0.1 beta</td>
     </tr>
