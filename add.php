@@ -147,7 +147,7 @@ if (isset($sql)) {
                         height: 50px;
                         position: absolute;
                         margin-left: 25px;
-                        margin-top: -28px;
+                        margin-top: -30px;
                         padding: 12px 20px;
                         text-align: center;
                         text-decoration: none;
