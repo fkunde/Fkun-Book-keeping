@@ -95,7 +95,7 @@ if ($_GET["Submit"]) {
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor='#B3B3B3' class='table table-striped table-bordered'>
     <tr>
-        <td bgcolor="#EBEBEB">　添加普通预算  (例如大额消费计划)</td>
+        <td bgcolor="#EBEBEB">　添加普通预算  (未来计划的支出或收入，收入可使用负数记录)</td>
     </tr>
     <tr>
         <td bgcolor="#FFFFFF">
