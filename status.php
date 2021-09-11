@@ -134,7 +134,7 @@ include_once("header.php");
         $days = strval("daysinmonth" . $monthnum);
         $sqltime = " " . $prename . "account.actime >=" . strtotime($$monthstart . " 0:0:0") . " and " . $prename . "account.actime <" . strtotime($$monthend . " 23:59:59");
         //月收入
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $acincome = mysqli_fetch_array($query);
         $total = $acincome['total'];
@@ -143,7 +143,7 @@ include_once("header.php");
         } else {
         }
         //月支出
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $acspend = mysqli_fetch_array($query);
         $total = $acspend['total'];
@@ -173,7 +173,7 @@ include_once("header.php");
         $$sf = $$yf - $$nf;
         // 总和
         $timebefore = "  " . $prename . "account.actime <" . strtotime($$monthend . " 23:59:59");
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $timebefore . "  and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <>3 and " . $timebefore . "  and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $acincmomeg = mysqli_fetch_array($query);
         $total = $acincmomeg['total'];
@@ -181,7 +181,7 @@ include_once("header.php");
             $$gse = $total;
         } else {
         }
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $timebefore . "  and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $timebefore . "  and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $acspendg = mysqli_fetch_array($query);
         $total = $acspendg['total'];
@@ -236,7 +236,7 @@ include_once("header.php");
             $sqltime = " " . $prename . "account.actime >=" . strtotime($startdate1 . " 0:0:0") . " and " . $prename . "account.actime <" . strtotime($enddate12 . " 23:59:59");
             $sqltimebefore = " " . $prename . "account.actime <" . strtotime($enddate12 . " 23:59:59");
             //收入分类
-            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+            $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
             $query = mysqli_query($conn, $sql);
             $acyearincome = mysqli_fetch_array($query);
             $total = $acyearincome['total'];
@@ -245,7 +245,7 @@ include_once("header.php");
             } else {
             }
             //年支出
-            $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+            $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
             $query = mysqli_query($conn, $sql);
             $acyearspend = mysqli_fetch_array($query);
             $total = $acyearspend['total'];
@@ -254,7 +254,7 @@ include_once("header.php");
             } else {
             }
         
-            $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+            $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <>3 and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
             $query = mysqli_query($conn, $sql);
             $acbefore = mysqli_fetch_array($query);
             $totalbefore = $acbefore['total'];
@@ -263,7 +263,7 @@ include_once("header.php");
             } else {
             }
         
-            $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+            $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
             $query = mysqli_query($conn, $sql);
             $acbeforesp = mysqli_fetch_array($query);
             $totalbeforesp = $acbeforesp['total'];
@@ -300,7 +300,7 @@ include_once("header.php");
         
             $yearspends = $yearspend - $yearspendn;
         
-            $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+            $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
             $query = mysqli_query($conn, $sql);
             $acallspend = mysqli_fetch_array($query);
             $total = $acallspend['total'];
@@ -413,12 +413,12 @@ include_once("header.php");
                                     //sum
                                     <?php
 
-                                    $sqlmin = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid and acuserid='$_SESSION[uid]' where  " . $prename . "month.mon='" . $firstdate . "' group by month";
+                                    $sqlmin = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid and acuserid='$_SESSION[uid]' where  " . $prename . "month.mon='" . $firstdate . "' and " . $prename . "account.ac0 <>3 group by month";
                                     $querymin = mysqli_query($conn, $sqlmin);
                                     $rowmin = mysqli_fetch_array($querymin);
                                     $firstmonth = $rowmin['month'];
 
-                                    $sqlminout = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid and acuserid='$_SESSION[uid]' where " . $prename . "account.ac1 =2 and " . $prename . "month.mon='" . $firstdate . "' group by month";
+                                    $sqlminout = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid and acuserid='$_SESSION[uid]' where " . $prename . "account.ac1 =2 and " . $prename . "month.mon='" . $firstdate . "' and " . $prename . "account.ac0 <>3 group by month";
                                     $queryminout = mysqli_query($conn, $sqlminout);
                                     $rowminout = mysqli_fetch_array($queryminout);
                                     $firstmonthout = $rowminout['month'];
@@ -430,7 +430,7 @@ include_once("header.php");
                                         $firsttime = $first['actime'];
                                         $firstdate = date('Y-m', $firsttime);
                                         $now = date('Y-m');
-                                        $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum ,ac1 from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and acuserid='$_SESSION[uid]' where  " . $prename . "account.ac1 =2 and " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' group by month";
+                                        $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum ,ac1 from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and acuserid='$_SESSION[uid]' where  " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' group by month";
                                         $query = mysqli_query($conn, $sql);
                                         while ($row = mysqli_fetch_array($query)) {
                                             if ($row['sum'] == '0') {
@@ -447,7 +447,7 @@ include_once("header.php");
                                         $firsttime = $first['actime'];
                                         $firstdate = date('Y-m', $firsttime);
                                         $now = date('Y-m');
-                                        $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum ,ac1 from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and acuserid='$_SESSION[uid]' where  " . $prename . "account.ac1 = 2 and " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' group by month";
+                                        $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum ,ac1 from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and acuserid='$_SESSION[uid]' where  " . $prename . "account.ac1 = 2 and " . $prename . "account.ac0 <>3 and " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' group by month";
                                         $query = mysqli_query($conn, $sql);
                                         echo "'0',";
                                         while ($row = mysqli_fetch_array($query)) {
@@ -541,7 +541,7 @@ include_once("header.php");
                                     $now = date('Y-m');
 
 
-                                    $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and ac0=2 and acuserid='$_SESSION[uid]'  where " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' group by month";
+                                    $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and ac0=2 and acuserid='$_SESSION[uid]'  where " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' and " . $prename . "account.ac0 <>3 group by month";
                                     $query = mysqli_query($conn, $sql);
 
                                     while ($row = mysqli_fetch_array($query)) {
@@ -621,7 +621,7 @@ include_once("header.php");
 
                                     <?php
 
-                                    $sql = "select sum(acamount) as total ," . $prename . "category.categoryname from " . $prename . "account left join " . $prename . "category on " . $prename . "account.accategory =" . $prename . "category.categoryid left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account.ac1 =2 and acuserid='$_SESSION[uid]' group by " . $prename . "account.accategory";
+                                    $sql = "select sum(acamount) as total ," . $prename . "category.categoryname from " . $prename . "account left join " . $prename . "category on " . $prename . "account.accategory =" . $prename . "category.categoryid left join " . $prename . "account_class on " . $prename . "account.acclassid =" . $prename . "account_class.classid where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and acuserid='$_SESSION[uid]' group by " . $prename . "account.accategory";
                                     $s2 = array();
                                     $query = mysqli_query($conn, $sql);
                                     while ($accategory = mysqli_fetch_array($query)) {
