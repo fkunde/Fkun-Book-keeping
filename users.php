@@ -29,8 +29,8 @@ include_once("header.php");
                 </script>
             <?php
 
-            if ($_GET['Submit']) {
-                $sql = "update ".$prename."user set `currency`= '$_GET[currency2]' where `uid`='$_SESSION[uid]'";
+            if ($_POST['Submit']) {
+                $sql = "update ".$prename."user set `currency`= '$_POST[currency2]' where `uid`='$_SESSION[uid]'";
                 $query = mysqli_query($conn,$sql);
                 if ($query) {
                     echo "货币单位修改成功！</td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=users.php'>";
