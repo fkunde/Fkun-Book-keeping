@@ -281,20 +281,20 @@ if ($_POST['Submit']) {
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $payinfo['paywayname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acamount'] . "</font></td>";
                 } elseif ($row['ac0'] == "3") {
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . date("Y-m-d", $row['actime']) . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $categoryinfo['categoryname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acname'] . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $categoryinfo['categoryname'] . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>";
                     if ($row['ac1'] == "1") {
                         echo "收入";
                     } else {
                         echo "支出";
                     }
                     echo "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acremark'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acplace'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $payinfo['paywayname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acamount'] . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acremark'] . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acplace'] . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $payinfo['paywayname'] . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acamount'] . "</font></td>";
                 }else {
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acname'] . "</font></td>";
@@ -586,13 +586,13 @@ echo "</select>"; */
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $payinfo['paywayname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acamount'] . "</font></td>";
         } elseif ($row['ac0'] == "3") {
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . date("Y-m-d", $row['actime']) . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $categoryname['categoryname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acremark'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acplace'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $payinfo['paywayname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acamount'] . "</font></td>";
+            echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+            echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acname'] . "</font></td>";
+            echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $categoryname['categoryname'] . "</font></td>";
+            echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acremark'] . "</font></td>";
+            echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acplace'] . "</font></td>";
+            echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $payinfo['paywayname'] . "</font></td>";
+            echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acamount'] . "</font></td>";
         }else {
             echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acname'] . "</font></td>";
@@ -817,13 +817,13 @@ echo "</select>"; */
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $payinfo['paywayname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acamount'] . "</font></td>";
             } elseif ($row['ac0'] == "3") {
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . date("Y-m-d", $row['actime']) . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $categoryname['categoryname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acremark'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acplace'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $payinfo['paywayname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acamount'] . "</font></td>";
+                echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+                echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acname'] . "</font></td>";
+                echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $categoryname['categoryname'] . "</font></td>";
+                echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acremark'] . "</font></td>";
+                echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acplace'] . "</font></td>";
+                echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $payinfo['paywayname'] . "</font></td>";
+                echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acamount'] . "</font></td>";
             } else {
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acname'] . "</font></td>";
