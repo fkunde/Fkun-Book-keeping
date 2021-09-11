@@ -78,7 +78,8 @@ if (isset($sql)) {
     <tr>
         <td bgcolor="#e8e8e8">
             <form id="form2" name="myform2" method="post" onsubmit="return checkpost2();">
-                <font> 账目金额: </font><input name="money" type="text" id="money" size="8" />
+                <font> 账目金额: </font><input name="money" type="text" id="money" size="8" /><?php echo "$Currency";
+                ?>
                 <div style="display:none;">
 
                 </div>
