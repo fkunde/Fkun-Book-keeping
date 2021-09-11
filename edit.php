@@ -66,9 +66,7 @@ include_once("header.php");
 
 
 <?php
-
 if ($_GET['ok']) {
-
     //针对$ok被激活后的处理：
     $sqltime = strtotime("$_GET[time]");
     $sql = "update " . $prename . "account set acamount='" . $_GET['amount'] . "',acplace='" . $_GET['place'] . "',accategory='" . $_GET['accategory'] . "',acpayway='" . $_GET['acpayway'] . "',acname='" . $_GET['name'] . "',acremark='" . $_GET['beizhu'] . "',ac0='" . $_GET['ac0'] . "',actime='" . $sqltime . "' where acid='" . $_GET['id'] . "' and acuserid='" . $_SESSION['uid'] . "'";
@@ -169,10 +167,6 @@ if ($_GET['ok']) {
      $spending = $spending + $row['acamount'];
  }
  echo "<br /><br />
- 
-
-
-
 　<input type=submit name=ok value='提交' class='btn btn-default'>
    </form>		</td>
       </tr>
@@ -180,10 +174,7 @@ if ($_GET['ok']) {
     }
 }
 ?>
-
-
 <?php
-
 if ($_POST['Submit']) {
     echo "";
 } else {
@@ -203,10 +194,7 @@ if ($_POST['Submit']) {
 
             //查询本页显示的数据
             $query_sql = "SELECT * FROM " . $prename . "account where acuserid='$_SESSION[uid]' ORDER BY actime DESC LIMIT  $offset , $pagesize";
-
             $query = mysqli_query($conn, $query_sql);
-
-
             //echo $query_sql;
 
             echo "<table width='100%' border='0' align='left' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3' class='table table-striped table-bordered'>
@@ -223,10 +211,8 @@ if ($_POST['Submit']) {
                 </tr>";
             if ($result === FALSE) {
                 die();
-
                 // TODO: better error handling
                 // <th bgcolor='#EBEBEB'><form action='delete.php' method='post'><a href='javascript:select()'>全选</a> | <a href='javascript:fanselect()'>反选</a> | <a href='javascript:noselect()'>不选</a> <input type='submit' name='delete' value='删除'/></th>
-
             }
 
             while ($row = mysqli_fetch_array($query)) {
@@ -234,7 +220,6 @@ if ($_POST['Submit']) {
                 $sqlpay = "select * from " . $prename . "account_payway where payid=$row[acpayway] and ufid='$_SESSION[uid]'";
                 $payquery = mysqli_query($conn, $sqlpay);
                 $payinfo = mysqli_fetch_array($payquery);
-
                 $sqlcategory = "select * from " . $prename . "category where categoryid=$row[accategory] and ufid='$_SESSION[uid]'";
                 $categoryquery = mysqli_query($conn, $sqlcategory);
                 $categoryname = mysqli_fetch_array($categoryquery);
@@ -272,7 +257,7 @@ if ($_POST['Submit']) {
                 }elseif ($row['ac0'] == "2") {
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $categoryinfo['categoryname'] . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $categoryname['categoryname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>";
                     if ($row['ac1'] == "1") {
                         echo "收入";
@@ -287,7 +272,7 @@ if ($_POST['Submit']) {
                 } elseif ($row['ac0'] == "3") {
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $categoryinfo['categoryname'] . "</font></td>";
+                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $categoryname['categoryname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>";
                     if ($row['ac1'] == "1") {
                         echo "收入";
