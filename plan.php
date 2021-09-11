@@ -203,7 +203,7 @@ if ($_GET["Submit2"]) {
     <tr>
         <th align="left" bgcolor="#EBEBEB">基础开销名称</th>
 		
-		<th align="left" bgcolor="#EBEBEB">基础开销金额</th>
+		<th align="left" bgcolor="#EBEBEB">基础开销金额&nbsp;<?php echo "$Currency"; ?></th>
 
         <th align="left" bgcolor="#EBEBEB">操作</th>
     </tr>
