@@ -1,7 +1,11 @@
 <?php
 include_once("header.php");
 ?>
-
+<?php $sqlcurrency = "SELECT * FROM ".$prename."user where uid='$_SESSION[uid]'";
+                $qurerycurrency = mysqli_query($conn,$sqlcurrency);
+                $row = mysqli_fetch_array($qurerycurrency);
+                $Currency = $row['currency'];
+?>
 <script language="JavaScript">
     function checkpost() {
         if (myform.plan.value == "") {
@@ -126,7 +130,7 @@ if ($_GET["Submit"]) {
     <tr>
         <th align="left" bgcolor="#EBEBEB">预算名称</th>
 		
-		<th align="left" bgcolor="#EBEBEB">预算金额</th>
+		<th align="left" bgcolor="#EBEBEB">预算金额&nbsp;<?php echo "$Currency"; ?></th>
 
         <th align="left" bgcolor="#EBEBEB">操作</th>
     </tr>
