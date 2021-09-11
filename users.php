@@ -48,8 +48,8 @@ include_once("header.php");
                 ?><br /><br />
                 电子邮箱 <input for="Email" name="email" id="email" value="<?php echo $row['email'];
                 ?>"> <br /><br />
-                <form id="form" name="form" method="get" action="">
-                货币单位 <input for="currency" name="currency2" id="currency2" value="<?php echo $row['currency'];
+                <form id="form" name="form1" method="get" action="">
+                货币单位 <input type="text" name="currency2" id="currency2" value="<?php echo $row['currency'];
                 ?>">
                 <input type="submit" name="Submit" value="修改"/>
                 </form>
