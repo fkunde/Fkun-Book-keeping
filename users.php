@@ -27,6 +27,20 @@ include_once("header.php");
                     }
                     //-->
                 </script>
+            <?php
+
+            if ($_GET['Submit']) {
+                $sql = "update ".$prename."user set `currency`= '$_GET[currency2]' where `uid`='$_SESSION[uid]'";
+                $query = mysqli_query($conn,$sql);
+                if ($query) {
+                    echo "货币单位修改成功！</td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=users.php'>";
+                    exit();
+                } else {
+                    echo "执行数据库操作时失败！请直接通知FKUN或在Github提交issue</td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=users.php'>";
+                    exit();
+                }
+            }
+                ?>
 
                 用户名：<?php echo $row['username'];
                 ?> <!-- <a href="javascript:linkok('delete.php?uid=$_SESSION[uid]')">清除全部数据</a>（操作前请备份导出）--><br /><br />
@@ -35,12 +49,17 @@ include_once("header.php");
                 电子邮箱 <input for="Email" name="email" id="email" value="<?php echo $row['email'];
                 ?>"> <br /><br />
                 货币单位 <input for="currency" name="currency" id="currency" value="<?php echo $row['currency'];
-                ?>"> <br /><br />
+                ?>">
+                <label>
+                <input type="submit" name="Submit" value="修改" />
+                </label> <br /><br />
                 旧密码：<input type="password" name="jiupassword" id="jiupassword" size="18" maxlength="15" /> *（修改必须填写）<br /><br />
                 新密码：<input type="password" name="password" id="password" size="18" maxlength="15" /> *（最多15个字符） <br /><br />
                 <!-- 授权用户密码：<input type="text" name="cpassword" id="cpassword" value="<?php echo $row['cpassword'];
                 ?>" size="18" maxlength="15" /><br /><br />授权用户直接到 <a href="client.php">client页面</a> 用你的用户名和授权密码添加数据，只能添加，无法修改删除，密码留空则无效。<br /><br />
                 <input name="Submitxiugai" type="submit" value="提交" class="btn btn-default" /> -->
+                
+                
                 <?php
                 if ($_POST['Submitxiugai']) {
                     $jiumima = md5($_POST['jiupassword']);
