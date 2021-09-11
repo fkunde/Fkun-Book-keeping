@@ -99,8 +99,8 @@ include_once("header.php");
 
         $now = date('Y-m-d');
         $sqltime = " " . $prename . "account.actime <" . strtotime($now . " 23:59:59");
-
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        //资金余额
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $s1 = array();
         while ($ac1 = mysqli_fetch_array($query)) {
@@ -108,8 +108,8 @@ include_once("header.php");
             $s1[$ac1['ac1']] = $total;
         }
         $ns = $total1;
-
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account  where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        //可支配流动
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account  where " . $prename . "account.ac1 =2 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $s2 = array();
         $query = mysqli_query($conn, $sql);
         while ($ac1 = mysqli_fetch_array($query)) {
