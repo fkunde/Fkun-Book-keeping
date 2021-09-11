@@ -174,7 +174,7 @@ include_once("header.php");
         $$sf = $$yf - $$nf;
         // 总和
         $timebefore = "  " . $prename . "account.actime <" . strtotime($$monthend . " 23:59:59");
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 !=3 and " . $timebefore . "  and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <>3 and " . $timebefore . "  and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $acincmomeg = mysqli_fetch_array($query);
         $total = $acincmomeg['total'];
@@ -182,7 +182,7 @@ include_once("header.php");
             $$gse = $total;
         } else {
         }
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 !=3 and " . $timebefore . "  and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $timebefore . "  and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $acspendg = mysqli_fetch_array($query);
         $total = $acspendg['total'];
