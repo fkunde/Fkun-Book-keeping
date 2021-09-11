@@ -34,6 +34,8 @@ include_once("header.php");
                 ?><br /><br />
                 电子邮箱 <input for="Email" name="email" id="email" value="<?php echo $row['email'];
                 ?>"> <br /><br />
+                货币单位 <input for="currency" name="currency" id="currency" value="<?php echo $row['currency'];
+                ?>"> <br /><br />
                 旧密码：<input type="password" name="jiupassword" id="jiupassword" size="18" maxlength="15" /> *（修改必须填写）<br /><br />
                 新密码：<input type="password" name="password" id="password" size="18" maxlength="15" /> *（最多15个字符） <br /><br />
                 <!-- 授权用户密码：<input type="text" name="cpassword" id="cpassword" value="<?php echo $row['cpassword'];
