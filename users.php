@@ -48,7 +48,7 @@ include_once("header.php");
                 ?><br /><br />
                 电子邮箱 <input for="Email" name="email" id="email" value="<?php echo $row['email'];
                 ?>"> <br /><br />
-                货币单位 <input for="currency" name="currency" id="currency" value="<?php echo $row['currency'];
+                货币单位 <input for="currency" name="currency2" id="currency2" value="<?php echo $row['currency'];
                 ?>">
                 <label>
                 <input type="submit" name="Submit" value="修改" />
