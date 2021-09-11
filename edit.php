@@ -88,13 +88,13 @@ if ($_GET['ok']) {
         $categoryinfo = mysqli_fetch_array($categoryquery, MYSQLI_ASSOC);
 
         echo "<table align='left' width='100%' border='0' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3' class='table table-striped table-bordered'>
-      <tr>
+        <tr>
         <td bgcolor='#EBEBEB'>　账目修改</td>
-      </tr>
-      <tr>
+        </tr>
+        <tr>
         <td bgcolor='#FFFFFF'>
-   <form method=get action=''>
-<INPUT TYPE='hidden' name='id' value=" . $row['acid'] . ">
+        <form method=get action=''>
+        <INPUT TYPE='hidden' name='id' value=" . $row['acid'] . ">
         账目金额: <input type=text name='amount' value=" . $row['acamount'] . "><br /><br />";
 
         echo "账目分类: <select name='accategory'>";
@@ -274,7 +274,7 @@ if ($_POST['Submit']) {
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $categoryinfo['categoryname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>";
-                    if ($row['ac1'] == "1") {
+                    if ($row['ac1'] == "2") {
                         echo "收入";
                     } else {
                         echo "支出";
