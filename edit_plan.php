@@ -19,10 +19,10 @@ include_once("header.php");
                 $sql = "update ".$prename."plan set `plan`= '$_GET[plan2]', `planamount`= '$_GET[planamount2]' where `planid`= '$_GET[planid]' and `ufid`='$_SESSION[uid]'";
                 $query = mysqli_query($conn,$sql);
                 if ($query) {
-                    echo "预算名称修改成功！</td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=plan.php'>";
+                    echo "预算修改成功！</td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=plan.php'>";
                     exit();
                 } else {
-                    echo "修改预算名称，执行数据库操作时失败！</td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=plan.php'>";
+                    echo "执行数据库操作时失败！请直接通知FKUN或在Github提交issue</td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=plan.php'>";
                     exit();
                 }
             }
