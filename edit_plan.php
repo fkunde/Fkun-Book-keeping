@@ -16,7 +16,7 @@ include_once("header.php");
             $cuclass = mysqli_fetch_array($query);
             //执行操作--修改预算名称
             if ($_GET['Submit']) {
-                $sql = "update ".$prename."plan set `plan`= '". $_GET['plan2'] ."', `planamount`= '". $_GET['planamount2'] ."' where `planid`= '". $_GET['planid'] ."' and `ufid`='$_SESSION[uid]'";
+                $sql = "update ".$prename."plan set `plan`= '$_GET[plan2]', `planamount`= '$_GET[planamount2]' where `planid`= '$_GET[planid]' and `ufid`='$_SESSION[uid]'";
                 $query = mysqli_query($conn,$sql);
                 if ($query) {
                     echo "预算名称修改成功！</td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=plan.php'>";
