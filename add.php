@@ -1,6 +1,11 @@
 <?php
 include_once("header.php");
 ?>
+<?php $sqlcurrency = "SELECT * FROM ".$prename."user where uid='$_SESSION[uid]'";
+                $qurerycurrency = mysqli_query($conn,$sqlcurrency);
+                $row = mysqli_fetch_array($qurerycurrency);
+                $Currency = $row['currency'];
+?>
 <script language="JavaScript">
     function checkpost() {
         if (myform.money.value == "") {
@@ -188,7 +193,7 @@ echo "<table width='100%' border='1' align='left' cellpadding='8' cellspacing='1
                 <th bgcolor='#EBEBEB'>备注</th>
 				<th bgcolor='#EBEBEB'>交易位置</th>
 				<th bgcolor='#EBEBEB'>资金账户</th>
-				<th bgcolor='#EBEBEB'>金额</th>
+				<th bgcolor='#EBEBEB'>金额" .$Currency."</th>
                 <th bgcolor='#EBEBEB'>操作</th>
                 </tr>";
 
