@@ -48,10 +48,13 @@ include_once("header.php");
                 ?><br /><br />
                 电子邮箱 <input for="Email" name="email" id="email" value="<?php echo $row['email'];
                 ?>"> <br /><br />
+                <form id="form" name="form" method="get" action="">
                 货币单位 <input for="currency" name="currency2" id="currency2" value="<?php echo $row['currency'];
                 ?>">
+                <input type="submit" name="Submit" value="修改"/>
+                </form>
                 <label>
-                <input type="submit" name="Submit" value="修改" />
+                
                 </label> <br /><br />
                 旧密码：<input type="password" name="jiupassword" id="jiupassword" size="18" maxlength="15" /> *（修改必须填写）<br /><br />
                 新密码：<input type="password" name="password" id="password" size="18" maxlength="15" /> *（最多15个字符） <br /><br />
