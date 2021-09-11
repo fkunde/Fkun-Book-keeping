@@ -1,15 +1,9 @@
 # Fkun-Book-keeping
 for students to learn how to manage money
 <br>
-基于https://github.com/zhengyong100/ji 
+基于https://github.com/zhengyong100/ji 开发
 
-目前各项功能主要参考Fkun个人使用需求,普遍适用性暂时不高。
+项目持续开发中，目前各项功能普遍适用性不高……
 
-
-项目持续开发中……
-
-正在制作：
- - 智能菜谱输出
- - 每周购物清单输出
- - 快速对账
- - 可视化日历
+由于精力有限，后续开发可能不再考虑环境初始化。
+如需自行搭建服务，请使用Releases中的版本，最后更新于2021年06月14日。
