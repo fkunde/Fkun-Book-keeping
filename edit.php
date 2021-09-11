@@ -143,14 +143,17 @@ if ($_GET['ok']) {
             echo "否";
         } elseif ($row['ac0'] == "1") {
             echo "周期消费";
-        } else {
+        } elseif ($row['ac0'] == "2") {
             echo "偶然消费";
+        }else{
+            echo "金融交易";
         }
         echo "
             </option>
             <option value='0'>否</option>
             <option value='1'>周期消费</option> 
-            <option value='2'>偶然消费</option> 	
+            <option value='2'>偶然消费</option> 
+            <option value='3'>金融交易</option> 	
              </select>	
  <br /><br />            
  收入/支出: ";
