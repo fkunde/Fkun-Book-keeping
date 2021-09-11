@@ -346,7 +346,7 @@ $query = mysqli_query($conn, $sql);
 ?>
 
 <script language="javascript">
-    document.getElementById("stat").innerHTML = "<?= '总共收入<font color=MediumSeaGreen> ' . $income . '</font> 总共支出 <font color=red>' . $spending . '</font>' ?>"
+    document.getElementById("stat").innerHTML = "<?= '总共收入<font color=MediumSeaGreen> ' . $income . $Currency. '</font> 总共支出 <font color=red>' . $spending . $Currency.'</font>' ?>"
 </script>
 <?php
 include_once("footer.php");

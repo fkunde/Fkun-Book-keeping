@@ -1,7 +1,11 @@
 <?php
 include_once("header.php");
 ?>
-
+<?php $sqlcurrency = "SELECT * FROM ".$prename."user where uid='$_SESSION[uid]'";
+                $qurerycurrency = mysqli_query($conn,$sqlcurrency);
+                $row = mysqli_fetch_array($qurerycurrency);
+                $Currency = $row['currency'];
+?>
 <script type="text/javascript">
     var checkall = document.getElementsByName("del_id[]");
 
@@ -214,7 +218,7 @@ if ($_POST['Submit']) {
                 <th bgcolor='#EBEBEB'>备注</th>
 				<th bgcolor='#EBEBEB'>位置</th>
 				<th bgcolor='#EBEBEB'>支付方式</th>
-				<th bgcolor='#EBEBEB'>金额</th>
+				<th bgcolor='#EBEBEB'>金额" .$Currency."</th>
                 <th bgcolor='#EBEBEB'>操作</th>
                 </tr>";
             if ($result === FALSE) {
@@ -547,7 +551,7 @@ echo "</select>"; */
                 <th bgcolor='#EBEBEB'>备注</th>
 				<th bgcolor='#EBEBEB'>位置</th>
 				<th bgcolor='#EBEBEB'>支付方式</th>
-				<th bgcolor='#EBEBEB'>金额</th>
+				<th bgcolor='#EBEBEB'>金额" .$Currency."</th>
                 <th bgcolor='#EBEBEB'>操作</th>
 				<th bgcolor='#EBEBEB'><a href='javascript:select()'>全选</a> | <a href='javascript:fanselect()'>反选</a> | <a href='javascript:noselect()'>不选</a> <input type='submit' name='delete' value='删除'/></th>
                 </tr>
@@ -786,7 +790,7 @@ echo "</select>"; */
                 <th bgcolor='#EBEBEB'>备注</th>
 				<th bgcolor='#EBEBEB'>位置</th>
 				<th bgcolor='#EBEBEB'>支付方式</th>
-				<th bgcolor='#EBEBEB'>金额</th>
+				<th bgcolor='#EBEBEB'>金额" .$Currency."</th>
 				<th bgcolor='#EBEBEB'><a href='javascript:select()'>全选</a> | <a href='javascript:fanselect()'>反选</a> | <a href='javascript:noselect()'>不选</a> <input type='submit' name='delete' value='删除'/></th>
                 </tr>
                 ";
