@@ -43,7 +43,7 @@ include_once("header.php");
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
-                <font>预计生存</font>
+                <font>资产预计生存</font>
             </td>
         </tr>
         <tr>
