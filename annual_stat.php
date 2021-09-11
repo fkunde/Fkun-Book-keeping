@@ -135,7 +135,7 @@ include_once("header.php");
         $days = strval("daysinmonth" . $monthnum);
         $sqltime = " " . $prename . "account.actime >=" . strtotime($$monthstart . " 0:0:0") . " and " . $prename . "account.actime <" . strtotime($$monthend . " 23:59:59");
         //月收入
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <> '3' and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $acincome = mysqli_fetch_array($query);
         $total = $acincome['total'];
@@ -144,7 +144,7 @@ include_once("header.php");
         } else {
         }
         //月支出
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <> '3' and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $acspend = mysqli_fetch_array($query);
         $total = $acspend['total'];
@@ -174,7 +174,7 @@ include_once("header.php");
         $$sf = $$yf - $$nf;
         // 总和
         $timebefore = "  " . $prename . "account.actime <" . strtotime($$monthend . " 23:59:59");
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <>3 and " . $timebefore . "  and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <> '3' and " . $timebefore . "  and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $acincmomeg = mysqli_fetch_array($query);
         $total = $acincmomeg['total'];
@@ -182,7 +182,7 @@ include_once("header.php");
             $$gse = $total;
         } else {
         }
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $timebefore . "  and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <> '3' and " . $timebefore . "  and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $acspendg = mysqli_fetch_array($query);
         $total = $acspendg['total'];
@@ -240,7 +240,7 @@ include_once("header.php");
     $sqltime = " " . $prename . "account.actime >=" . strtotime($startdate1 . " 0:0:0") . " and " . $prename . "account.actime <" . strtotime($enddate12 . " 23:59:59");
     $sqltimebefore = " " . $prename . "account.actime <" . strtotime($enddate12 . " 23:59:59");
     //收入分类
-    $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+    $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <> '3' and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
     $query = mysqli_query($conn, $sql);
     $acyearincome = mysqli_fetch_array($query);
     $total = $acyearincome['total'];
@@ -249,7 +249,7 @@ include_once("header.php");
     } else {
     }
     //年支出
-    $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+    $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <> '3' and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
     $query = mysqli_query($conn, $sql);
     $acyearspend = mysqli_fetch_array($query);
     $total = $acyearspend['total'];
@@ -258,7 +258,7 @@ include_once("header.php");
     } else {
     }
 
-    $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 !=3 and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+    $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <> '3' and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
     $query = mysqli_query($conn, $sql);
     $acbefore = mysqli_fetch_array($query);
     $totalbefore = $acbefore['total'];
@@ -267,7 +267,7 @@ include_once("header.php");
     } else {
     }
 
-    $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 !=3 and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+    $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <> '3' and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
     $query = mysqli_query($conn, $sql);
     $acbeforesp = mysqli_fetch_array($query);
     $totalbeforesp = $acbeforesp['total'];
