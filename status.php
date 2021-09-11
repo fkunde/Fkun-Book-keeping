@@ -539,7 +539,7 @@ include_once("header.php");
                                     $now = date('Y-m');
 
 
-                                    $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and ac0=2 and acuserid='$_SESSION[uid]'  where " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' and " . $prename . "account.ac0 <>3 group by month";
+                                    $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and ac0=2 and acuserid='$_SESSION[uid]'  where " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' group by month";
                                     $query = mysqli_query($conn, $sql);
 
                                     while ($row = mysqli_fetch_array($query)) {
