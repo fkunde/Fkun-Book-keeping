@@ -135,7 +135,7 @@ include_once("header.php");
         $days = strval("daysinmonth" . $monthnum);
         $sqltime = " " . $prename . "account.actime >=" . strtotime($$monthstart . " 0:0:0") . " and " . $prename . "account.actime <" . strtotime($$monthend . " 23:59:59");
         //月收入
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 !=3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $acincome = mysqli_fetch_array($query);
         $total = $acincome['total'];
@@ -144,7 +144,7 @@ include_once("header.php");
         } else {
         }
         //月支出
-        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 !=3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+        $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $query = mysqli_query($conn, $sql);
         $acspend = mysqli_fetch_array($query);
         $total = $acspend['total'];
