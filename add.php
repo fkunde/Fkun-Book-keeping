@@ -138,6 +138,7 @@ if (isset($sql)) {
                     <option value='0'>否</option>
                     <option value='1'>周期消费</option>
                     <option value='2'>偶然消费</option>
+                    <option value='3'>金融交易</option>
                 </select>
                 <input name="Submit" type="submit" id="submit" value="记账" style=" 
 			            background-color: #4CAF50;
@@ -206,7 +207,7 @@ while ($row = mysqli_fetch_array($query)) {
     $categoryinfo = mysqli_fetch_array($categoryquery);
 
     echo "<tr>";
-    if ($row['ac1'] == "1") {
+    if ($row['ac1'] == "1" && $row['ac0'] != "3") {
         echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . date("Y-m-d", $row['actime']) . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $categoryinfo['categoryname'] . "</font></td>";
@@ -251,7 +252,22 @@ while ($row = mysqli_fetch_array($query)) {
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acplace'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $payinfo['paywayname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acamount'] . "</font></td>";
-    } else {
+    } elseif ($row['ac0'] == "3") {
+        echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+        echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acname'] . "</font></td>";
+        echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $categoryinfo['categoryname'] . "</font></td>";
+        echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>";
+        if ($row['ac1'] == "1") {
+            echo "收入";
+        } else {
+            echo "支出";
+        }
+        echo "</font></td>";
+        echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acremark'] . "</font></td>";
+        echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acplace'] . "</font></td>";
+        echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $payinfo['paywayname'] . "</font></td>";
+        echo "<td align='left' bgcolor='#FFFFFF'><font color='#B0FFC4'>" . $row['acamount'] . "</font></td>";
+    }else {
         echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $categoryinfo['categoryname'] . "</font></td>";
