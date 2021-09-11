@@ -48,6 +48,11 @@ include_once("header.php");
         </tr>
         <tr>
             <td align='left' bgcolor='#FFFFFF'>
+                <font>现金预计生存</font>
+            </td>
+        </tr>
+        <tr>
+            <td align='left' bgcolor='#FFFFFF'>
                 <font>距离目标</font>
             </td>
         </tr>
@@ -128,7 +133,7 @@ include_once("header.php");
             $nf = "0";
         }
 
-        $yz = $ns - $nf;
+        $cash = $ns - $nf;
 
 
         //上周支出
@@ -160,7 +165,7 @@ include_once("header.php");
         }else{
             $plantotal = $plantotal;
         }
-        $usable = $yz - $plantotal;
+        $usable = $cash - $plantotal;
 
         //基础支出
         $sqlbase = "select sum(baseamount) as total FROM " . $prename . "base where ufid='$_SESSION[uid]' ";
@@ -236,8 +241,10 @@ include_once("header.php");
 
         if ((($base / '30') + $nomalpday) == 0) {
             $canbealive = 0;
+            $canbealivecash = 0;
         } else {
             $canbealive = round(($usable) / (($base / '30') + $nomalpday));
+            $canbealivecash = round(($cash) / (($base / '30') + $nomalpday));
         }
         if ($toplan > "0") {
             $planpday = ($plantotal / $toplan);
@@ -303,13 +310,14 @@ include_once("header.php");
         }
        
         echo "
-<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $yz . "</font><font>  " . $Currency . "</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $cash . "</font><font>  " . $Currency . "</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $usable . "</font><font>  " . $Currency . "</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $now . "</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $enddate . "</font><font><a href='plan.php'>  修改</a></font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $plantotal . " </font><font>" . $Currency . "<a href='plan.php'>  修改</a></font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $verpass . "</font><font>  天</font><font>(离开" . $dateback . " 天)</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFf'><font color=" . $alivecolor . ">" . $canbealive . "</font><font>  天</font></td></tr>
+<tr><td align='left' bgcolor='#FFFFFf'><font color=" . $alivecolor . ">" . $canbealivecash . "</font><font>  天</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font>" . $disptoplan . "</font><font>  天（</font><font>" . $disptoplanmonth . "</font><font>  个月）</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font color=" . $remaincolor . ">" . $remain . "</font><font>  " . $Currency . "</font></td></tr>
 <tr><td align='left' bgcolor='#FFFFFF'><font >" . $base . "</font><font>  " . $Currency . "/月</font><font><a href='plan.php'>  修改</a></font></td></tr>
