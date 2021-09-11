@@ -43,12 +43,14 @@ include_once("header.php");
                 <table align="center" width="600" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                         <td><form id="form1" name="form1" method="get" action="">
-                            <label>将[<font color="red"><?php echo $cuclass['plan'];
+                            <label>将预算名称[<font color="red"><?php echo $cuclass['plan'];
                                 ?></font>]修改为
                                 <input name="plan2" type="text" id="plan2" value="<?php echo $cuclass['plan'];
                                 ?>" />
                             </label>
-                            <label>将[<font color="red"><?php echo $cuclass['planamount'];
+                            <br>
+                            <br>
+                            <label>将预算[<font color="red"><?php echo $cuclass['planamount'];
                                 ?></font>]修改为
                                 <input name="planamount2" type="text" id="planamount2" value="<?php echo $cuclass['planamount'];
                                 ?>" />
