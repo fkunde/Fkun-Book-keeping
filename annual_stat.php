@@ -240,7 +240,7 @@ include_once("header.php");
     $sqltime = " " . $prename . "account.actime >=" . strtotime($startdate1 . " 0:0:0") . " and " . $prename . "account.actime <" . strtotime($enddate12 . " 23:59:59");
     $sqltimebefore = " " . $prename . "account.actime <" . strtotime($enddate12 . " 23:59:59");
     //收入分类
-    $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 !=3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+    $sql = "select sum(acamount) as total from " . $prename . "account where " . $prename . "account.ac1 =1 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
     $query = mysqli_query($conn, $sql);
     $acyearincome = mysqli_fetch_array($query);
     $total = $acyearincome['total'];
@@ -249,7 +249,7 @@ include_once("header.php");
     } else {
     }
     //年支出
-    $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 !=3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+    $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
     $query = mysqli_query($conn, $sql);
     $acyearspend = mysqli_fetch_array($query);
     $total = $acyearspend['total'];
@@ -304,7 +304,7 @@ include_once("header.php");
 
     $yearspends = $yearspend - $yearspendn;
 
-    $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 !=3 and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
+    $sql = "select sum(acamount) as total,ac1 from " . $prename . "account where " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $sqltimebefore . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
     $query = mysqli_query($conn, $sql);
     $acallspend = mysqli_fetch_array($query);
     $total = $acallspend['total'];
