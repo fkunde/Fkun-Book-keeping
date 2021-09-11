@@ -1,7 +1,11 @@
 <?php
 include_once("header.php");
 ?>
-
+<?php $sqlcurrency = "SELECT * FROM ".$prename."user where uid='$_SESSION[uid]'";
+                $qurerycurrency = mysqli_query($conn,$sqlcurrency);
+                $row = mysqli_fetch_array($qurerycurrency);
+                $Currency = $row['currency'];
+                ?>
 
 <div style="width:auto;height:100vh;">
 <div style="width:100%;float:left;margin-left: 0%;position:relative;">
