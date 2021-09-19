@@ -201,8 +201,8 @@ include_once("header.php");
         }
         $$npd = round($$nf / $$days, 2);
         $$mpd = round($$yf / $$days, 2);
-        $thismonth = date("Y-m");
-        if ($$monthend > $thismonth) {
+        $thismonthend = date("Y-m-31");
+        if ($$monthend > $thismonthend) {
             $$gsa = "-";
             $$gse = "-";
             $$gs = "-";
