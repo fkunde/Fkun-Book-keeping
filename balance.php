@@ -115,7 +115,7 @@ include_once("header.php");
             $total1 = $ac1['total'];
             $s1[$ac1['ac1']] = $total;
         }
-        $ns = $total1;
+        $ns = round($total1, 2);
         //可支配流动
         $sql = "select sum(acamount) as total,ac1 from " . $prename . "account  where " . $prename . "account.ac1 =2 and " . $sqltime . " and acuserid='$_SESSION[uid]' group by " . $prename . "account.ac1";
         $s2 = array();
