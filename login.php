@@ -193,7 +193,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                     } else {
                         $umima = md5($_POST['passwordreg']);
                         $utime = time();
-                        $sql = "insert into " . $prename . "user (username, password,email,utime) values ('$_POST[usernamereg]', '$umima', '$_POST[emailreg]', '$utime')";
+                        $sql = "insert into " . $prename . "user (username, password,email,utime,currency) values ('$_POST[usernamereg]', '$umima', '$_POST[emailreg]', '$utime', '¥')";
                         $query = mysqli_query($conn, $sql);
                         if ($query) {
                             echo "<br><br><font color='green'>Registration Successful!</font><script>alert('Registration Successful! Please read the EULA before login!') </script>";
