@@ -3,3 +3,6 @@ Thumbs.db
 .user.ini
 *.DS_Store
 .DS_Store
+.DS_store
+node_modules
+.sass-cache
