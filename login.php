@@ -303,7 +303,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
     </script>
 <div class="footer">
 
-Copyright © 2017-<?php echo date('Y'); ?>
+Copyright © 2017-<?php echo date('Y'); ?>&nbsp;
 <a href="https://fkun.tech/" target="_blank">FKUN </a> All Rights Reserved.
 </div>
 </body>
