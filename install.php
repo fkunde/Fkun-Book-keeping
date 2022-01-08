@@ -4,21 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Install</title>
-
-
     <p align="center">
         <?php
         include("config.php");
-        echo "创建数据库.....";
+        echo "连接数据库.....";
         if (indatabase($db_dbname, $conn)) {
-            echo "<br />已存在!<br />";
+            echo "<br />成功!<br />";
         } else {
-            $query = mysqli_query($conn, "create database " . $db_dbname . " default character SET utf8 COLLATE utf8_general_ci");
-            if ($query) {
-                echo "成功<br />";
-            } else {
-                echo "失败<br />";
-            }
+            echo "失败<br />请检查数据库！";
+            exit();
         }
         echo "创建表 " . $prename . "account .....";
         if (intable($db_dbname, $prename . "account", $conn)) {
@@ -29,11 +23,9 @@
             if ($query) {
                 echo "成功<br />";
             } else {
-                echo $sql;
                 echo "<br />失败<br /><font color='red'>安装失败，请检查config.php相关配置。</font></body></html>";
             }
         }
-
         echo "<br />创建表 " . $prename . "account_payway .....";
         if (intable($db_dbname, $prename . "account_payway", $conn)) {
             echo "<br />已存在!<br />";
