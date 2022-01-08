@@ -11,7 +11,7 @@
         if (indatabase($db_dbname, $conn)) {
             echo "<br />成功!<br />";
         } else {
-            echo "失败<br />请检查数据库！";
+            echo "失败<br />请检查数据库或config.php相关配置！";
             exit();
         }
         echo "创建表 " . $prename . "account .....";
