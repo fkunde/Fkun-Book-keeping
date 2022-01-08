@@ -3,12 +3,12 @@ error_reporting(0);//debug mode 0 off -1 on
 //数据库配置信息，根据情况修改，否则无法安装
 $db_servername = "localhost";
 //Mysql服务器地址 将 localhost 修改为你的数据库地址
-$db_username = "Finance";
+$db_username = "username";
 //数据库用户名 将 username 修改为你的数据库用户名
-$db_password = "finance";
+$db_password = "password";
 //数据库密码 将 password 修改为你的数据库密码
-$db_dbname = "Billsys";
-//数据库名 将 jizhang 修改为你的数据库名
+$db_dbname = "bookkeeping";
+//数据库名 将 bookkepping 修改为你的数据库名
 $prename = "Finance_";
 //表前缀
 $conn = new mysqli($db_servername,$db_username,$db_password);
@@ -43,9 +43,9 @@ function user_shell($uid,$shell) {
 
 
 //基本设置
-date_default_timezone_set("Europe/Berlin");
-//date_default_timezone_set('America/Argentina/Buenos_Aires');
-//时区设置为北京时间 亚洲/上海 阿根廷时间date_default_timezone_set( 'America/Argentina/Buenos_Aires' );
+date_default_timezone_set("Asia/Shanghai");
+//时区设置为北京时间 Asia/Shanghai
+//时区设置为柏林时间 Europe/Berlin
 
 function user_mktime($onlinetime) {
     $new_time = mktime();
@@ -74,6 +74,5 @@ function intable($dbname,$tablename,$conn) {
     //重新关联账本数据库
     return $intable;
 }
-
-$Currency= "€";
+$Currency= "Unset";
 ?>

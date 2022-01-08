@@ -14,27 +14,27 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FKUN SYSTEM</title>
+    <title>FKUN Bookkeeping System</title>
     <link rel="stylesheet" type="text/css" href="css/default.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script type="text/javascript">
         function disable() {
             document.getElementById("accept").disabled = true
-            document.getElementById("accept").style.background='#BFBFBF';
+            document.getElementById("accept").style.background = '#BFBFBF';
         }
 
         function enable() {
             document.getElementById("accept").disabled = false
-            document.getElementById("accept").style.background='#bb2f2a';
+            document.getElementById("accept").style.background = '#bb2f2a';
         }
     </script>
 </head>
 
 <body>
-   
-<script type="text/javascript" src="js/three.js"></script>
-    
+
+    <script type="text/javascript" src="js/three.js"></script>
+
     <?php
     include("config.php");
     ?>
@@ -92,15 +92,15 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
             </ul>
 
             <ul class="hide">
-                
+
                 <p style="margin-left:57%;margin-top:-150%;width:300px;color:#DEDEDE;font-size:19px;letter-spacing:4px; position:absolute;">
                     SIGNUP
                     <br>
                     <a href="/eula.php" style="margin-left:-6%;font-size:8px;">Read the EULA</a>
-                    
+
                 </p>
                 <form action="" method="post" name="submitzhuce">
-                    <div class='login_fields' style='z-index:-999;' >
+                    <div class='login_fields' style='z-index:-999;'>
 
                         <div class='login_fields__user'>
 
@@ -121,25 +121,25 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                             </input>
                         </div>
 
-                        <div class='login_fields__password' style='z-index:-1;' >
+                        <div class='login_fields__password' style='z-index:-1;'>
 
                             <input placeholder='PASSWORD' type='password' id='passwordreg' name='passwordreg' style="margin-left:-33%;margin-top:62%;position:absolute;">
                             <div class='validation'>
                                 <img src='img/tick.png'>
                             </div>
-                            
+
                             <div class='login_fields__submit'>
-                            
-                                <input id="accept" disabled="true" type='submit' value='SUBMIT' name='Submitzhuce' style="margin-left:170%;margin-top:92%;background:#BFBFBF;" >
+
+                                <input id="accept" disabled="true" type='submit' value='SUBMIT' name='Submitzhuce' style="margin-left:170%;margin-top:92%;background:#BFBFBF;">
                                 <p style="color:#fff;margin-top:-20%;margin-left:30%;width:100px;">Accept EULA</p>
                                 <input type="checkBox" style="position:absolute;color:#fff;display: block;margin-top:-25%;margin-left:122%;" onclick="if (this.checked) {enable()} else {disable()}">
                             </div>
                         </div>
 
-                        
+
                     </div>
                 </form>
-                
+
             </ul>
             <div style="margin-left:-215%;margin-top:280%;position:absolute;">
                 <p style="color:#8A8A8A;font-size:15px;">
@@ -219,7 +219,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
 
             </p>
         </div>
-        
+
     </div>
     <script type="text/javascript" src='js/stopExecutionOnTimeout.js?t=1'></script>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
@@ -301,12 +301,9 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
             });
         });
     </script>
-<div class="footer">
-
-Copyright © 2017-<?php echo date('Y'); ?> 
-<a href="https://fkun.tech/" target="_blank">FKUN </a> All Rights Reserved.
-</div>
+    <div class="footer">
+        Copyright © 2015-<?php echo date('Y'); ?>
+        <a href="https://fkun.tech/" target="_blank">FKUN </a> All Rights Reserved.
+    </div>
 </body>
-
-
 </html>

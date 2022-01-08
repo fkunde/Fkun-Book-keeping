@@ -1,10 +1,10 @@
 <?php
 include_once("header.php");
 ?>
-<?php $sqlcurrency = "SELECT * FROM ".$prename."user where uid='$_SESSION[uid]'";
-                $qurerycurrency = mysqli_query($conn,$sqlcurrency);
-                $row = mysqli_fetch_array($qurerycurrency);
-                $Currency = $row['currency'];
+<?php $sqlcurrency = "SELECT * FROM " . $prename . "user where uid='$_SESSION[uid]'";
+$qurerycurrency = mysqli_query($conn, $sqlcurrency);
+$row = mysqli_fetch_array($qurerycurrency);
+$Currency = $row['currency'];
 ?>
 <script language="JavaScript">
     function checkpost() {
@@ -62,7 +62,7 @@ if (isset($_POST['Submit'])) {
     }
 }
 if (isset($time100)) {
-   // echo $time100;
+    // echo $time100;
 }
 if (isset($sql)) {
     //echo $sql;
@@ -71,7 +71,7 @@ if (isset($sql)) {
 ?>
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" class='table table-striped table-bordered'>
-    <tr >
+    <tr>
         <td bgcolor="#e8e8e8">账目内容</td>
         <!-- <td bgcolor="#e8e8e8">记账内容 （目前依然为beta测试版，遇到BUG欢迎在<span><a href="https://bbs.fkun.tech/">论坛bbs.fkun.tech</a></span>或<span><a href="https://blog.fkun.tech/">博客blog.fkun.tech</a></span>中留言反馈。）</td> -->
     </tr>
@@ -79,7 +79,7 @@ if (isset($sql)) {
         <td bgcolor="#e8e8e8">
             <form id="form2" name="myform2" method="post" onsubmit="return checkpost2();">
                 <font> 账目金额: </font><input name="money" type="text" id="money" size="8" />&nbsp;<?php echo "$Currency";
-                ?>
+                                                                                                ?>
                 <div style="display:none;">
 
                 </div>
@@ -114,24 +114,25 @@ if (isset($sql)) {
                     ?>
                 </select>
                 <font color="red"><a href="payway.php" style="color:#7f7f7f;">管理支付方式</a></font>
-                <br /><br /> 账目名称: 
+                <br /><br /> 账目名称:
                 <input name="name" type="text" id="name" />
-                <br /><br /> 交易地点: 
+                <br /><br /> 交易地点:
                 <input name="place" type="text" id="place" />
-                <br /><br /> 账目备注: 
+                <br /><br /> 账目备注:
                 <input name="remark" type="text" id="remark" />
                 <br /><br />
-              
+
                 交易时间: <input type="text" name="time" id="time" class="Calender" value="<?php $addnow = date("Y-m-d H:i:s");
-                echo "$addnow";?>"></input>
-                <script src="js/laydate/laydate.js"></script> 
+                                                                                        echo "$addnow"; ?>"></input>
+                <script src="js/laydate/laydate.js"></script>
                 <script>
-                //执行一个laydate实例
-                laydate.render({
-                  elem: '.Calender' //指定元素
-                  ,type: 'datetime'
-                  ,theme: '#39C5BB'
-                });
+                    //执行一个laydate实例
+                    laydate.render({
+                        elem: '.Calender' //指定元素
+                            ,
+                        type: 'datetime',
+                        theme: '#39C5BB'
+                    });
                 </script>
                 <br /><br />
                 <font> 收支类型: </font><select name="classid" id="classid" style="height:26px;">
@@ -139,7 +140,7 @@ if (isset($sql)) {
                     <option value='1'>收入</option>
                 </select>
                 <font color="red"><a href="classify.php" style="color:#7f7f7f;"></a></font>
-                <br /><br /> 特殊消费: 
+                <br /><br /> 特殊消费:
                 <select name="special" id="special" style="height:26px;">
                     <option value='0'>否</option>
                     <option value='1'>周期消费</option>
@@ -194,7 +195,7 @@ echo "<table width='100%' border='1' align='left' cellpadding='8' cellspacing='1
                 <th bgcolor='#EBEBEB'>备注</th>
 				<th bgcolor='#EBEBEB'>交易位置</th>
 				<th bgcolor='#EBEBEB'>资金账户</th>
-				<th bgcolor='#EBEBEB'>金额" .$Currency."</th>
+				<th bgcolor='#EBEBEB'>金额" . $Currency . "</th>
                 <th bgcolor='#EBEBEB'>操作</th>
                 </tr>";
 
@@ -273,7 +274,7 @@ while ($row = mysqli_fetch_array($query)) {
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acplace'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $payinfo['paywayname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acamount'] . "</font></td>";
-    }else {
+    } else {
         echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $categoryinfo['categoryname'] . "</font></td>";
@@ -335,18 +336,18 @@ echo "</td></tr></table>";
 
 $query = mysqli_query($conn, $sql);
 
-    $sql = "select SUM(acamount) as income from " . $prename . "account where ac1='1' and acuserid='$_SESSION[uid]'";
-    $classquery = mysqli_query($conn, $sql);
-    $classinfo = mysqli_fetch_array($classquery);
-    $income = $classinfo['income'];
-    $sql = "select SUM(acamount) as spend from " . $prename . "account where ac1='2' and acuserid='$_SESSION[uid]'";
-    $classquery2 = mysqli_query($conn, $sql);
-    $classinfo2 = mysqli_fetch_array($classquery2);
-    $spending = $classinfo2['spend'];
+$sql = "select SUM(acamount) as income from " . $prename . "account where ac1='1' and acuserid='$_SESSION[uid]'";
+$classquery = mysqli_query($conn, $sql);
+$classinfo = mysqli_fetch_array($classquery);
+$income = $classinfo['income'];
+$sql = "select SUM(acamount) as spend from " . $prename . "account where ac1='2' and acuserid='$_SESSION[uid]'";
+$classquery2 = mysqli_query($conn, $sql);
+$classinfo2 = mysqli_fetch_array($classquery2);
+$spending = $classinfo2['spend'];
 ?>
 
 <script language="javascript">
-    document.getElementById("stat").innerHTML = "<?= '总共收入<font color=MediumSeaGreen> ' . $income . $Currency. '</font> 总共支出 <font color=red>' . $spending . $Currency.'</font>' ?>"
+    document.getElementById("stat").innerHTML = "<?= '总共收入<font color=MediumSeaGreen> ' . $income . $Currency . '</font> 总共支出 <font color=red>' . $spending . $Currency . '</font>' ?>"
 </script>
 <?php
 include_once("footer.php");
