@@ -9,6 +9,7 @@ on:
       - LICENSE
       - .htaccess
       - .user.ini
+      - config.php
 
 jobs:
   deploy:
