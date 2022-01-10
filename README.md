@@ -30,4 +30,4 @@ Release中最新的安装包。<br>
 ### install.php
 完成`config.php`中的设置后，在浏览器中进入`install.php`(输入`你的网址/install.php`)。<br>
 等待完成初始化后即可进入登陆页面。
-PS: 安装时出现错误请提交Issues或截图在https://bbs.fkun.tech/上反馈。
+PS: 安装时出现错误请提交Issues或截图在https://bbs.fkun.tech 上反馈。
