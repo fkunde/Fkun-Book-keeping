@@ -31,3 +31,7 @@ Release中最新的安装包。<br>
 完成`config.php`中的设置后，在浏览器中进入`install.php`(输入`你的网址/install.php`)。<br>
 等待完成初始化后即可进入登陆页面。
 PS: 安装时出现错误请提交Issues或截图在https://bbs.fkun.tech 上反馈。
+
+**其他注意事项**<br>
+2022年2月14日 修复导入内容编码导致的错误，请将原export.php文件替换更新。
+CSV导入的内容中请避免出现半角逗号【,】否则导入将失败。
