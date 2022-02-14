@@ -20,7 +20,7 @@ Release中最新的安装包。<br>
 `db_servername`：数据库服务器地址<br>
 `db_username`：数据库用户名<br>
 `db_password`：数据库密码<br>
-`db_dbname`：数据库名称<br>
+`db_dbname`：数据库名称（请手动创建）<br>
 **基本设置**<br>
 `date_default_timezone_set`：默认时区<br>
 可选项有
@@ -30,6 +30,8 @@ Release中最新的安装包。<br>
 ### install.php
 完成`config.php`中的设置后，在浏览器中进入`install.php`(输入`你的网址/install.php`)。<br>
 等待完成初始化后即可进入登陆页面。
+
+
 PS: 安装时出现错误请提交Issues或截图在https://bbs.fkun.tech 上反馈。
 
 **其他注意事项**<br>
