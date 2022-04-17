@@ -199,12 +199,12 @@ if ($_POST['Submit']) {
 
             echo "<table width='100%' border='0' align='left' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3' class='table table-striped table-bordered'>
                 <tr>
-                <th bgcolor='#EBEBEB'>时间</th>
+                <th class = 'hidephone' bgcolor='#EBEBEB'>时间</th>
 				<th bgcolor='#EBEBEB'>交易对象</th>
 				<th bgcolor='#EBEBEB'>分类</th>
-                <th bgcolor='#EBEBEB'>交易类型</th>
-                <th bgcolor='#EBEBEB'>备注</th>
-				<th bgcolor='#EBEBEB'>位置</th>
+                <th class = 'hidephone' bgcolor='#EBEBEB'>交易类型</th>
+                <th class = 'hidephone' bgcolor='#EBEBEB'>备注</th>
+				<th class = 'hidephone' bgcolor='#EBEBEB'>位置</th>
 				<th bgcolor='#EBEBEB'>支付方式</th>
 				<th bgcolor='#EBEBEB'>金额" .$Currency."</th>
                 <th bgcolor='#EBEBEB'>操作</th>
@@ -225,78 +225,78 @@ if ($_POST['Submit']) {
                 $categoryname = mysqli_fetch_array($categoryquery);
                 echo "<tr>";
                 if ($row['ac1'] == "1" && $row['ac0'] != "3") {
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $categoryname['categoryname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>";
                     if ($row['ac1'] == "1") {
                         echo "收入";
                     } else {
                         echo "支出";
                     }
                     echo "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acremark'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acplace'] . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acremark'] . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acplace'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $payinfo['paywayname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acamount'] . "</font></td>";
                 } elseif ($row['ac0'] == '1') {
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $categoryname['categoryname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>";
                     if ($row['ac1'] == "1") {
                         echo "收入";
                     } else {
                         echo "支出";
                     }
                     echo "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acremark'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acplace'] . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acremark'] . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acplace'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $payinfo['paywayname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acamount'] . "</font></td>";
                 }elseif ($row['ac0'] == "2") {
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $categoryname['categoryname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>";
                     if ($row['ac1'] == "1") {
                         echo "收入";
                     } else {
                         echo "支出";
                     }
                     echo "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acremark'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acplace'] . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acremark'] . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acplace'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $payinfo['paywayname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acamount'] . "</font></td>";
                 } elseif ($row['ac0'] == "3") {
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $categoryname['categoryname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>";
                     if ($row['ac1'] == "1") {
                         echo "收入";
                     } else {
                         echo "支出";
                     }
                     echo "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acremark'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acplace'] . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acremark'] . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acplace'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $payinfo['paywayname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acamount'] . "</font></td>";
                 }else {
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $categoryname['categoryname'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>";
                     if ($row['ac1'] == "1") {
                         echo "收入";
                     } else {
                         echo "支出";
                     }
                     echo "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acremark'] . "</font></td>";
-                    echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acplace'] . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acremark'] . "</font></td>";
+                    echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acplace'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $payinfo['paywayname'] . "</font></td>";
                     echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acamount'] . "</font></td>";
                 }
@@ -315,7 +315,8 @@ if ($_POST['Submit']) {
 
             //计算总的页数
             $pagenum = ceil($count_array['count'] / $pagesize);
-            echo "<ul class='pagination'>";
+            echo "<ul class='pagination'>
+            <span class='hidedesk' style='color:#6BCEFF'>*横屏或使用电脑以显示所有项目</span>";
             echo '<li class="disabled"><a href="#">共', $count_array['count'], '条 <span id="total" style="display:none">', $pagenum, '</span></a></li>';
             //后面共几页
 
@@ -529,12 +530,12 @@ echo "</select>"; */
 <form action='delete.php' method='post'>
  <table id='excel' class='table table-striped' width='100%' border='0' align='left' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3'>
                 <tr>
-                <th bgcolor='#EBEBEB'>时间</th>
+                <th class = 'hidephone' bgcolor='#EBEBEB'>时间</th>
 				<th bgcolor='#EBEBEB'>交易对象</th>
 				<th bgcolor='#EBEBEB'>分类</th>
-                <th bgcolor='#EBEBEB'>交易类型</th>
-                <th bgcolor='#EBEBEB'>备注</th>
-				<th bgcolor='#EBEBEB'>位置</th>
+                <th class = 'hidephone' bgcolor='#EBEBEB'>交易类型</th>
+                <th class = 'hidephone' bgcolor='#EBEBEB'>备注</th>
+				<th class = 'hidephone' bgcolor='#EBEBEB'>位置</th>
 				<th bgcolor='#EBEBEB'>支付方式</th>
 				<th bgcolor='#EBEBEB'>金额" .$Currency."</th>
                 <th bgcolor='#EBEBEB'>操作</th>
@@ -551,44 +552,44 @@ echo "</select>"; */
 
         echo "<tr>";
         if ($row['ac1'] == '1' && $row['ac0'] !== '3') {
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . date("Y-m-d", $row['actime']) . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $categoryname['categoryname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acremark'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acplace'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $payinfo['paywayname'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acremark'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acplace'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $payinfo['paywayname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acamount'] . "</font></td>";
         } elseif ($row['ac0'] == '1') {
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . date("Y-m-d", $row['actime']) . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $categoryname['categoryname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acremark'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acplace'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $payinfo['paywayname'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acremark'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acplace'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $payinfo['paywayname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acamount'] . "</font></td>";
         } elseif ($row['ac0'] == "2") {
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . date("Y-m-d", $row['actime']) . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $categoryname['categoryname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acremark'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acplace'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $payinfo['paywayname'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acremark'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acplace'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $payinfo['paywayname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acamount'] . "</font></td>";
         } elseif ($row['ac0'] == "3") {
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . date("Y-m-d", $row['actime']) . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $categoryname['categoryname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acremark'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acplace'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $payinfo['paywayname'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acremark'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acplace'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . $payinfo['paywayname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acamount'] . "</font></td>";
         }else {
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $categoryname['categoryname'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acremark'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acplace'] . "</font></td>";
-            echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $payinfo['paywayname'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acremark'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acplace'] . "</font></td>";
+            echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . $payinfo['paywayname'] . "</font></td>";
             echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acamount'] . "</font></td>";
         }
         echo "<td align='left' bgcolor='#FFFFFF'><a href=edit.php?id=" . $row['acid'] . ">编辑</a> <a href=delete.php?id=" . $row['acid'] . ">删除</a>
@@ -769,12 +770,12 @@ echo "</select>"; */
 <form action='delete.php' method='post'>
  <table id='excel' class='table table-striped' width='100%' border='0' align='left' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3'>
                 <tr>
-				<th bgcolor='#EBEBEB'>时间</th>
+				<th class = 'hidephone' bgcolor='#EBEBEB'>时间</th>
 				<th bgcolor='#EBEBEB'>交易对象</th>
 				<th bgcolor='#EBEBEB'>分类</th>
-                <th bgcolor='#EBEBEB'>备注</th>
-				<th bgcolor='#EBEBEB'>位置</th>
-				<th bgcolor='#EBEBEB'>支付方式</th>
+                <th class = 'hidephone' bgcolor='#EBEBEB'>备注</th>
+				<th class = 'hidephone' bgcolor='#EBEBEB'>位置</th>
+				<th class = 'hidephone' bgcolor='#EBEBEB'>支付方式</th>
 				<th bgcolor='#EBEBEB'>金额" .$Currency."</th>
 				<th bgcolor='#EBEBEB'><a href='javascript:select()'>全选</a> | <a href='javascript:fanselect()'>反选</a> | <a href='javascript:noselect()'>不选</a> <input type='submit' name='delete' value='删除'/></th>
                 </tr>
@@ -790,44 +791,44 @@ echo "</select>"; */
             $categoryname = mysqli_fetch_array($categoryquery);
             echo "<tr>";
             if ($row['ac1'] == '1' && $row['ac0'] !== '3') {
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $categoryname['categoryname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acremark'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acplace'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $payinfo['paywayname'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acremark'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acplace'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $payinfo['paywayname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acamount'] . "</font></td>";
             } elseif ($row['ac0'] !== '0') {
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $categoryname['categoryname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acremark'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acplace'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $payinfo['paywayname'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acremark'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acplace'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $payinfo['paywayname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acamount'] . "</font></td>";
             }elseif ($row['ac0'] == "1") {
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $categoryname['categoryname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acremark'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acplace'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $payinfo['paywayname'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acremark'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acplace'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $payinfo['paywayname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acamount'] . "</font></td>";
             } elseif ($row['ac0'] == "3") {
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $categoryname['categoryname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acremark'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acplace'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $payinfo['paywayname'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acremark'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acplace'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . $payinfo['paywayname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acamount'] . "</font></td>";
             } else {
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $categoryname['categoryname'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acremark'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acplace'] . "</font></td>";
-                echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $payinfo['paywayname'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acremark'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acplace'] . "</font></td>";
+                echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . $payinfo['paywayname'] . "</font></td>";
                 echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acamount'] . "</font></td>";
             }
             echo "<td align='left' bgcolor='#FFFFFF'><a href=edit.php?id=" . $row['acid'] . ">编辑</a> <a href=delete.php?id=" . $row['acid'] . ">删除</a>

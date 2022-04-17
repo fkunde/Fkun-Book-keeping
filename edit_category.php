@@ -16,10 +16,10 @@ include_once("header.php");
             $cuclass = mysqli_fetch_array($query);
             //执行操作--修改分类名称
             if ($_GET['Submit']) {
-                $sql = "update ".$prename."category set categoryname= '$_GET[categoryname2]' where categoryid='$_GET[categoryid]' and ufid='$_SESSION[uid]'";
+                $sql = "update ".$prename."category set categoryname= '$_GET[categoryname2]', type= '$_GET[ctype2]' where categoryid='$_GET[categoryid]' and ufid='$_SESSION[uid]'";
                 $query = mysqli_query($conn,$sql);
                 if ($query) {
-                    echo "分类名称修改成功！</td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=category.php'>";
+                    echo "分类修改成功！</td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=category.php'>";
                     exit();
                 } else {
                     echo "修改分类名称，执行数据库操作时失败！</td></tr></table> 2秒后自动返回<meta http-equiv=refresh content='2; url=category.php'>";
@@ -64,6 +64,10 @@ include_once("header.php");
                                 <input name="categoryname2" type="text" id="categoryname2" value="<?php echo $cuclass['categoryname'];
                                 ?>" />
                             </label>
+                            <select name="ctype2" id="ctype2">
+                                <option value="2">支出</option>
+                                <option value="1">收入</option>
+                            </select>
                             <label>
                                 <input type="submit" name="Submit" value="修改" />
                             </label>

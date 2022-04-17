@@ -19,7 +19,7 @@ if ($_GET["Submit"]) {
     if ($attitle) {
         $status_text = "类别已存在！";
     } else {
-        $sql = "insert into " . $prename . "category (categoryname, ufid) values ('$_GET[categoryname]', $_SESSION[uid])";
+        $sql = "insert into " . $prename . "category (categoryname, ufid, type) values ('$_GET[categoryname]', $_SESSION[uid],'$_GET[ctype]')";
         $query = mysqli_query($conn, $sql);
         if ($query) {
             $status_text = "<font color=#00CC00>添加成功！</font>";
@@ -40,10 +40,11 @@ if ($_GET["Submit"]) {
         <td bgcolor="#FFFFFF">
             <form id="myform" name="form2" method="get" onsubmit="return checkpost();">
                 分类名称：<input name="categoryname" type="text" id="categoryname" />
+                <select name="ctype" id="ctype">
+                                <option value="2">支出</option>
+                                <option value="1">收入</option>
+                </select>
                 <br /><br />
-
-
-
                 <input type="submit" name="Submit" value="新建" class="btn btn-default" />
                 <?php echo $status_text;
                 ?>
@@ -68,8 +69,13 @@ if ($_GET["Submit"]) {
     $sql = "select * from " . $prename . "category where ufid='$_SESSION[uid]'";
     $query = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_array($query)) {
+        if ($row['type'] == 1){
         echo "<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['categoryname'] . "</font></td>";
+        }else{
+        echo "<tr><td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['categoryname'] . "</font></td>";
+        }
         echo "<td align='left' bgcolor='#FFFFFF'><a href='edit_category.php?type=1&categoryid=" . $row['categoryid'] . "'>修改</a> <a href='edit_category.php?type=2&categoryid=" . $row['categoryid'] . "'>转移</a> <a href='edit_category.php?type=3&categoryid=" . $row['categoryid'] . "'>删除</a></td>";
+
     }
     echo "</tr>";
     ?>

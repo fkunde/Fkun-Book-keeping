@@ -40,13 +40,23 @@ if (isset($_GET['tj']) and $_GET['tj'] == 'logout') {
         .table-bordered>tfoot>tr>td {
             border: 1px solid #a5a5a5;
         }
-        .hidephone{
-            display: block;
+
+        .hidephone {
+            /* display: block; */
+        }
+
+        .hidedesk {
+            display: none;
+        }
+
+        @media (max-width: 500px) {
+            .hidephone {
+                display: none !important;
             }
-@media (max-width: 768px){
-    .hidephone{
-        display: none !important;
-        }}
+            .hidedesk {
+                display: block;
+            }
+        }
     </style>
 </head>
 
@@ -58,7 +68,7 @@ if (isset($_GET['tj']) and $_GET['tj'] == 'logout') {
     ?>
     <div style="max-width:100vw;width:auto;margin-left: auto;margin-right: auto;padding:5px; background-color: #fff;">
         <div class="table-responsive">
-            <nav class="navbar navbar-default" role="navigation" style="background-color:#e8e8e8;" >
+            <nav class="navbar navbar-default" role="navigation" style="background-color:#e8e8e8;">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
@@ -69,7 +79,7 @@ if (isset($_GET['tj']) and $_GET['tj'] == 'logout') {
                         </button>
                         <!-- <a class="navbar-brand" href="add.php">记账</a> -->
                     </div>
-                    <div class="collapse navbar-collapse" id="example-navbar-collapse" >
+                    <div class="collapse navbar-collapse" id="example-navbar-collapse">
                         <ul class="nav navbar-nav" style="font-size:medium;">
                             <li><a href="add.php">记账</a></li>
                             <!-- <li><a class="hidephone" href="status.php">统计</a></li> -->

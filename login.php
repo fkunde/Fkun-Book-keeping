@@ -200,7 +200,7 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                         } else {
                             echo "<br><br><font color='red'>SQL Erro!</font>";
                         }
-                        //给用户增加默认time
+                        //给用户增加默认time/默认分类/默认支付方式
                         $sql = "select * from " . $prename . "user where username='$_POST[usernamereg]'";
                         $query = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_assoc($query);
@@ -212,6 +212,20 @@ echo "<script language='javascript' type='text/javascript'>window.location.href=
                             echo "<br><font color='green'>Usertimetable Create...OK</font>";
                         } else {
                             echo "<br><font color='red'>Usertimetable Create...Failure!!!</font>";
+                        }
+                        $sql2 = "insert into " . $prename . "category (categoryname, ufid, type) values ('未知支出','" . $uid . "', '2'),('未知收入','" . $uid . "', '1')";
+                        $query = mysqli_query($conn, $sql2);
+                        if ($query) {
+                            echo "<br><font color='green'>User Init...OK</font>";
+                        } else {
+                            echo "<br><font color='red'>User Init...Failure!!!</font>";
+                        }
+                        $sql3 = "insert into " . $prename . "account_payway (paywayname, ufid) values ('现金','" . $uid . "')";
+                        $query = mysqli_query($conn, $sql3);
+                        if ($query) {
+                            echo "<br><font color='green'>User Payway...OK</font>";
+                        } else {
+                            echo "<br><font color='red'>User Payway...Failure!!!</font>";
                         }
                     }
                 }

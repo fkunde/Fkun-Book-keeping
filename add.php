@@ -13,11 +13,6 @@ $Currency = $row['currency'];
             window.location = 'add.php';
             return false;
         }
-        if (myform.classid.value == "") {
-            alert("请添加分类");
-            window.location = 'classify.php';
-            return false;
-        }
         if (myform.time.value == "") {
             alert("请选择日期");
             window.location = 'add.php';
@@ -32,11 +27,6 @@ $Currency = $row['currency'];
             window.location = 'add.php';
             return false;
         }
-        if (myform2.classid.value == "") {
-            alert("请添加分类");
-            window.location = 'classify.php';
-            return false;
-        }
         if (myform2.time.value == "") {
             alert("请选择日期");
             window.location = 'add.php';
@@ -44,14 +34,33 @@ $Currency = $row['currency'];
         }
     }
 </script>
+<script type="text/javascript">
+    // get categorys
+    function getcategorys() {
+        $.getJSON("select.php",{ctype:$("#ctype").val()},function(json){ 
+        var category = $("#category"); 
+        $("option",category).remove(); //清空原有的选项 
+        $.each(json,function(index,array){ 
+            var option = "<option value='"+array['categoryid']+"'>"+array['categoryname']+"</option>"; 
+            category.append(option);   
+            // console.log(option); 
+        }); 
+        });
+    }
 
+</script>
+<script type="text/javascript">
+   window.onload = function(){
+       getcategorys();
+   }
+</script>
 <?php
 $income = 0;
 $spending = 0;
 //检查是否记账并执行
 if (isset($_POST['Submit'])) {
     $time100 = strtotime($_POST['time']);
-    $sql = "insert into " . $prename . "account (acamount, acclassid, actime, acremark, accategory, acuserid, acplace, acpayway, acname, ac0, ac1, ac2) values ('$_POST[money]', '$_POST[classid]', '$time100', '$_POST[remark]', '$_POST[category]', '$_SESSION[uid]', '$_POST[place]', '$_POST[payway]', '$_POST[name]', '$_POST[special]', '$_POST[classid]', '')";
+    $sql = "insert into " . $prename . "account (acamount, acclassid, actime, acremark, accategory, acuserid, acplace, acpayway, acname, ac0, ac1, ac2) values ('$_POST[money]', '$_POST[ctype]', '$time100', '$_POST[remark]', '$_POST[category]', '$_SESSION[uid]', '$_POST[place]', '$_POST[payway]', '$_POST[name]', '$_POST[special]', '$_POST[ctype]', '')";
     $query = mysqli_query($conn, $sql);
     if ($query) {
         $prompttext = "<font color='#009900'>记录成功！</font>";
@@ -72,8 +81,8 @@ if (isset($sql)) {
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" class='table table-striped table-bordered'>
     <tr>
-        <td bgcolor="#e8e8e8">账目内容</td>
-        <!-- <td bgcolor="#e8e8e8">记账内容 （目前依然为beta测试版，遇到BUG欢迎在<span><a href="https://bbs.fkun.tech/">论坛bbs.fkun.tech</a></span>或<span><a href="https://blog.fkun.tech/">博客blog.fkun.tech</a></span>中留言反馈。）</td> -->
+        <!-- <td bgcolor="#e8e8e8">账目内容</td> -->
+        <td bgcolor="#e8e8e8">记账内容 （Beta版，请在<span><a href="https://bbs.fkun.tech/d/441">论坛</a></span>反馈BUG。）</td>
     </tr>
     <tr>
         <td bgcolor="#e8e8e8">
@@ -86,17 +95,20 @@ if (isset($sql)) {
                 <!-- <font> €</font> -->
 
                 <br /><br />
-
-                <font> 账目分类: </font><select name="category" id="categoryid" style="height:26px;">
-                    <?php
-                    $sql = "select * from " . $prename . "category where ufid='$_SESSION[uid]'";
-                    $query = mysqli_query($conn, $sql);
-                    while ($accategory = mysqli_fetch_array($query)) {
-                        echo "<option value='$accategory[categoryid]'>$accategory[categoryname]</option>";
-                    }
-
-                    ?>
+                <font> 收支类型: </font><select name="ctype" id="ctype" style="height:26px;"onchange="getcategorys(this);">
+                    <option value='2'>支出</option>
+                    <option value='1'>收入</option>
                 </select>
+                <br /><br />
+
+
+
+                <font> 账目分类: </font><select name="category" id="category" style="height:26px;">
+                </select>
+
+
+
+
                 <font color="red"><a href="category.php" style="color:#7f7f7f;">管理类别</a></font>
 
                 <br /><br />
@@ -110,7 +122,6 @@ if (isset($sql)) {
 
                         echo "<option value='$acpayway[payid]'>$acpayway[paywayname]</option>";
                     }
-
                     ?>
                 </select>
                 <font color="red"><a href="payway.php" style="color:#7f7f7f;">管理支付方式</a></font>
@@ -120,10 +131,8 @@ if (isset($sql)) {
                 <input name="place" type="text" id="place" />
                 <br /><br /> 账目备注:
                 <input name="remark" type="text" id="remark" />
-                <br /><br />
-
-                交易时间: <input type="text" name="time" id="time" class="Calender" value="<?php $addnow = date("Y-m-d H:i:s");
-                                                                                        echo "$addnow"; ?>"></input>
+                <br /><br /> 交易时间: <input type="text" name="time" id="time" class="Calender" value="<?php $addnow = date("Y-m-d H:i:s");
+                                                                                                    echo "$addnow"; ?>"></input>
                 <script src="js/laydate/laydate.js"></script>
                 <script>
                     //执行一个laydate实例
@@ -134,12 +143,6 @@ if (isset($sql)) {
                         theme: '#39C5BB'
                     });
                 </script>
-                <br /><br />
-                <font> 收支类型: </font><select name="classid" id="classid" style="height:26px;">
-                    <option value='2'>支出</option>
-                    <option value='1'>收入</option>
-                </select>
-                <font color="red"><a href="classify.php" style="color:#7f7f7f;"></a></font>
                 <br /><br /> 特殊消费:
                 <select name="special" id="special" style="height:26px;">
                     <option value='0'>否</option>
@@ -151,16 +154,16 @@ if (isset($sql)) {
 			            background-color: #4CAF50;
                         border: none;
                         color: white;
-						width: 100px;
-                        height: 50px;
-                        position: absolute;
-                        margin-left: 25px;
-                        margin-top: -30px;
-                        padding: 12px 20px;
+						width: 62px;
+                        height: 35px;
+                        position: relative;
+                        margin-left: 20px;
+                        margin-top: -10px;
+                        padding: 0px 0px;
                         text-align: center;
                         text-decoration: none;
                         display: inline-block;
-						border-radius: 8px;
+						border-radius: 7px;
                         font-size: 18px;" />
 
             </form>
@@ -188,12 +191,12 @@ $query = mysqli_query($conn, $query_sql);
 
 echo "<table width='100%' border='1' align='left' cellpadding='8' cellspacing='1' bgcolor='#696969' class='table table-striped table-bordered'>
                 <tr>
-				<th bgcolor='#EBEBEB'>时间</th>
+				<th class = 'hidephone' bgcolor='#EBEBEB'>时间</th>
 				<th bgcolor='#EBEBEB'>交易对象</th>
 				<th bgcolor='#EBEBEB'>分类</th>
-                <th bgcolor='#EBEBEB'>收支</th>
-                <th bgcolor='#EBEBEB'>备注</th>
-				<th bgcolor='#EBEBEB'>交易位置</th>
+                <th class = 'hidephone' bgcolor='#EBEBEB'>收支</th>
+                <th class = 'hidephone' bgcolor='#EBEBEB'>备注</th>
+				<th class = 'hidephone' bgcolor='#EBEBEB'>交易位置</th>
 				<th bgcolor='#EBEBEB'>资金账户</th>
 				<th bgcolor='#EBEBEB'>金额" . $Currency . "</th>
                 <th bgcolor='#EBEBEB'>操作</th>
@@ -215,78 +218,78 @@ while ($row = mysqli_fetch_array($query)) {
 
     echo "<tr>";
     if ($row['ac1'] == "1" && $row['ac0'] != "3") {
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . date("Y-m-d", $row['actime']) . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $categoryinfo['categoryname'] . "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>";
+        echo "<td  class = 'hidephone'align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>";
         if ($row['ac1'] == "1") {
             echo "收入";
         } else {
             echo "支出";
         }
         echo "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acremark'] . "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acplace'] . "</font></td>";
+        echo "<td  class = 'hidephone'align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acremark'] . "</font></td>";
+        echo "<td  class = 'hidephone'align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acplace'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $payinfo['paywayname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>" . $row['acamount'] . "</font></td>";
     } elseif ($row['ac0'] == "1") {
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . date("Y-m-d", $row['actime']) . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $categoryinfo['categoryname'] . "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>";
         if ($row['ac1'] == "1") {
             echo "收入";
         } else {
             echo "支出";
         }
         echo "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acremark'] . "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acplace'] . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acremark'] . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acplace'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $payinfo['paywayname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#308AF7'>" . $row['acamount'] . "</font></td>";
     } elseif ($row['ac0'] == "2") {
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . date("Y-m-d", $row['actime']) . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $categoryinfo['categoryname'] . "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>";
         if ($row['ac1'] == "1") {
             echo "收入";
         } else {
             echo "支出";
         }
         echo "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acremark'] . "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acplace'] . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acremark'] . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acplace'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $payinfo['paywayname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#E3AB20'>" . $row['acamount'] . "</font></td>";
     } elseif ($row['ac0'] == "3") {
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . date("Y-m-d", $row['actime']) . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $categoryinfo['categoryname'] . "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>";
         if ($row['ac1'] == "1") {
             echo "收入";
         } else {
             echo "支出";
         }
         echo "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acremark'] . "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acplace'] . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acremark'] . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acplace'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $payinfo['paywayname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='#000'>" . $row['acamount'] . "</font></td>";
     } else {
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . date("Y-m-d", $row['actime']) . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $categoryinfo['categoryname'] . "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>";
         if ($row['ac1'] == "1") {
             echo "收入";
         } else {
             echo "支出";
         }
         echo "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acremark'] . "</font></td>";
-        echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acplace'] . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acremark'] . "</font></td>";
+        echo "<td class = 'hidephone' align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acplace'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $payinfo['paywayname'] . "</font></td>";
         echo "<td align='left' bgcolor='#FFFFFF'><font color='red'>" . $row['acamount'] . "</font></td>";
     }
@@ -298,26 +301,22 @@ echo "</table>";
 
 echo "<table width='100%' border='0' align='left' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3' class='table table-striped table-bordered'>
       <tr><td align='left' bgcolor='#FFFFFF'>";
-
 //分页代码
 //计算总数
 $count_result = mysqli_query($conn, "SELECT count(*) as count FROM " . $prename . "account where acuserid='$_SESSION[uid]'");
 $count_array = mysqli_fetch_array($count_result);
 echo "
 <table align='left' width='100%' height='20' border='0' align='left' cellpadding='5' cellspacing='1' bgcolor='#B3B3B3' class='table table-striped table-bordered'>
+<span class='hidedesk' style='color:#6BCEFF'>*横屏或使用电脑以显示所有项目</span>
     <tr>
-        <td align='left' bgcolor='#EBEBEB'>
+        <td align='left' bgcolor='#6894A9'>
             <font id='stat'></font>
-        </td>
-    </tr>
-</table>";
+    ";
 //计算总的页数
 $pagenum = ceil($count_array['count'] / $pagesize);
-echo '共记 ', $count_array['count'], ' 条 ';
+echo '&nbsp&nbsp&nbsp 共', $count_array['count'], ' 条记录 </td></tr></table>';
 // echo ' 这里最多显示最近 ', $pagesize, ' 条';
-
 //循环输出各页数目及连接
-
 /*if ($pagenum > 1) {
     for($i=1;$i<=$pagenum;$i++) {
         if($i==$p) {
@@ -347,7 +346,7 @@ $spending = $classinfo2['spend'];
 ?>
 
 <script language="javascript">
-    document.getElementById("stat").innerHTML = "<?= '总共收入<font color=MediumSeaGreen> ' . $income . $Currency . '</font> 总共支出 <font color=red>' . $spending . $Currency . '</font>' ?>"
+    document.getElementById("stat").innerHTML = "<?= '总收入<font color=MediumSeaGreen> ' . $income . $Currency . '</font> 总支出 <font color=red>' . $spending . $Currency . '</font>' ?>"
 </script>
 <?php
 include_once("footer.php");
