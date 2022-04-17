@@ -54,7 +54,7 @@
         if (intable($db_dbname, $prename . "category", $conn)) {
             echo "<br />已存在!<br />";
         } else {
-            $sql = "CREATE TABLE `$db_dbname`.`" . $prename . "category` (`categoryid` INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY, `categoryname` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,`ufid` INT(8) NOT NULL) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;";
+            $sql = "CREATE TABLE `$db_dbname`.`" . $prename . "category` (`categoryid` INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY, `categoryname` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,`ufid` INT(8) NOT NULL,`type` INT(8) ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;";
             $query = mysqli_query($conn, $sql);
             if ($query) {
                 echo "成功<br />";
