@@ -100,17 +100,11 @@ if (isset($sql)) {
                     <option value='1'>收入</option>
                 </select>
                 <br /><br />
-
-
-
                 <font> 账目分类: </font><select name="category" id="category" style="height:26px;">
                 </select>
-
-
-
-
                 <font color="red"><a href="category.php" style="color:#7f7f7f;">管理类别</a></font>
-
+                <br />
+                <font color="red">此选项与收支类型，如果账目分类中找不到选项请参考<a href="https://bbs.fkun.tech/d/441">这里</a></font>
                 <br /><br />
 
                 <font> 支付方式: </font><select name="payway" id="payid" style="height:26px;">
