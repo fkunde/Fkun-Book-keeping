@@ -40,7 +40,7 @@ $Currency = $row['currency'];
         }, function(json) {
             var category = $("#category");
             $("option", category).remove();
-            $.each(json, function(i, array) {
+            $.each(json, function(index, array) {
                 var option = "<option value='" + array['categoryid'] + "'>" + array['categoryname'] + "</option>";
                 category.append(option);
                 // console.log(option); 
