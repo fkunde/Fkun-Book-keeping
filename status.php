@@ -36,8 +36,8 @@ include_once("header.php");
             <?php
 
             echo "
-			<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>月收入</font></td></tr>
-            <tr><td align='left' bgcolor='#FFFFFF'><font color='red'>月支出</font></td></tr>
+			<tr><td align='left' bgcolor='#FFFFFF'><font color='MediumSeaGreen'>收入</font></td></tr>
+            <tr><td align='left' bgcolor='#FFFFFF'><font color='red'>支出</font></td></tr>
             <tr><td align='left' bgcolor='#FFFFFF'><font>结余</font></td></tr>
 			<tr><td align='left' bgcolor='#FFFFFF'><font>累计支出</font></td></tr>
 			<tr><td align='left' bgcolor='#FFFFFF'><font>特殊支出</font></td></tr>
@@ -332,7 +332,7 @@ include_once("header.php");
 
                 <table id="excel" style="float:left;width:7%" class='table table-striped table-bordered'>
                     <tr>
-                        <th bgcolor='#EBEBEB'>年度统计</th>
+                        <th bgcolor='#EBEBEB'>年度</th>
                     </tr>
                     <?php
 
