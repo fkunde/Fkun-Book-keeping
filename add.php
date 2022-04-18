@@ -37,22 +37,23 @@ $Currency = $row['currency'];
 <script type="text/javascript">
     // get categorys
     function getcategorys() {
-        $.getJSON("select.php",{ctype:$("#ctype").val()},function(json){ 
-        var category = $("#category"); 
-        $("option",category).remove(); //清空原有的选项 
-        $.each(json,function(index,array){ 
-            var option = "<option value='"+array['categoryid']+"'>"+array['categoryname']+"</option>"; 
-            category.append(option);   
-            // console.log(option); 
-        }); 
+        $.getJSON("select.php", {
+            ctype: $("#ctype").val()
+        }, function(json) {
+            var category = $("#category");
+            $("option", category).remove(); //清空原有的选项 
+            $.each(json, function(index, array) {
+                var option = "<option value='" + array['categoryid'] + "'>" + array['categoryname'] + "</option>";
+                category.append(option);
+                // console.log(option); 
+            });
         });
     }
-
 </script>
 <script type="text/javascript">
-   window.onload = function(){
-       getcategorys();
-   }
+    window.onload = function() {
+        getcategorys();
+    }
 </script>
 <?php
 $income = 0;
@@ -82,7 +83,10 @@ if (isset($sql)) {
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" class='table table-striped table-bordered'>
     <tr>
         <!-- <td bgcolor="#e8e8e8">账目内容</td> -->
-        <td bgcolor="#e8e8e8">记账内容 （Beta版，请在<span><a href="https://bbs.fkun.tech/d/441">论坛</a></span>反馈BUG。）</td>
+        <td bgcolor="#e8e8e8">记账内容 （Beta版，请在<span><a href="https://bbs.fkun.tech/d/441">论坛</a></span>反馈BUG。）
+            <br />
+            <font color="red">账目分类与收支类型联动，如果找不到分类请看<a href="https://bbs.fkun.tech/d/441">这里</a></font>
+        </td>
     </tr>
     <tr>
         <td bgcolor="#e8e8e8">
@@ -95,7 +99,7 @@ if (isset($sql)) {
                 <!-- <font> €</font> -->
 
                 <br /><br />
-                <font> 收支类型: </font><select name="ctype" id="ctype" style="height:26px;"onchange="getcategorys(this);">
+                <font> 收支类型: </font><select name="ctype" id="ctype" style="height:26px;" onchange="getcategorys(this);">
                     <option value='2'>支出</option>
                     <option value='1'>收入</option>
                 </select>
@@ -103,8 +107,6 @@ if (isset($sql)) {
                 <font> 账目分类: </font><select name="category" id="category" style="height:26px;">
                 </select>
                 <font color="red"><a href="category.php" style="color:#7f7f7f;">管理类别</a></font>
-                <br />
-                <font color="red">此选项与收支类型联动，如果找不到分类请看<a href="https://bbs.fkun.tech/d/441">这里</a></font>
                 <br /><br />
 
                 <font> 支付方式: </font><select name="payway" id="payid" style="height:26px;">
