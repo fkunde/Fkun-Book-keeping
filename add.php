@@ -33,15 +33,13 @@ $Currency = $row['currency'];
             return false;
         }
     }
-</script>
-<script type="text/javascript">
     // get categorys
     function getcategorys() {
         $.getJSON("select.php", {
             ctype: $("#ctype").val()
         }, function(json) {
             var category = $("#category");
-            $("option", category).remove(); //清空原有的选项 
+            $("option", category).remove();
             $.each(json, function(index, array) {
                 var option = "<option value='" + array['categoryid'] + "'>" + array['categoryname'] + "</option>";
                 category.append(option);
@@ -49,8 +47,7 @@ $Currency = $row['currency'];
             });
         });
     }
-</script>
-<script type="text/javascript">
+
     window.onload = function() {
         getcategorys();
     }
