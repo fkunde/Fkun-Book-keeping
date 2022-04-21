@@ -79,8 +79,8 @@ if (isset($sql)) {
 
 <table align="left" width="100%" border="0" cellpadding="5" cellspacing="1" class='table table-striped table-bordered'>
     <tr>
-        <!-- <td bgcolor="#e8e8e8">账目内容</td> -->
-        <td bgcolor="#e8e8e8">记账内容 （Beta版，请在<span><a href="https://bbs.fkun.tech/d/441">论坛</a></span>反馈BUG。）
+        <td bgcolor="#e8e8e8">账目内容</td>
+        <!-- <td bgcolor="#e8e8e8">记账内容 （Beta版，请在<span><a href="https://bbs.fkun.tech/d/441">论坛</a></span>反馈BUG。） -->
             <br />
             <font color="red">账目分类与收支类型联动，如果找不到分类请看<a href="https://bbs.fkun.tech/d/441">这里</a></font>
         </td>
