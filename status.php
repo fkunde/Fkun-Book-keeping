@@ -474,6 +474,7 @@ include_once("header.php");
                                     $now = date('Y-m');
                                     $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum ,ac1 from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and acuserid='$_SESSION[uid]' where  " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' group by month";
                                     $query = mysqli_query($conn, $sql);
+                                    echo "'0',";
                                     while ($row = mysqli_fetch_array($query)) {
                                         if ($row['sum'] == '0') {
                                             $total = '0.00';
