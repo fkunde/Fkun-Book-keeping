@@ -496,7 +496,11 @@ include_once("header.php");
                                         if ($row['sum'] == '0') {
                                             $total = '0.00';
                                         } else {
+                                            if(isset($row['sum'])){
                                             $total = $row['sum'];
+                                        }else{
+                                            $total = '0.00';
+                                        }
                                         }
                                         echo "'$total',";
                                     }

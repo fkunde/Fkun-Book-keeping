@@ -43,7 +43,7 @@ function user_shell($uid,$shell) {
 
 
 //基本设置
-date_default_timezone_set("Asia/Shanghai");
+date_default_timezone_set("Europe/Berlin");
 //时区设置为北京时间 Asia/Shanghai
 //时区设置为柏林时间 Europe/Berlin
 
