@@ -465,12 +465,13 @@ include_once("header.php");
                                 $rowminout = mysqli_fetch_array($queryminout);
                                 $firstmonthout = $rowminout['month'];
 
-                                if ($firstmonthout == $firstmonth) {
+                                // if ($firstmonthout == $firstmonth) {
                                     $firstsql = "SELECT * FROM " . $prename . "account where acuserid='$_SESSION[uid]' order by actime LIMIT 1 ";
                                     $firstquery = mysqli_query($conn, $firstsql);
                                     $first = mysqli_fetch_array($firstquery);
                                     $firsttime = $first['actime'];
                                     $firstdate = date('Y-m', $firsttime);
+                                    echo "firstdate";
                                     $now = date('Y-m');
                                     $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum ,ac1 from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and acuserid='$_SESSION[uid]' where  " . $prename . "account.ac1 =2 and " . $prename . "account.ac0 <>3 and " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' group by month";
                                     $query = mysqli_query($conn, $sql);
@@ -486,29 +487,29 @@ include_once("header.php");
                                         }
                                         echo "'$total',";
                                     }
-                                } else {
-                                    $firstsql = "SELECT * FROM " . $prename . "account where acuserid='$_SESSION[uid]' order by actime LIMIT 1 ";
-                                    $firstquery = mysqli_query($conn, $firstsql);
-                                    $first = mysqli_fetch_array($firstquery);
-                                    $firsttime = $first['actime'];
-                                    $firstdate = date('Y-m', $firsttime);
-                                    $now = date('Y-m');
-                                    $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum ,ac1 from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and acuserid='$_SESSION[uid]' where  " . $prename . "account.ac1 = 2 and " . $prename . "account.ac0 <>3 and " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' group by month";
-                                    $query = mysqli_query($conn, $sql);
+                                // } else {
+                                //     $firstsql = "SELECT * FROM " . $prename . "account where acuserid='$_SESSION[uid]' order by actime LIMIT 1 ";
+                                //     $firstquery = mysqli_query($conn, $firstsql);
+                                //     $first = mysqli_fetch_array($firstquery);
+                                //     $firsttime = $first['actime'];
+                                //     $firstdate = date('Y-m', $firsttime);
+                                //     $now = date('Y-m');
+                                //     $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum ,ac1 from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and acuserid='$_SESSION[uid]' where  " . $prename . "account.ac1 = 2 and " . $prename . "account.ac0 <>3 and " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' group by month";
+                                //     $query = mysqli_query($conn, $sql);
                                     
-                                    while ($row = mysqli_fetch_array($query)) {
-                                        if ($row['sum'] == '0') {
-                                            $total = '0.00';
-                                        } else {
-                                            if(isset($row['sum'])){
-                                            $total = $row['sum'];
-                                        }else{
-                                            $total = '0.00';
-                                        }
-                                        }
-                                        echo "'$total',";
-                                    }
-                                }
+                                //     while ($row = mysqli_fetch_array($query)) {
+                                //         if ($row['sum'] == '0') {
+                                //             $total = '0.00';
+                                //         } else {
+                                //             if(isset($row['sum'])){
+                                //             $total = $row['sum'];
+                                //         }else{
+                                //             $total = '0.00';
+                                //         }
+                                //         }
+                                //         echo "'$total',";
+                                //     }
+                                // }
                                 ?>
                             ],
                             type: 'line',
