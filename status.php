@@ -356,6 +356,9 @@ include_once("header.php");
                                 $queryminout = mysqli_query($conn, $sqlminout);
                                 $rowminout = mysqli_fetch_array($queryminout);
                                 $firstmonthout = $rowminout['month'];
+
+                                echo $firstmonth;
+                                echo "</br>";
                                 if ($firstmonthout == $firstmonth) {
                                     $firstsql = "SELECT * FROM " . $prename . "account where acuserid='$_SESSION[uid]' order by actime LIMIT 1 ";
                                     $firstquery = mysqli_query($conn, $firstsql);
@@ -369,11 +372,7 @@ include_once("header.php");
                                         if ($row['sum'] == '0') {
                                             $total = '0.00';
                                         } else {
-                                            if (isset($row['sum'])) {
                                                 $total = $row['sum'];
-                                            } else {
-                                                $total = '0.00';
-                                            }
                                         }
                                         echo "'$total',";
                                     }
@@ -391,11 +390,7 @@ include_once("header.php");
                                         if ($row['sum'] == '0') {
                                             $total = '0.00';
                                         } else {
-                                            if (isset($row['sum'])) {
                                                 $total = $row['sum'];
-                                            } else {
-                                                $total = '0.00';
-                                            }
                                         }
                                         echo "'$total',";
                                     }
@@ -445,12 +440,9 @@ include_once("header.php");
                                 $firstdate = date('Y-m', $firsttime);
                                 $now = date('Y-m');
 
-
                                 $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and ac0=1 and acuserid='$_SESSION[uid]'  where " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' group by month";
                                 $query = mysqli_query($conn, $sql);
-
                                 while ($row = mysqli_fetch_array($query)) {
-
                                     if ($row['sum'] == '0') {
                                         $smonth = '0.00';
                                     } else {
@@ -458,7 +450,6 @@ include_once("header.php");
                                     }
                                     echo "'$smonth',";
                                 }
-
                                 ?>
 
                             ],
@@ -475,8 +466,6 @@ include_once("header.php");
                                 $firsttime = $first['actime'];
                                 $firstdate = date('Y-m', $firsttime);
                                 $now = date('Y-m');
-
-
                                 $sql = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon and ac0=2 and acuserid='$_SESSION[uid]'  where " . $prename . "month.mon>='" . $firstdate . "' and " . $prename . "month.mon<='" . $now . "' group by month";
                                 $query = mysqli_query($conn, $sql);
 
