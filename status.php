@@ -352,7 +352,7 @@ include_once("header.php");
                                 $querymin = mysqli_query($conn, $sqlmin);
                                 $rowmin = mysqli_fetch_array($querymin);
                                 $firstmonth = $rowmin['month'];
-                                $sqlminout = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon where " . $prename . "account.ac1 = 2 and " . $prename . "month.mon='" . $firstdate . "' group by month";
+                                $sqlminout = "select " . $prename . "month.mon as month, sum(case when " . $prename . "account.acamount is null then 0 else " . $prename . "account.acamount end) as sum from " . $prename . "month left join " . $prename . "account on date_format(FROM_UNIXTIME(" . $prename . "account.actime),'%Y-%m') = " . $prename . "month.mon where " . $prename . "account.ac1 = 2 and acuserid='$_SESSION[uid]' and " . $prename . "month.mon='" . $firstdate . "' group by month";
                                 $queryminout = mysqli_query($conn, $sqlminout);
                                 $rowminout = mysqli_fetch_array($queryminout);
                                 $firstmonthout = $rowminout['month'];
