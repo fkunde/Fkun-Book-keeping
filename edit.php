@@ -124,8 +124,8 @@ if ($_GET['ok']) {
         echo "</select><br /><br />";
 
         $remark = trim($row['acremark']);
-        $remark = preg_replace(’/\s(?=\s)/’, '', $remark);
-        $remark = preg_replace(’/[\n\r\t]/’, ' ', $remark);
+        $remark = preg_replace('/\s(?=\s)/', '', $remark);
+        $remark = preg_replace('/[\n\r\t]/', ' ', $remark);
 
         echo "
         账目名称: <input type=text name='name' value=" . $row['acname'] . "><br /><br />
