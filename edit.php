@@ -126,13 +126,14 @@ if ($_GET['ok']) {
         $remark = trim($row['acremark']);
         $remark = preg_replace('/\s(?=\s)/', '', $remark);
         $remark = preg_replace('/[\n\r\t]/', ' ', $remark);
+        $remark = htmlspecialchars($remark);
 
         echo "
         账目名称: <input type=text name='name' value=" . $row['acname'] . "><br /><br />
         交易时间: <input rows='1' cols='20' name='time' class='Calender' value='" . date('Y-m-d H:i', $row['actime']) . "'> 
         <br /><br />
         交易地点: <input type=text name='place' value=" . $row['acplace'] . "><br /><br />
-        账目备注: <input type=text name='beizhu' value=" . $remark . "><br /><br />
+        账目备注: <input type=text name='beizhu' value='" . $remark . "'><br /><br />
         特殊消费: 
          <select name='ac0' id='ac0' style='height:26px;'>
             <option value=" . $row['ac0'] . ">
