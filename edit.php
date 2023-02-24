@@ -122,21 +122,17 @@ if ($_GET['ok']) {
             echo " <option value=" . $paywayinfo['payid'] . ">" . $paywayinfo['paywayname'] . "</option>";
         }
         echo "</select><br /><br />";
+
+        $remark = trim($row['acremark']);
+        $remark = preg_replace(’/\s(?=\s)/’, '', $remark);
+        $remark = preg_replace(’/[\n\r\t]/’, ' ', $remark);
+
         echo "
         账目名称: <input type=text name='name' value=" . $row['acname'] . "><br /><br />
         交易时间: <input rows='1' cols='20' name='time' class='Calender' value='" . date('Y-m-d H:i', $row['actime']) . "'> 
-        <script src='js/laydate/laydate.js'></script> 
-        <script>
-        //执行一个laydate实例
-        laydate.render({
-          elem: '.Calender' //指定元素
-          ,type: 'datetime'
-          ,theme: '#39C5BB'
-        });
-        </script>
         <br /><br />
         交易地点: <input type=text name='place' value=" . $row['acplace'] . "><br /><br />
-        账目备注: <input type=text name='beizhu' value=" . $row['acremark'] . "><br /><br />
+        账目备注: <input type=text name='beizhu' value=" . $remark . "><br /><br />
         特殊消费: 
          <select name='ac0' id='ac0' style='height:26px;'>
             <option value=" . $row['ac0'] . ">
